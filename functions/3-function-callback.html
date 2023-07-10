@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Function Callback</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Function Callback</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+  <button id="btn" style="margin:auto;">Click to test Callback</button>
+
+  <script>
+
+    //callback----------------------------------------------
+    const test = () => console.log("I am a callback function.")
+    const mainFunc = (test) => {
+      test()
+    }
+    mainFunc(test)
+
+    //callback with prebuild
+    document.getElementById('btn').addEventListener('click', () => {
+      alert('Prebuilt callback')
+    })
+
+  </script>
+</body>
+
+</html>

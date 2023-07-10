@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manipluation String</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Manipluation String</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+
+  <script>
+    let lang = 'Html Css Javascript NodeJs MongoDb Mysql'
+    console.log(lang)
+
+    //sort----------------------------------------------------
+    // let sort_text = lang.split(' ').sort().join(' ')
+    // console.log(sort_text)
+
+    //reverse----------------------------------------------------
+    // let reverse_text = lang.split(' ').reverse().join(' ')
+    // console.log(reverse_text)
+
+    //convert string to array---------------------------------------
+    // let convertArray = lang.split(' ')
+    // console.log(convertArray)
+
+    //convert only first word to array---------------------------
+    // const convert_first_word = lang.split('', 4)
+    // console.log(convert_first_word)
+
+    //replace each start of word---------------------------------------
+    // const start_letter = (param) => param.replace(/[A-Z-0-9]/g, '$')
+    // console.log(start_letter(lang))
+
+    //replace each digit with '' (remove digit)----------------
+    // const each_digit = (param) => param.replace(/[0-9]/g, '')
+    // console.log(each_digit('Ht5ml Css Java6script Node8Js Mo8ngoDb My9sql'))
+
+    //add string start of word----------------------------------------------------
+    // const pad_start = lang.split(' ').map(item => item.padStart(item.length + 5,'-1'))
+    // console.log(pad_start)
+
+    //add string end of word----------------------------------------------------
+    // const pad_end = lang.split(' ').map(item => item.padEnd(item.length + 5,'1'))
+    // console.log(pad_end)
+
+  </script>
+</body>
+
+</html>

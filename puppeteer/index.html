@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1><img src="./images/javascript-icon.png" alt="" class="images"/></h1>
+    <h1><img src="./images/character.gif" alt="" class="images" width="200"/></h1>
+    <ul class="list">
+      <li class="first">Languages</li>
+      <li id="html">Html5</li>
+      <li id="css">Css</li>
+      <li class="lang">Javascript</li>
+      <li class="lang">VueJs</li>
+      <li class="lang">Svelte</li>
+      <li class="lang">Laravel</li>
+      <li class="lang">NodeJs</li>
+      <li>Python</li>
+      <li>Mongodb</li>
+      <li class="last">Mysql</li>
+    </ul>
+    <hr />
+    <ul class="list">
+      <li class="first" data="python">Python</li>
+      <li id="html">Vb Script</li>
+      <li id="css">Sass</li>
+      <li class="lang">Delphi</li>
+      <li class="lang">Pascal</li>
+      <li class="lang">C++</li>
+      <li class="lang">C#</li>
+      <li class="lang">NodeJs</li>
+      <li>Python</li>
+      <li>Mongodb</li>
+      <li class="last">Mysql</li>
+    </ul>
+
+    <h1><img src="./img/img_nature_wide.jpg" alt="" class="images" width="200"/></h1>
+    <a href="https://www.youtube.com">Youtube</a>
+
+    <hr><h2>Click Events</h2>
+    <p>
+      <button name="msg" id="msg" class="msg" data="msg" onclick="msg()">
+        Send Message
+      </button>
+    </p>
+    <hr />
+    <a
+      href="https://youtube.com"
+      name="youtube"
+      id="youtube"
+      class="youtube"
+      data="youtube"
+      >Youtube</a
+    >
+
+    <hr />
+    <div class="btn-container">
+      <button id="msg" class="btn" name="msg" data="btn" onclick="msg()">
+        Show Message
+      </button>
+      <button id="btn1" class="btn" name="btn1" data="btn" onclick="btn1()">
+        Button 1
+      </button>
+      <button id="btn2" class="btn" name="btn1" data="btn" onclick="btn2()">
+        Button 2
+      </button>
+      <button id="btn3" class="btn" name="btn1" data="btn" onclick="btn3()">
+        Button 3
+      </button>
+    </div>
+
+    <hr>
+    <h1>Table</h1>
+    <table class="bordered">
+      <thead>
+        <tr>
+          <th data-field="id">Id</th>
+          <th data-field="name">Name</th>
+          <th data-field="price" id="price">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="text-1">Alvin</td>
+          <td>.87</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Alan</td>
+          <td>.76</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Jonathan</td>
+          <td>.00</td>
+        </tr>
+      </tbody>
+     </table>
+     
+    <script>
+      function msg() {
+        alert("I am triggered by Puppeteer");
+      }
+      function btn1() {
+        alert("Btn1");
+      }
+      function btn2() {
+        alert("Btn2");
+      }
+      function btn3() {
+        alert("Btn3");
+      }
+    </script>
+  </body>
+</html>

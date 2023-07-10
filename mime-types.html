@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="extension" placeholder="Enter extension" />
+  <button id="btn">Get Mime Type</button>
+
+  <h1 id="result"></h1>
+  <script>
+    let myMap = new Map()
+
+    myMap.set('text/html', 'html')
+    myMap.set('text/htm', 'htm')
+    myMap.set('text/css', 'css')
+    myMap.set('text/javascript', 'js')
+    myMap.set('text/csv', 'csv')
+
+    function getKey(value) {
+      const result =  [...myMap].find(([key, val]) => val == value)
+      if(result !== undefined){
+        document.getElementById('result').innerText = result[0]
+      } else {
+        document.getElementById('result').innerText = 'No mime!'
+      }
+      
+    }
+
+    document.getElementById('btn').addEventListener('click', () => {
+      getKey(document.getElementById('extension').value)
+    })
+    document.getElementById('extension').addEventListener('keyup', (e) => {
+      if(e.keyCode === 13){
+        getKey(document.getElementById('extension').value)
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+
+h3{
+  margin: 10px 0;
+  text-align: center;
+}
+#container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 230px;
+  min-width: 240px;
+  height: auto;
+  margin: 40px auto;
+  border:1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: aliceblue;
+}
+#container #output{
+  min-width: 92%;
+  height: 28px;
+  border-radius: 3px;
+  margin: 10px 0;
+  text-align: right;
+  padding:0 8px;
+  outline: none;
+  font-size: 22px;
+}
+#container #btn-con{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+#container #btn-con button{
+  border: 0;
+  outline: 0;
+  width: 53px;
+  height: 50px;
+  border-radius: 5px;
+  margin: 2px;
+  font-size: 15px;
+  background-color: transparent;
+  box-shadow: 1px 1px 5px #666
+}
+#container #btn-con #equal{
+  width: 110px;
+}
+#container #btn-con button:hover{
+  background-color: #ddd;
+}
+#container #btn-con button:active{
+  background-color: darkslategrey;
+  color: #fff;
+}

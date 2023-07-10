@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Array</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Add Array</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+  <script>
+    //basic-array
+    let lang = ['Html', 'Css', 'Javascript']
+    console.log(lang)
+
+  //add end of the array-------------------------------
+    // lang.push('NodeJs')
+    // console.log(lang)
+
+  //add start of the array-----------------------------
+    // lang.unshift('NodeJs')
+    // console.log(lang)
+
+  //add with rest------------------------------------------
+    //add another array end of array with rest
+    // let lang1 = ['Dotnet','Sass','Vb Script']
+    // lang.push(...lang1)
+    // console.log(lang)
+
+    //add another array start of array with rest
+    // let lang1 = ['Dotnet','Sass','Vb Script']
+    // lang.unshift(...lang1)
+    // console.log(lang)
+
+  //add with concat------------------------------------
+    // let lang1 = ['Dotnet','Sass','Vb Script']
+    // console.log(lang.concat(lang1))
+
+  //add with loop--------------------------------------
+    //add another array end of array with loop
+    // let lang1 = ['Dotnet','Sass','Vb Script']
+    // for (const item of lang1) {
+    //   lang.push(item)
+    // }
+    // console.log(lang)
+
+    //add another array start of array with loop
+    // let lang2 = ['Dotnet','Sass','Vb Script']
+    // for (const item of lang2) {
+    //   lang.unshift(item)
+    // }
+    // console.log(lang)
+
+  //add  with splice------------------------------------
+    // add to specific index with splice
+    // lang.splice(1, 0, 'C++')
+    // lang.splice(1, 0, 'C++', 'Php')//multi
+    // console.log(lang)
+
+    // add to specific index as array with splice
+    // let lang1 = ['Dotnet', 'Sass', 'Vb Script']
+    // lang.splice(1, 0, ...lang1)//multi
+    // console.log(lang)
+
+
+  //add with fill method--------------------------------
+    // const emoji = (param) => {
+    //   const result = Array(param).fill('😋')
+    //   console.log(result)
+    // }
+    // emoji(5)
+
+    // const num = (param) => {
+    //   const result = Array(param).fill().map((item, index) => index + 5)
+    //   console.log(result)
+    // }
+    // num(10)
+
+    // const letter = (param) => {
+    //   // const result = Array(param).fill().map((item, index) => String.fromCharCode('D'.charCodeAt(0) + index))  //start from D
+    //   const result = Array(param).fill().map((item, index) => String.fromCharCode('A'.charCodeAt(0) + index)) //start from A
+    //   console.log(result)
+    // }
+    // letter(26)
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax Progress</title>
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css', integrity='sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==', crossorigin='anonymous', referrerpolicy='no-referrer'">
+</head>
+
+<body>
+  <div class="wrapper">
+    <h2 style="margin: 20px; text-align: center;">Ajax Progress</h2>
+    <header>File Uploader</header>
+    <form action="/upload" id="form" enctype='multipart/form-data'>
+      <input type="file" name="file" id="file">
+      <i class="fas fa-cloud-upload-alt"></i>
+      <p>Brows file to upload</p>
+      <ul id="area"></ul>
+      <ul id="uploaded"></ul>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("form")
+    const file = document.getElementById("file")
+    let uploadedArea = document.getElementById("uploaded")
+
+    file.addEventListener("change", (e) => {
+      if (e.target.files[0]) {
+        let fileName = e.target.files[0].name
+        if (fileName.length >= 12) {
+          let splitName = fileName.split(".")
+          fileName = splitName[0].substring(0, 12) + "... ." + splitName[1]
+        }
+        uploadFile(fileName)
+      }
+    })
+    const fileIcons = (param) => {
+      if (param.match(/\.jp?g|png|gif|webp/)) {
+        return "png";
+      } else if (param.match(/\.zip|rar/)) {
+        return "zip";
+      } else if (param.match(/\.mp4/)) {
+        return "mp4";
+      } else {
+        return "doc";
+      }
+    };
+    const uploadFile = (param) => {
+      var xhr = new XMLHttpRequest()
+      xhr.open("POST", "/upload")
+      xhr.upload.addEventListener("progress", ({ loaded, total }) => {
+        let fileLoaded = Math.floor((loaded / total) * 100);
+        let fileTotal = Math.floor(total / 1000);
+        let fileSize;
+        fileTotal < 1024
+          ? (fileSize = fileTotal + "KB")
+          : (fileSize = (loaded / (1024 * 1024)).toFixed(2) + "MB");
+        document.getElementById("area").innerHTML = `
+        <li class="row">
+          <div class="details">
+            <i class="fa fa-file-alt"></i>
+            <div>${param}</div>
+            <div>${fileLoaded} %</div>
+          </div>
+          <div class="bar">
+            <div class="prog" style="width:${fileLoaded}%"></div>
+          </div>
+        </li>
+      `
+        if (loaded == total) {
+          document.getElementById("area").innerHTML = "";
+          let uploadedHTML = `
+            <li class="upload-end">
+              <div class="name">
+                <img src="icons/${fileIcons(
+            param
+          )}.png" style="margin-right:10px;"/>${param}
+              </div>
+              <div class="size">${fileSize}</div>
+            </li>
+          `;
+          uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML);
+        }
+      })
+      const formData = new FormData(form);
+      xhr.send(formData);
+    };
+
+
+  </script>
+</body>
+
+</html>

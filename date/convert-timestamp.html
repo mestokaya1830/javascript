@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // convert timestamp(miliseconds) to date
+    let d = new Date()
+    console.log('---------------------------Current Date')
+    console.log(d)
+    console.log('---------------------------Timestamp of current date')
+    console.log(d.getTime())
+    let result = new Date(d.getTime())
+    console.log('---------------------------Timestamp converted to Local')
+    console.log(result.toLocaleDateString())
+    console.log('---------------------------Timestamp converted to custom format')
+    console.log(`${result.getFullYear()}/${result.getMonth()+1}/${result.getDate()}`)
+  </script>
+</body>
+
+</html>

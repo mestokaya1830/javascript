@@ -1,0 +1,38 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h3{
+  text-align: center;
+  margin: 20px auto;
+}
+
+#container{
+  max-width: 500px;
+  margin: 30px auto;
+}
+h2{
+  padding: 10px;
+}
+.btn{
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: cornflowerblue;
+  color: #fff;
+  cursor: pointer;
+}
+.btn:hover{
+  background-color: darkolivegreen;
+}
+#player{
+  color: darkolivegreen;
+}
+#computer{
+  color: #444;
+}
+#result{
+  color: darkred;
+}

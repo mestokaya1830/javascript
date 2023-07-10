@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axios Get Xml</title>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Axios Get Xml</h2>
+  <p style="margin: 20px; text-align: center;">Look at the Console</p>
+
+  <script>
+    const getXml = async () => {
+      try {
+        //get book
+        let result = await fetch('../book.xml')
+        let final = await result.text()
+        console.log(final)
+
+        //convert book data to dom
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(final, "application/xml")
+        console.log(xml)
+
+        //parse dom
+        let book = []
+        const data = (xml.getElementsByTagName("book"))
+        for (let i = 0; i < data.length; i++) {
+          book.push({
+            author: data[i].getElementsByTagName('author')[0].childNodes[0].nodeValue,
+            title: data[i].getElementsByTagName('title')[0].childNodes[0].nodeValue,
+            genre: data[i].getElementsByTagName('genre')[0].childNodes[0].nodeValue,
+            price: data[i].getElementsByTagName('price')[0].childNodes[0].nodeValue,
+            publish_date: data[i].getElementsByTagName('publish_date')[0].childNodes[0].nodeValue,
+            description: data[i].getElementsByTagName('description')[0].childNodes[0].nodeValue
+          }
+          )
+        }
+        book.forEach(item => {
+          console.log(item.title)
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getXml()
+  </script>
+</body>
+
+</html>

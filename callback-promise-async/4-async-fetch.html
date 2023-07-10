@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+//with await method
+    const getData = async () => {
+      console.log('First')//it shouldn't wait for anything
+      const result = await fetch("https://jsonplaceholder.typicode.com/users")
+      const final = await result.json()
+      console.log(final)
+      console.log('Second')//it should wait for final await line
+    }
+    getData()
+    console.log('Third')//it shouldn't wait for anything
+
+//with then method
+    // const getData = async () => {
+    //   console.log('First')//it shouldn't wait for anything
+    //   fetch("https://jsonplaceholder.typicode.com/users")
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     console.log(data)
+    //     console.log('Second')//it should wait for data line
+    //   })
+    // }
+    // getData()
+    // console.log('Third')//it shouldn't wait for anything
+
+  </script>
+</body>
+</html>

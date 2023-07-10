@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>Javascript Intersection</h3>
+
+  <script>
+    let result = []
+    const arr = ['1,2,3,a,b,c', '4,5,6,a,b,c']
+    const group1 = arr[0].split(',')
+    const group2 = arr[1].split(',')
+
+    result = group1.filter(item => group2.some(item1 => item1 === item))
+    console.log(result)
+  </script>
+</body>
+</html>

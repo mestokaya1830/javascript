@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax Upload Progress</title>
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css' ,
+    integrity='sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==' ,
+    crossorigin='anonymous' , referrerpolicy='no-referrer'">
+</head>
+
+<!DOCTYPE html>
+<html lang=" en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios Image Upload</title>
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css' ,
+      integrity='sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==' ,
+      crossorigin='anonymous' , referrerpolicy='no-referrer'">
+</head>
+
+<body>
+  <div class=" wrapper">
+      <h2 style="margin: 20px; text-align: center;">Axios Upload Progress</h2>
+      <header>File Uploader</header>
+      <form action="#" id="form" enctype='multipart/form-data'>
+        <input type="file" name="file" id="file">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>Brows file to upload</p>
+      </form>
+      <br>
+      <div id="progress-con">
+        <label for="progress">0%</label>
+        <progress id="progress" value="0" max="100"></progress>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const form = document.getElementById("form")
+      const progress = document.getElementById("progress")
+      document.getElementById("file").addEventListener("change", (e) => {
+        if (e.target.files[0]) {
+          uploadFile()
+        }
+      })
+
+      const config = {
+        onUploadProgress: function (progressEvent) {
+          const state = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+          progress.setAttribute('value', state);
+          progress.previousElementSibling.textContent = state + '%'
+          if (state === 100) {
+            progress.previousElementSibling.textContent = `Upload complete!`
+          }
+        }
+      }
+
+      const uploadFile = async () => {
+        try {
+          const result = await axios.post('/upload', new FormData(form), config)
+          console.log('Uploaded')
+          console.log(result)//check here and handle response or error
+        } catch (error) {
+          console.log(error)
+        }
+      }
+
+    </script>
+    </body>
+
+</html>

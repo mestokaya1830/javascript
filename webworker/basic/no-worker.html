@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>JavaScript Web Workers API</h2>
+  <p>Count numbers: <output id="result"></output></p>
+  <button onclick="startWorker()">Start Worker</button>
+  <button onclick="runAlert()">Check Worker</button>
+  <script>
+    const runAlert = () => {
+      window.alert('No Problem')
+    }
+    function startWorker() {
+      let nums = 0
+      console.log('Proccess is running...')
+      for (let i = 0; i < 5000000000; i++) {
+        nums += i
+      }
+      console.log(nums)
+    }
+  </script>
+</body>
+</html>

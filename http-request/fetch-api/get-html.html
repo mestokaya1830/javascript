@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch Get Csv</title>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Fetch Get Html</h2>
+  <p style="margin: 20px; text-align: center;">Look at the Console</p>
+  <script>
+    const getHtml = async () => {
+      const result = await fetch('https://dev.to/search?q=nodejs')
+      const final = await result.text()
+      const parser = new DOMParser()
+      const htmlData = parser.parseFromString(final, 'text/html')
+      
+      const links = Array.from(htmlData.querySelectorAll('a'))
+      const output = links.map(item => item.href)
+      console.log(output)
+    }
+    getHtml()
+  </script>
+</body>
+
+</html>

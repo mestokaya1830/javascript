@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Array</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Remove Array</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+  <script>
+    //basic-array
+    let lang = ['Html', 'Css', 'Javascript', 'Nodejs', 'Mongodb', 'Mysql']
+    console.log(lang)
+
+    //remove end----------------------------------
+    // lang.pop()
+    // console.log(lang)
+
+    //remove start--------------------------------
+    // lang.shift()
+    // console.log(lang)
+
+    // remove range  with slice-------------------
+    // console.log(lang.slice(0, lang.length - 2))
+
+    //remove with reset length--------------------
+    // lang.length = 3
+    // console.log(lang)
+
+    //remove with splice--------------------------
+    // console.log(lang.splice(0,2))//remove after 2 items
+    // console.log(lang.splice(2,2))//left only 2 items after 2
+
+    //remove specific value with splice-----------
+    // lang.forEach((item, index) => {
+    //   if(item === 'Css'){
+    //    lang.splice(index, 1)
+    //   }
+    // })
+    // console.log(lang) 
+
+    //add and delete------------------------------
+    // lang.splice(2, 1, 'C++')
+    // console.log(lang)
+
+    //remove specific value with delete-----------
+    // lang.forEach((item, index) => {
+    //   if(item === 'Css'){
+    //    delete lang[index]
+    //   }
+    // })
+    // console.log(lang)
+  </script>
+</body>
+
+</html>

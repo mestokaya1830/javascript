@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Object</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Get Object</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+  <script>
+    
+    const person = {
+      name: "Mesto",
+      lastName: "Kaya",
+      age:50,
+      lang:['Html','Css','Javascript'],
+      fullName () {
+        return this.name + " " + this.lastName;
+      }
+    }
+
+    const emoji = [
+      { id: 0, emoji: "😃" },
+      { id: 1, emoji: "😉" },
+      { id: 2, emoji: "😊" },
+      { id: 3, emoji: "🤑" },
+      { id: 4, emoji: "😂" },
+      { id: 5, emoji: "😪" }
+    ]
+
+    //get full object------------------------
+    // console.log(person)
+
+    //get part of object------------------------
+    // console.log(person.name)
+    // console.log(person.lang)
+    // console.log(person.fullName())
+
+    //get all object array--------------------
+    // console.log(emoji)
+
+    //get index object array------------------
+    // console.log(emoji[2])
+
+    //get loop object array ------------------
+    // for (const item of emoji) {
+    //   console.log(item)
+    // }
+
+    //get loop object array with index------------------
+    // emoji.forEach((item, index) => {
+    //   console.log(index,item)
+    // })
+
+    //get object keys---------------------------------
+    // console.log(Object.keys(person))
+
+    //get object values---------------------------------
+    // console.log(Object.values(person))
+
+    //get object array keys---------------------------------
+    // for (const item of emoji) {
+    //   console.log(Object.keys(item))
+    // }
+    
+    //get object array values---------------------------------
+    // for (const item of emoji) {
+    //   console.log(Object.values(item))
+    // }
+
+  </script>
+</body>
+
+</html>
