@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    form{
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin: 10px auto;
+    }
+    form input{
+      margin: 5px 0;
+      height: 30px;
+      border-radius: 3px;
+      border: 1px solid #888;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    form #login{
+      height: 35px;
+      font-size: 16px;
+    }
+    form #login:hover{
+      background-color: lightseagreen;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="margin: 10px 0; text-align: center;">Puppeteer Form</h2>
+  <form action="#">
+    <input type="text" name="" id="name" placeholder="Name">
+    <input type="password" name="" id="password" placeholder="Name">
+    <input type="button" value="Login" id="login">
+  </form>
+</body>
+</html>

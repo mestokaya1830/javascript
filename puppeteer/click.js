@@ -6,30 +6,19 @@ import puppeteer from "puppeteer";
   await page.setViewport({ width: 1000, height: 500 });
   await page.goto("http://127.0.0.1:5500/index.html");
 
-  //use click event with shorthand
-  // await page.click('button');//with tag
-  // await page.click('#msg');//with id
-  // await page.click('.msg');//with class
-  // await page.click('[name="msg"]');//with name
-  // await page.click('[data="msg"]');//with data
+  // Locators is a new experimental API that combines waitForSelector
+  // and element actions in a single unit.
+  // In combination with additional precondition 
+  // checks this allows locators to retry failed actions 
+  // automatically leading to less flaky automation scripts.
+
+  await page.locator('button').click()
 
   //-----------------------------------------------------
 
   //use href event with variable
   // const href = await page.$('a');//with tag
-  // const href = await page.$('#youtube');//with id
-  // const href = await page.$('.youtube');//with class
-  // const href = await page.$('[name="youtube"]');//with name
-  // const href = await page.$('[data="youtube"]');//with data
-  // const href = await page.$x('//*[@id="msg"]');//with xpath
-  // href[0].click()
   // await href.click();
-
-
-
-  //click one button event
-  const button = await page.$("button")//return only one button
-  await button.click()
 
 
   //click all buttons event 

@@ -24,7 +24,7 @@ const scrollPage = async(page, itemCount) => {
       previousHeight = await page.evaluate('document.body.scrollHeight')
       await page.evaluate('window.scrollTo(0, document.body.scrollHeight)')
       await page.waitForFunction(`document.body.scrollHeight > ${previousHeight}`)
-      await new Promise((resolve) => setTimeout(resolve, 500))
+      await new Promise((resolve) => setTimeout(resolve, 1000))
       items = await page.$$eval('.crayons-story__title > a', item => item.map(item => item.innerText))
     }
   } catch(e) { 

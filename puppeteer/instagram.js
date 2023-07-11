@@ -10,31 +10,24 @@ import { executablePath } from "puppeteer"
   })
   const page = await browser.newPage()
   await page.goto("http://www.instagram.com")
-  // await new Promise((resolve) => setTimeout(resolve, 500))
   await page.screenshot({ path: `./media/instagram.png` })
 
   //accept cockie
-  await page.waitForSelector('._a9--._a9_0')
-  await page.click('._a9--._a9_0')
+  await page.locator('._a9--._a9_0').click()
 
   //login
-  await page.waitForSelector('[name="username"]');
-  await page.type('[name="username"]', 'mestozinar', { delay: 50 })
+  await page.locator('[name="username"]').fill('mestozinar')
+  await page.locator('[name="password"]').fill('mk1972mk')
 
-  await page.waitForSelector('[name="password"]');
-  await page.type('[name="password"]', 'mk1972mk', { delay: 50 })
+  //login button
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+  await page.locator('._acan._acap._acas._aj1-').click()
 
-  await new Promise((resolve) => setTimeout(resolve, 500))
-  await page.waitForSelector('._acan._acap._acas._aj1-')
-  await page.click('._acan._acap._acas._aj1-')
+  //save profile model
+  await page.locator('._ac8f').click()
 
-  //save profile module
-  await page.waitForSelector('._ac8f')
-  await page.click('._ac8f')
-
-  //notification module
-  await page.waitForSelector('._a9--._a9_1')
-  await page.click('._a9--._a9_1')
+  //notification model
+  await page.locator('._a9--._a9_1').click()
 
   //goto cars page
   await page.goto('https://www.instagram.com/explore/tags/cars/')
@@ -47,10 +40,9 @@ import { executablePath } from "puppeteer"
   //goto selected post
   for (const item of links) {
     await page.goto(item)
-    await new Promise((resolve) => setTimeout(resolve, 500))
     //like selected post
-    await page.waitForSelector('.xp7jhwk > div')
-    await page.click('.xp7jhwk > div')
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await page.locator('.xp7jhwk > div').click()
   }
 
   await browser.close()
