@@ -16,8 +16,8 @@ import { executablePath } from "puppeteer"
   await page.locator('._a9--._a9_0').click()
 
   //login
-  await page.locator('[name="username"]').fill('mestozinar')
-  await page.locator('[name="password"]').fill('mk1972mk')
+  await page.locator('[name="username"]').fill('mestobidik')
+  await page.locator('[name="password"]').fill('@mk1972mk@')
 
   //login button
   await new Promise((resolve) => setTimeout(resolve, 1000))
