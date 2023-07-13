@@ -1,0 +1,8 @@
+  let list = []
+  const items = [...document.querySelectorAll('article .css-1dbjc4n.r-zl2h9q')]
+    items.map(item => {
+    if (item.inner != "") {
+    list.push(item)
+    }
+  })
+  copy(list)
