@@ -12,6 +12,9 @@ table thead tr th{
   border-bottom: 1px solid #ccc;
   padding-left: 10px;
 }
+table tbody tr:hover{
+  background-color: #ddd;
+}
 table, tbody, tr{
   width: 100%;
 }
