@@ -1,0 +1,21 @@
+
+table, thead, tr{
+  width: 100%;
+}
+table thead{
+  background-color:#000;
+  color: #fff;
+}
+table thead tr th{
+  text-align: left;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  padding-left: 10px;
+}
+table, tbody, tr{
+  width: 100%;
+}
+table tbody tr td{
+  border: 1px solid #ccc;
+  padding: 5px;
+}

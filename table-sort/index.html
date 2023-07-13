@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <table>
+    <thead>
+      <th>ID</th>
+      <th onclick="sortList('home')">Home</th>
+      <th onclick="sortList('away')">Away</th>
+      <th onclick="sortList('league')">League</th>
+    </thead>
+    <tbody id="list">
+      
+    </tbody>
+  </table>
+
+  <script>
+    let isSort = false
+    let sortData = {}
+
+    const getSoccer = async (data) => {
+      const result = await fetch('./soccer.json')
+      const final = await result.json()
+      sortData = final[0].results
+      if(data == undefined){
+        data = final[0].results
+      }
+      document.getElementById('list').innerHTML = ''
+      for (const item of data) {
+        document.getElementById('list').innerHTML += `
+        <tr class="items-tr">
+          <td class="items-td">${item.id}</td>
+          <td class="items-td">${item.home.name}</td>
+          <td class="items-td">${item.away.name}</td>
+          <td class="items-td">${item.league.name}</td>
+        </tr>`
+      }
+      setStyle()//this need for after adding dom element
+    }
+    getSoccer()
+    
+    //sort list
+    const sortList = (field) => {
+      isSort = !isSort
+      const sorted = sortData.sort((a, b) => {
+        if (isSort) {
+          return a[field].name > b[field].name ? 1 : -1
+        } else {
+          return a[field].name > b[field].name ? -1 : 1
+        }
+      })
+      getSoccer(sorted)
+    }
+    const setStyle = () => {
+      document.querySelectorAll('tbody tr').forEach(item => {
+        item.addEventListener('click', e => {
+          item.setAttribute('style', 'background-color:#ccc;')
+        })
+      })
+    }
+
+
+
+  </script>
+</body>
+</html>
