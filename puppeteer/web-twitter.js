@@ -13,32 +13,31 @@ import fs from"fs"
   //login section------------------------------------------
   await page.goto("https://twitter.com/login");
 
-  await page.waitForSelector('[autocomplete="username"]');
-  await page.type('[autocomplete="username"]', 'mesto1830@outlook.com', { delay: 25 });
+  await page.locator('[autocomplete="username"]').fill('mesto1830@outlook.com')
   const [button] = await page.$x("//span[contains(., 'Next')]");
   await button.click();
 
-  await page.waitForSelector('[name="text"]');
-  await page.type('[name="text"]', "mestokaya", { delay: 50 });
-  const el = await page.$('[data-testid="ocfEnterTextNextButton"]');
-  await el.click();
+  await page.locator('[name="text"]').fill("mestokaya")
+  const el = await page.$('[data-testid="ocfEnterTextNextButton"]')
+  await el.click()
 
-  await page.waitForSelector('[name="password"]');
-  await page.type('[name="password"]', 'mk1972mk11130113', { delay: 50 });
-  const [login] = await page.$x("//span[contains(., 'Log in')]");
+  await page.locator('[name="password"]').fill('mk1972mk11130113')
+  const [login] = await page.$x("//span[contains(., 'Log in')]")
   await login.click();
-  await page.waitForNavigation();
+  await page.waitForNavigation()
 
   //tweet section--------------------------------------
   await page.goto("https://twitter.com/fatmasahin", {waitUntil: "networkidle2",});
 
   await page.waitForSelector('.css-1dbjc4n.r-18u37iz')
   const tweets = await page.$$eval('article', item => item.map(item => ({
-    title: item.querySelector('div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-1wbh5a2.r-dnmrzs > div > a > div > div.css-901oao.r-1awozwy.r-18jsvk2.r-6koalj.r-37j5jr.r-a023e6.r-b88u0q.r-rjixqe.r-bcqeeo.r-1udh08x.r-3s2u2q.r-qvutc0').innerText
+    user: item.querySelector('div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-1wbh5a2.r-dnmrzs > div > a > div > div.css-901oao.r-1awozwy.r-18jsvk2.r-6koalj.r-37j5jr.r-a023e6.r-b88u0q.r-rjixqe.r-bcqeeo.r-1udh08x.r-3s2u2q.r-qvutc0').innerText
   })))
   console.log(tweets)
 
-//title
+  fs.writeFileSync('./media/web-twitter.json', JSON.stringify(tweets), null, 2)
+
+//user
 //'div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-1wbh5a2.r-dnmrzs > div > a > div > div.css-901oao.r-1awozwy.r-18jsvk2.r-6koalj.r-37j5jr.r-a023e6.r-b88u0q.r-rjixqe.r-bcqeeo.r-1udh08x.r-3s2u2q.r-qvutc0'
 //tweet
 //'[data-testid="tweetText"]'
