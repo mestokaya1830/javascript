@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Date Format</title>
+    <title>Document</title>
   </head>
   <body>
-    <h2 style="margin: 10px; text-align: center;">Date Format</h2>
-  <p style="margin: 10px; text-align: center;">Look at the Concole</p>
+    <h2 style="margin: 10px; text-align: center;">Date Parse</h2>
+    <p style="margin: 10px; text-align: center;">Look at the Concole</p>
     <script>
-      let d = new Date();
+      let d = new Date(Date.parse('2023/05/01 23:20:15'))
       console.log(d);
       console.log(`String ${d.toString()}`);
       console.log(`DateString ${d.toDateString()}`);
