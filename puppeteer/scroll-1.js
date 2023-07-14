@@ -12,6 +12,7 @@ let page;
   })
   page = await browser.newPage()
   await page.goto('https://dev.to/')
+
   await autoScroll(page)
   await browser.close()
 })()
@@ -29,7 +30,7 @@ async function autoScroll() {
           clearInterval(timer)
           resolve()
         }
-      }, 100);
+      }, 100)
     })
   })
 }

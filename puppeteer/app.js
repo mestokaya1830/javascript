@@ -41,7 +41,7 @@ async function autoScroll(page, tweetLimit) {
   const getTweets = async () => {
     await page.waitForSelector('article')
     await new Promise((resolve) => setTimeout(resolve, 1000))
-    tweets = await page.$$eval('article', item => item.map(item => ({
+    const tweets = await page.$$eval('article', item => item.map(item => ({
       user: item.querySelector('div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-1wbh5a2.r-dnmrzs > div > a > div > div.css-901oao.r-1awozwy.r-18jsvk2.r-6koalj.r-37j5jr.r-a023e6.r-b88u0q.r-rjixqe.r-bcqeeo.r-1udh08x.r-3s2u2q.r-qvutc0').innerText,
       tweet: item.querySelector('[data-testid="tweetText"]').innerText.split('\n').join(''),
       replay: item.querySelector('div:nth-child(1) > div > div > div.css-1dbjc4n.r-xoduu5.r-1udh08x > span > span > span').innerText,
@@ -58,11 +58,11 @@ async function autoScroll(page, tweetLimit) {
       let tweetCount = 0
       console.log(tweetCount)
       const timer = setInterval(async () => {
+        tweetCount++
         getTweets()
         // var scrollHeight = document.body.scrollHeight
         window.scrollBy(0, distance)
         totalHeight += distance;
-        tweetCount++
         // if (totalHeight >= scrollHeight) {
         if (tweetCount >= 10) {
           clearInterval(timer)

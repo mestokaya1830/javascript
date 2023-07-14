@@ -6,11 +6,6 @@ import puppeteer from "puppeteer";
   await page.setViewport({ width: 1000, height: 500 });
   await page.goto("https://dev.to/search?q=nodejs");
 
-  //$eval return all content as text
-  await page.waitForSelector('.search-results-loaded')
-  const list = await page.$$eval('.search-results-loaded', (item) => item.innerText);
-  console.log(list)
-
 
   //$eval return only one element
   await page.waitForSelector('.crayons-title')
