@@ -18,7 +18,7 @@ import { executablePath } from "puppeteer"
 //scroll to bottom
 async function scrollToBottom() {
   await new Promise(resolve => {
-    const distance = 100; // should be less than or equal to window.innerHeight
+    let distance = 100; // should be less than or equal to window.innerHeight
     const delay = 50;
     const timer = setInterval(() => {
       document.scrollingElement.scrollBy(0, distance);
