@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Scroll</title>
+  <style>
+    body{
+      min-height: 3200px;
+      display: block;
+      border: 1px solid #ccc;
+      overflow: scroll;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="margin: 20px; text-align: center;">Auto Scroll</h2>
+  <script>
+    let counter = 0
+   const moveScroll =  setInterval(() => {
+      counter += 300
+      window.scrollTo({ top: counter, behavior: 'smooth' })
+      // window.scrollTo(0, counter)//or this
+      window.onscroll = (e) => {
+        if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
+          clearInterval(moveScroll)
+          counter = 0
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+          // window.scrollTo(0, 0)//or this
+        }
+      }
+    }, 1000)
+  </script>
+</body>
+</html>

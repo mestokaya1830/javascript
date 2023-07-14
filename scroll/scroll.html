@@ -11,34 +11,28 @@
       padding: 0;
     }
     body{min-height: 800px;}
-    #go-top{
-      position: fixed;
-      right: 50px;
-      bottom: 50px;
-    }
   </style>
 </head>
 <body>
-  <h2>Scroll</h2>
-  <span id="go-top">Go Top</span>
+  <h2 style="margin:30px;text-align: center;">Scroll</h2>
   <script>
-    // window.onscroll = () => {
-    //   if(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100){
-    //    console.log('Hello')
-    //    document.documentElement.scrollTop = 0
-    //   }
-    // }
+    window.onscroll = () => {
+      if(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100){
+       alert('Hello')
+       document.documentElement.scrollTop = 0
+      }
+    }
     //or with addeventlistener
     // window.addEventListener('scroll', () => {
     //   if(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100){
-    //    console.log('Hello')
+    //    alert('Hello')
     //   }
     // })
 
     // or with pageOffset
     // window.onscroll = () => {
     //   if(window.pageYOffset > 100){
-    //    console.log('Hello')
+    //    alert('Hello')
     //    document.documentElement.scrollTop = 0
     //   }
     // }
@@ -46,15 +40,10 @@
     //or with scrollY
     // window.onscroll = () => {
     //   if(window.scrollY > 100){
-    //    console.log('Hello')
+    //    alert('Hello')
     //    document.documentElement.scrollTop = 0
     //   }
     // }
-
-    document.getElementById('go-top').addEventListener('click', () => {
-      document.documentElement.scrollTop = 0
-    })
-    
   </script>
 </body>
 </html>

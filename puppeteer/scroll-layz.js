@@ -5,10 +5,10 @@ import fs from 'fs'
   const browser = await puppeteer.launch({headless: false})
   const page = await browser.newPage()
   await page.setViewport({ width: 1000, height: 500 })
-  await page.goto("https://dev.to/search?q=nodejs")
+  await page.goto("https://dev.to/")
 
-  const result = await scrollPage(page, 50)
-  fs.writeFileSync('./box.json', JSON.stringify(result), null, 2)
+  const result = await scrollPage(page, 500)
+  fs.writeFileSync('./media/dev.json', JSON.stringify(result), null, 2)
   await browser.close()
 
 })()

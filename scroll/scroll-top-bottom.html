@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll to Top-Bottom</title>
+  <style>
+    body{
+      min-height: 3200px;
+      display: block;
+      border: 1px solid #ccc;
+      overflow: scroll;
+    }
+    #top{
+      margin-top: 3000px;
+      text-align: center;
+      cursor: pointer;
+    }
+    #bottom{
+      margin-top: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="margin: 20px; text-align: center;">Scroll to Top-Bottom</h2>
+
+  <h2 id="bottom" onclick="goBottom()">Go to Bottom</h2>
+  <h2 id="top" onclick="goTop()">Go to Top</h2>
+  <script>
+    //top
+    const goBottom = () => {
+      window.scrollTo({ top: document.body.offsetHeight, behavior: 'smooth' })
+      // window.scrollTo(0, 0)//or this
+    }
+    
+    //bottom
+    const goTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      // window.scrollTo(0, 0)//or this
+    }
+  </script>
+</body>
+</html>
