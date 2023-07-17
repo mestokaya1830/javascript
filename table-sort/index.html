@@ -20,10 +20,9 @@
   </table>
 
   <script>
-    let isSort = false
-    let sortData = {}
-
-    const getSoccer = async (data) => {
+    //get data
+      let sortData = {}
+      const getSoccer = async (data) => {
       const result = await fetch('./soccer.json')
       const final = await result.json()
       sortData = final[0].results
@@ -45,14 +44,14 @@
     getSoccer()
     
     //sort list
+    let isSort = false
     const sortList = (field) => {
       isSort = !isSort
       const sorted = sortData.sort((a, b) => {
-        if (isSort) {
-          return a[field].name > b[field].name ? 1 : -1
-        } else {
-          return a[field].name > b[field].name ? -1 : 1
+        if(isSort){
+          return a[field].name.localeCompare(b[field].name)
         }
+        return b[field].name.localeCompare(a[field].name)
       })
       getSoccer(sorted)
     }
