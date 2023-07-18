@@ -15,7 +15,7 @@
     #container{
       display: flex;
       flex-direction: column;
-      width: 200px;
+      width: 220px;
       margin: 0 auto;
     }
     #list{
@@ -53,13 +53,14 @@
     document.getElementById('user-date').addEventListener('change', (event) => {
       const olddate = new Date(event.target.value)
       let current = Date.now()
-
-      document.getElementById('years').innerText = Math.ceil(((current - olddate.getTime())) / 60000 / 60 / 24 / 365).toFixed(0) + ' Years'
-      document.getElementById('months').innerText = Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24 / 30).toFixed(0) + ' Months'
-      document.getElementById('days').innerText = Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24).toFixed(0) + ' Days'
-      document.getElementById('hours').innerText = Math.abs(((current - olddate.getTime())) / 60000 / 60).toFixed(0) + ' Hours'
-      document.getElementById('minutes').innerText = Math.abs(((current - olddate.getTime())) / 60000).toFixed(0) + ' Minutes'
-      document.getElementById('seconds').innerText = Math.abs(((current - olddate.getTime())) / 1000).toFixed(0) + ' Seconds'
+      let timeOver = 'Elipsed '
+      if(olddate > current) timeOver = 'Duration '
+      document.getElementById('years').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24 / 365).toFixed(0) + ' Years'
+      document.getElementById('months').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24 / 30).toFixed(0) + ' Months'
+      document.getElementById('days').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24).toFixed(0) + ' Days'
+      document.getElementById('hours').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60).toFixed(0) + ' Hours'
+      document.getElementById('minutes').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000).toFixed(0) + ' Minutes'
+      document.getElementById('seconds').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 1000).toFixed(0) + ' Seconds'
     })
   </script>
 </body>
