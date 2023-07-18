@@ -54,7 +54,7 @@
       const olddate = new Date(event.target.value)
       let current = Date.now()
       let timeOver = 'Elipsed '
-      if(olddate > current) timeOver = 'Duration '
+      if(olddate > current) timeOver = 'Remaind '
       document.getElementById('years').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24 / 365).toFixed(0) + ' Years'
       document.getElementById('months').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24 / 30).toFixed(0) + ' Months'
       document.getElementById('days').innerText = timeOver + Math.abs(((current - olddate.getTime())) / 60000 / 60 / 24).toFixed(0) + ' Days'
