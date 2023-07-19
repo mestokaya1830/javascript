@@ -60,9 +60,11 @@
       if(!format.value) {
         alert('Please enter data-format')
         format.focus()
+        return
       }
 
-      let style = e.target.value
+      let style = e.target.value || '/'
+
       const times = {
         D:D,
         MON: MON,
@@ -80,7 +82,7 @@
         F: `${D}${style}${M}${style}${Y} ${F}`,
         DW: DW
       }
-      result.innerText = times[format.value]
+      result.innerText = times[format.value.toUpperCase()]
     })
 
 
