@@ -34,6 +34,12 @@
       e.stopPropagation()// stop parent event inside parent div or self
       alert('Parent')
     }
+
+    //or with e.cancelBabble
+    // const getHeader = (e) => {
+    //   e.cancelBubble = true // stop parent event inside parent div or self
+    //   alert('Header')
+    // }
     const getHeader = (e) => {
       alert('Header')
     }
