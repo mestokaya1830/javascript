@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Object</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Check Object</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+  <script>
+    //create basic object----------------------------
+    const users = {
+      name: "Mesto",
+      lastName: "Kaya",
+      age:50
+    }
+
+    //check users is exist
+    console.log(users ? true : false)
+
+    //check users is an object
+    console.log(typeof users == 'object' ? true : false)
+
+    //check users length
+    console.log(users.length ? true : false)
+    console.log(users.length > 0 ? true : false)
+
+    //check users key
+    console.log(users.name ? true : false)
+
+    //check users value
+    console.log(users.name == 'Mesto' ? true : false)
+
+  </script>
+</body>
+
+</html>

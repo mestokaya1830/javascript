@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mime Types Object</title>
+  <style>
+#container{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px auto;
+}
+#container input{
+  margin: 5px 0;
+  height: 20px;
+}
+  </style>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Mime Types Object</h2>
+  <div id="container">
+    <input type="text" id="extension" placeholder="Enter extension" />
+    <button id="btn">Get Mime Type</button>
+  
+    <h1 id="result"></h1>
+  </div>
+  <script>
+    const mimes = {
+      html: 'text/html',
+      htm: 'text/htm',
+      css: 'text/css',
+      csv: 'text/csv',
+      js: 'text/javascript'
+    }
+
+    
+    document.getElementById('btn').addEventListener('click', () => {
+      getResult()
+    })
+    document.getElementById('extension').addEventListener('keyup', (e) => {
+      if(e.keyCode === 13){
+        getResult()
+      }
+    })
+    const getResult = () => {
+      const extension = document.getElementById('extension')
+      document.getElementById('result').innerText = mimes[extension.value] || 'No mime type'
+    }
+  </script>
+</body>
+
+</html>

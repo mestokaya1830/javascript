@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curried Function</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Curried Function</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+
+  <script>
+    let lang = ['Html','Css','Javascript','Nodejs','Mongodb','Mysql']
+    //with arguments---------------------------------
+    function test(a, b) {
+      console.log(Array.from(arguments))//not works with arrow function
+    }
+    test('Mesto', 'Kaya')
+
+    //with return-------------------------------------
+    // function test(a, b) {
+    //   return Array.from(arguments)//not works with arrow function
+    // }
+    // console.log(test('Mesto', 'Kaya'))
+
+    //with rest----------------------------------------
+    // const test = (...args) => {
+    //   console.log(args[0])
+    //   console.log(args)
+    // };
+    // test('Mesto', 'Kaya')
+
+    //with rest in many types--------------------------
+    // let test = (...args) => {
+    //   one = args[0]
+    //   two = args[1]
+    //   three = args[2]
+    //   four = args[2][3].name
+    // }
+    // test(1, 'hello', [1, 2, 3, { name: 'Mesto' }])
+    // console.log(one, two, three, four)
+
+    //with spread parameter--------------------------
+    //pass array as paramater
+    // let test = (a, b, c) => {
+    //   console.log(a, b, c)
+    // };
+    // test(...lang)
+  </script>
+</body>
+
+</html>

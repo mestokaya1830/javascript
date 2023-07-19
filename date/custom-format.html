@@ -36,121 +36,54 @@
       <input type="text" id="date-format" placeholder="format">
       <input type="text" id="style" placeholder="style">
     </div>
-
     <h4 id="result"></h4>
   </div>
   <script>
-    const dateFormat = document.getElementById('date-format')
-    let style = document.getElementById('style')
-    let result = document.getElementById('result')
-    let cd = new Date(Date.parse('01/05/2023 23:20:15'))
+    document.getElementById('style').addEventListener('keyup', (e) => {
+      const format = document.getElementById('date-format')
+      let result = document.getElementById('result')
+      let cd = new Date(Date.parse('01/05/2023 23:20:15'))
+  
+      const F = cd.toLocaleTimeString()
+      const Y = cd.getFullYear()
+      let MON = cd.getMonth() + 1
+      const DW = cd.getDay()
+      let D = cd.getDate()
+      const T = cd.toLocaleTimeString()
+      const H = cd.getHours()
+      let M = cd.getMinutes()
+      const S = cd.getSeconds()
+  
+      if (MON < 9) MON = '0' + MON
+      if (D < 9) D = '0' + D
 
-    const F = cd.toLocaleTimeString()
-    const Y = cd.getFullYear()
-    let MON = cd.getMonth() + 1
-    const DW = cd.getDay()
-    let D = cd.getDate()
-    const T = cd.toLocaleTimeString()
-    const H = cd.getHours()
-    let M = cd.getMinutes()
-    const S = cd.getSeconds()
-
-    if (MON < 9) MON = '0' + MON
-    if (D < 9) D = '0' + D
-    let settingDate = ''
-
-    const setFormat = (format, style) => {
-      if (style != '') {
-      } else {
-        style = ''
+      if(!format.value) {
+        alert('Please enter data-format')
+        format.focus()
       }
-      switch (format.toUpperCase()) {
-        case 'D':
-          settingDate = `${D}`
-          break;
-        case 'MON':
-          settingDate = `${MON}`
-          break;
-        case 'Y':
-          settingDate = `${Y}`
-          break;
-        case 'DM':
-          settingDate = `${D}${style}${MON}`
-          break;
-        case 'MY':
-          settingDate = `${MON}${style}${Y}`
-          break;
-        case 'DMY':
-          settingDate = `${D}${style}${MON}${style}${Y}`
-          break;
-        case 'MDY':
-          settingDate = `${MON}${style}${D}${style}${Y}`
-          break;
-        case 'YMD':
-          settingDate = `${Y}${style}${MON}${style}${D}`
-          break;
-        case 'T':
-          settingDate = `${T}`
-          break;
-        case 'H':
-          settingDate = `${H}`
-          break;
-        case 'M':
-          settingDate = `${M}`
-          break;
-        case 'HM':
-          settingDate = `${H}:${M}`
-          break;
-        case 'MS':
-          settingDate = `${M}:${S}`
-          break;
-        case 'F':
-          settingDate = `${D}${style}${M}${style}${Y} ${F}`
-          break;
-        case 'DW':
-          settingDate = `${DW}`
-          break;
 
-        default:
-          break;
-          settingDate = ''
+      let style = e.target.value
+      const times = {
+        D:D,
+        MON: MON,
+        Y: Y,
+        DM: `${D}${style}${MON}`,
+        MY: `${MON}${style}${Y}`,
+        DMY: `${D}${style}${MON}${style}${Y}`,
+        MDY: `${MON}${style}${D}${style}${Y}`,
+        YMD: `${Y}${style}${MON}${style}${D}`,
+        T: T,
+        H: H,
+        M:M,
+        HM: `${H}:${M}`,
+        MS: `${M}:${S}`,
+        F: `${D}${style}${M}${style}${Y} ${F}`,
+        DW: DW
       }
-      result.innerText = settingDate
-    }
-
-    dateFormat.addEventListener('keyup', (e) => {
-      if (e.target.value == '') {
-        result.innerText = ''
-      } else {
-        setFormat(dateFormat.value, style.value)
-      }
-    })
-    style.addEventListener('keyup', (e) => {
-      setFormat(dateFormat.value, style.value)
+      result.innerText = times[format.value]
     })
 
-    let months = [
-      "Ocak",
-      "Şubat",
-      "Mart",
-      "Nisan",
-      "Mayıs",
-      "Haziran",
-      "Temmuz",
-      "Agustos",
-      "Eylül",
-      "Ekim",
-      "Kasım",
-      "Aralık",
-    ];
-    let days = ["Paz", "Pazs", "Salı", "Çar", "Per", "Cum", "Cums"];
-    console.log(
-      months[cd.getMonth() + 1] +
-      "-" +
-      days[cd.getDay()] +
-      "-" +
-      cd.getFullYear()
-    )
+
   </script>
 </body>
 
