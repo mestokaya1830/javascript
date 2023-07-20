@@ -28,16 +28,19 @@
 </head>
 
 <body>
-  <h2 style="margin: 10px; text-align: center;">Custom Format</h2>
-  <p style="margin: 10px; text-align: center;">Look at the Concole</p>
-  <div id="container">
-    <h2>Date Format</h2>
-    <div>
-      <input type="text" id="date-format" placeholder="format">
-      <input type="text" id="style" placeholder="style">
+  <form action="">
+
+    <h2 style="margin: 10px; text-align: center;">Custom Format</h2>
+    <p style="margin: 10px; text-align: center;">Look at the Concole</p>
+    <div id="container">
+      <h2>Date Format</h2>
+      <div>
+        <input type="text" id="date-format" placeholder="format">
+        <input type="text" maxlength="1" id="style" placeholder="style" pattern="[0-9]+" >
+      </div>
+      <h4 id="result"></h4>
     </div>
-    <h4 id="result"></h4>
-  </div>
+  </form>
   <script>
     document.getElementById('style').addEventListener('keyup', (e) => {
       const format = document.getElementById('date-format')
@@ -64,12 +67,16 @@
       }
 
       let style = e.target.value || '/'
+      if(style.match(/[^\/\.\-\:]/g)){
+        return true
+      }
 
       const times = {
         D:D,
         MON: MON,
         Y: Y,
         DM: `${D}${style}${MON}`,
+        MD: `${MON}${style}${D}`,
         MY: `${MON}${style}${Y}`,
         DMY: `${D}${style}${MON}${style}${Y}`,
         MDY: `${MON}${style}${D}${style}${Y}`,

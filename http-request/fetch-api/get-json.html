@@ -14,7 +14,7 @@
   <script>
     const getJson = async () => {
       let result = await fetch('../soccer.json')
-      let final = await res.json()
+      let final = await result.json()
       final[0].results.forEach(item => {
         console.log(item.home.name)
       })
