@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
 
+//run and down the scroll and watch terminal
 (async() => {
   const browser = await puppeteer.launch({headless:false})
   const page = await browser.newPage()
