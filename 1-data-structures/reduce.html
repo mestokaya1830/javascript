@@ -1,21 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Reduce Array</title>
 </head>
+
 <body>
-  
+  <h2 style="margin-top:20px;text-align: center;">Reduce Array</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
   <script>
-    let numbers = [1,2,3,4,5]
-    // let sum = numbers.reduce((acc, curr) => acc + curr, 0)//short syntax
-    let sum = numbers.reduce((acc, curr) => {
-      console.log('acc: ', acc)
-      console.log('curr: ', curr)
-      return acc + curr
-    }, 0)//0 is initial value
-    console.log(sum)
+
+    //sum number array
+    let numbers = [1, 2, 3, 4, 5]
+
+    const users = [
+      { id: 1, name: 'mesto', salary: 3000, age: 50 },
+      { id: 2, name: 'hans', salary: 1000, age: 20 },
+      { id: 3, name: 'denis', salary: 4000, age: 30 },
+      { id: 4, name: 'alex', salary: 5000, age: 35 }
+    ]
+
+    let sum = numbers.reduce((acc, curr) => acc + curr, 0)//0 is initial value
+    console.log('Total salary: ', sum)
+
+
+    //find max
+    // let maxNumber = numbers.reduce((acc, curr) => {
+    //   if (curr > acc) return curr
+    //   return acc
+    // }, 0)
+    // console.log('Max number: ', maxNumber)
+
+
+    //find min
+    // let minNumber = numbers.reduce((acc, curr) => {
+    //   if (curr < acc) return curr
+    //   return acc
+    // }, 0)
+    // console.log('Min number: ', minNumber)
+
+    //convert array
+    // const names = users.reduce((acc, curr) => [...acc, curr.name], [])
+    // console.log(names)
+
+    //convert dict
+    // const dict = users.reduce((acc, curr) => {
+    //   return {...acc, [curr.id]:curr}
+    // })
+    // console.log(dict)
+    // console.log(dict['2'])//get 2. user like dict
+
+
+    //grouped users
+    // const groupAsSalary = users.reduce((acc, curr) => {
+    //   const salary = curr.salary
+    //   if(acc[salary] == null) acc[salary] = []
+    //   acc[salary].push(curr)
+    //   return acc
+    // }, {})
+    // console.log(groupAsSalary)
+
   </script>
 </body>
+
 </html>

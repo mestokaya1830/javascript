@@ -707,13 +707,13 @@
 
 
     //create custom column-------------------------------------
-    // const custumColumn = people.map(item => {
-    //   return {
-    //     ...item,
-    //     'Custom Column': item.name + ' ' + item.age
-    //   }
-    // })
-    // console.log(custumColumn)
+    const custumColumn = people.map(item => {
+      return {
+        ...item,
+        'Custom Column': item.name + ' ' + item.age
+      }
+    })
+    console.log(custumColumn)
 
     //sort by name----------------------------------------------------
     // const sort_people = people.sort((cur, item) => cur.name.localeCompare(item.name))
@@ -726,6 +726,10 @@
     //sort by name and reverse----------------------------------------------------
     // const sort_people = people.sort((cur, item) => cur.name.localeCompare(item.name)).reverse()
     // console.log(sort_people)
+
+    //create array from object
+    // const names = people.reduce((acc, curr) => [...acc, curr.name], [])
+    // console.log(names)
 
 
     
