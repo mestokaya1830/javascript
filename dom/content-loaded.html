@@ -9,6 +9,7 @@
 <body>
   <div>
     <h1>Hello</h1>
+    <h3 id="result"></h3>
   </div>
   <script>
     document.addEventListener('readystatechange',() => {
@@ -23,7 +24,7 @@
           document.body.appendChild(btn);
           break;
         case "complete":
-          console.log("Page is loaded completely");
+          document.getElementById('result').innerText = "Page is loaded completely"
           break;
       }
     });

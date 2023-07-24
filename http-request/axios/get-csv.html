@@ -16,7 +16,7 @@
   <script>
     const getCsv = async () => {
       try {
-        const result = await axios.get('../weather.csv')
+        const result = await axios.get('./weather.csv')
         const final = await result.data
         console.log(final)
         console.log('Parsed-----------------------------------------')

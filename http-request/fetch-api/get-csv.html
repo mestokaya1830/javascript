@@ -13,7 +13,7 @@
   <script>
     const getCsv = async() => {
       try {
-        const result = await fetch('../weather.csv')
+        const result = await fetch('./weather.csv')
         const final = await result.text()
         console.log(final)
         console.log('Parsed-----------------------------------------')

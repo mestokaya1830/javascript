@@ -16,7 +16,7 @@
   <script>
     const getJson = async () => {
       try {
-        const result = await axios.get('../soccer.json')
+        const result = await axios.get('./soccer.json')
         const final = await result.data
         console.log(final)
       } catch (error) {

@@ -15,7 +15,7 @@
     xhr.onload =  function(){
       console.log(JSON.parse(this.responseText))
     }
-    xhr.open('get', '../soccer.json', true)//true mean async active
+    xhr.open('get', './soccer.json', true)//true mean async active
     xhr.send()
   </script>
 </body>
