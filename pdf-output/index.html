@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="../media/pdfJS.js"></script>
+  <script src="./pdfJS.js"></script>
   <style>
     btn {
       padding: 12px 50px;
@@ -23,7 +23,7 @@
   <button class="btn" id="btn">Pdf</button>
   <div id="pdf-area">
     <h2 id="name">Mustafa Kaya</h2>
-    <img src="../media/death.png" alt="" width="200" height="150">
+    <img src="./death.png" alt="" width="200" height="150">
   </div>
   <script>
     const pdf = new jsPDF()
@@ -31,7 +31,7 @@
     btn.addEventListener('click', () => {
       pdf.text(20, 20, document.getElementById('name').innerHTML)
       var img = new Image()
-      img.src = '../media/death.png'
+      img.src = './death.png'
       pdf.addImage(img, 'png', 10, 20, 12, 15)
       pdf.save()
     })
