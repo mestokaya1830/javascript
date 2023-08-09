@@ -7,39 +7,40 @@
     <title>Document</title>
   </head>
   <body>
+    <h2 style="margin-top: 20px;text-align: center;">This</h2>
+    <p style="margin-top: 20px;text-align: center;">Look at the Console</p>
     <script>
 
-     function test() {
-       console.log(this)//this refer to lexical scop(window)
-     }
-     test()
+    //  function test() {
+    //   const x = 0
+    //    console.log(this)//this refer to lexical scop(window)
+    //  }
+    //  test()
 
-     const person = {
-       name:'Mesto',
-       message() {
-         return this//refer to person object
-       }
-     }
-     console.log(person.message())
+    //with arrow function
+    //  const test = () => {
+    //   const x = 0
+    //   console.log(this)//this refer to lexical scop(window)
+    //  }
+    // test()
 
-     //with arrow function 
-     const person2 = {
-       name:'Mesto',
-       message: () => {
-         return this//this refer to lexical scop(window)
-       }
-     }
-     console.log(person2.message())
+    //with function in object
+    //  const person = {
+    //    name:'Mesto',
+    //    message() {
+    //      return this//refer to person object
+    //    }
+    //  }
+    //  console.log(person.message())
 
-     //with self
-     const person3 = {
-       name:'Mesto',
-       message() {
-         var self = this
-         return self//refer to person object
-       }
-     }
-     console.log(person3.message())
+    //with arrow function in object
+    // const person = {
+    //   name:'Mesto',
+    //   message: () => {
+    //     return this//this refer to person object
+    //   }
+    // }
+    // console.log(person)
     </script>
   </body>
 </html>
