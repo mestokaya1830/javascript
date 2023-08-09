@@ -1,4 +1,4 @@
-export default class Employees {
+export class User {
   constructor(name, lastName) {
     this.name = name
     this.lastName = lastName
@@ -8,18 +8,7 @@ export default class Employees {
   }
 }
 
-//export normal
-export class Users {
-  constructor(name, lastName) {
-    this.name = name
-    this.lastName = lastName
-  }
-  fullName(){
-    return this.name +' '+ this.lastName
-  }
-}
-
-export class Admins {
+export class Admin {
   constructor(name, lastName) {
     this.name = name
     this.lastName = lastName
