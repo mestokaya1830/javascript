@@ -1,0 +1,16 @@
+h2{
+  text-align: center;
+  margin: 20px;
+}
+p{
+  text-align: center;
+}
+ul{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  list-style: none;
+}
+ul li img{
+  width: 300px;
+}
