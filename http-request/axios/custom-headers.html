@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axios Custom Headers</title>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Axios Custom Headers</h2>
+  <p style="margin: 20px; text-align: center;">Look at the Console</p>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const addNewTodo = async () => {
+     axios.post('https://jsonplaceholder.typicode.com/todos',
+     {
+      title:'new Todo',
+      completed: true
+     },
+     {
+      headers:{
+        'Content-Type':'application/json',
+        Authorization:'token'
+      }
+     }
+     )
+     .then(result => console.log(result.data))
+     .catch(err => console.log(err))
+    }
+    addNewTodo()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<html>
+  <head></head>
+  <body>
+    <article id="ancestor" >
+      article element
+      <div id="parent" >
+        div element
+        <p id="child" >
+          p element
+        </p>
+      </div>
+    </article>
+  </body>
+</html>
+
+<script>
+  // Script to click event handler to capture on each element
+  //capturing is change element squence(trigger-order)
+  for(let elem of document.querySelectorAll('*')) {
+    elem.addEventListener("click", e => {
+   	 console.log("Capturing:", elem.tagName), true)//true is = caturing
+    };
+  }
+</script>

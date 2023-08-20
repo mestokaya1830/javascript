@@ -4,18 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fetch Get Xml</title>
+  <title>Axios Get Xml</title>
 </head>
 
 <body>
-  <h2 style="margin: 20px; text-align: center;">Fetch Get Xml</h2>
+  <h2 style="margin: 20px; text-align: center;">Axios Get Xml</h2>
   <p style="margin: 20px; text-align: center;">Look at the Console</p>
 
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
     const getXml = async () => {
       //get book
-      let result = await fetch('../book.xml')
-      let final = await result.text()
+      let result = await axios.get('./book.xml')
+      let final = await result.data
       console.log(final)
 
       //convert book data to dom

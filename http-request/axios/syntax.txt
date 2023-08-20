@@ -1,0 +1,31 @@
+//async alias
+const getJson = async () => {
+  try {
+    const result = await axios.get('./soccer.json')
+    const final = await result.data
+    console.log(final)
+  } catch (error) {
+    console.error(error)
+  }
+}
+getJson()
+
+//promise
+const getJson = () => {
+  axios({
+    method:'GET',
+    url:'./soccer.json'
+  })
+  .then(result => console.log(result.data))
+  .catch(err => console.log(err))
+}
+getJson()
+
+//promise alias
+const getJson = () => {
+    axios
+    .get('./soccer.json')
+    .then(result => console.log(result.data))
+    .catch(err => console.log(err))
+}
+getJson()

@@ -1,8 +1,0 @@
-//copy this on console screen on website
-  let titles = []
-  const codes = [...document.querySelectorAll('h2 a')]
-  codes.map(item => {
-    if (item.innerText != "") {
-      titles.push(item.innerText)
-    }
-  })
