@@ -57,8 +57,8 @@
       let M = cd.getMinutes()
       const S = cd.getSeconds()
   
-      if (MON < 9) MON = '0' + MON
-      if (D < 9) D = '0' + D
+      MON > 9 ? MON : MON = '0' + MON
+      D > 9 ? D : D = '0' + D
 
       if(!format.value) {
         alert('Please enter data-format')
@@ -81,12 +81,12 @@
         DMY: `${D}${style}${MON}${style}${Y}`,
         MDY: `${MON}${style}${D}${style}${Y}`,
         YMD: `${Y}${style}${MON}${style}${D}`,
-        T: T,
+        T: T.slice(0, T.length-2),
         H: H,
         M:M,
         HM: `${H}:${M}`,
         MS: `${M}:${S}`,
-        F: `${D}${style}${M}${style}${Y} ${F}`,
+        F: `${F} ${T}`,
         DW: DW
       }
       result.innerText = times[format.value.toUpperCase()]

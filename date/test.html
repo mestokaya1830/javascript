@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Format 2</title>
+</head>
+
+<body>
+  <h2 style="margin: 10px; text-align: center;">Custom Format 2</h2>
+  <p style="margin: 10px; text-align: center;">Look at the Concole</p>
+  <script>
+    const setDate = (format) => {
+      let cd = new Date()
+      const Y = cd.getFullYear()
+      let MON = cd.getMonth() + 1
+      const DW = cd.getDay()
+      let D = cd.getDate()
+      const T = cd.toLocaleTimeString()
+      const H = cd.getHours()
+      let M = cd.getMinutes()
+      const S = cd.getSeconds()
+
+      MON > 9 ? MON : MON = '0' + MON
+      D > 9 ? D : D = '0' + D
+      const times = {
+        D: D,
+        MON: MON,
+        Y: Y,
+        DM: `${D}-${MON}`,
+        MD: `${MON}-${D}`,
+        MY: `${MON}-${Y}`,
+        DMY: `${D}-${MON}-${Y}`,
+        MDY: `${MON}-${D}-${Y}`,
+        YMD: `${Y}-${MON}-${D}`,
+        T: T.slice(0, T.length-2),
+        H: H,
+        M: M,
+        HM: `${H}:${M}`,
+        MS: `${M}:${S}`,
+        F: `${Y}-${MON}-${D} ${T.slice(0, T.length-2)}`,
+        DW: DW
+      }
+      return times[format]
+    }
+
+    console.log(setDate('F'))
+  </script>
+</body>
+
+</html>
