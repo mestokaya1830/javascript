@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //get browser timezone
+    console.log(new Date().toTimeString().slice(9));
+    console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
+    console.log(new Date().getTimezoneOffset() / -60);
+
+
+    //convert US time to Europe/Berlin
+    const tem1 = new Date().toLocaleString('en-US', { timeZone: 'Europe/Berlin' });
+    console.log('US to DE', tem1);
+
+    //convert US time to Europe/Istanbul
+    const tem2 = new Date().toLocaleString('us-US', { timeZone: 'Europe/Istanbul' });
+    console.log('US to TR', tem2);
+
+    //convert DE time to Europe/Istanbul
+    const tem3 = new Date().toLocaleString('de-DE', { timeZone: 'Europe/Istanbul' });
+    console.log('DE to TR', tem3);
+
+    //convert TR time to Europe/Berlin
+    const tem4 = new Date().toLocaleString('tr-TR', { timeZone: 'Europe/Berlin' });
+    console.log('TR to DE', tem4);
+
+    //convert DE time to US
+    const tem5 = new Date().toLocaleString('de-DE', { timeZone: 'America/Adak' });
+    console.log('DE to US', tem5);
+
+
+    //auto convert with browser timezone
+    const browserTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone//get timezone
+    const convertedTime = new Date('2023-09-30 13:53:00').toLocaleString('uk-UK', { timeZone: browserTimeZone })
+    console.log(browserTimeZone)
+    console.log('Root Time Converted to Berlin Timezone', convertedTime)
+  </script>
+</body>
+
+</html>
