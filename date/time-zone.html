@@ -4,16 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Time Zone</title>
 </head>
 
 <body>
+  <h2 style="margin: 10px; text-align: center;">Time Zone</h2>
+  <p style="margin: 10px; text-align: center;">Look at the Concole</p>
   <script>
+    //all format
+    let timezonelist = Intl.supportedValuesOf('timeZone')
+    for (const item of timezonelist) {
+      console.log(item)
+    }
+
     //get browser timezone
     console.log(new Date().toTimeString().slice(9));
     console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
     console.log(new Date().getTimezoneOffset() / -60);
-
 
     //convert US time to Europe/Berlin
     const tem1 = new Date().toLocaleString('en-US', { timeZone: 'Europe/Berlin' });
@@ -32,15 +39,44 @@
     console.log('TR to DE', tem4);
 
     //convert DE time to US
-    const tem5 = new Date().toLocaleString('de-DE', { timeZone: 'America/Adak' });
+    const tem5 = new Date().toLocaleString('de-DE', { timeZone: 'America/Chicago' });
     console.log('DE to US', tem5);
 
-
-    //auto convert with browser timezone
-    const browserTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone//get timezone
-    const convertedTime = new Date('2023-09-30 13:53:00').toLocaleString('uk-UK', { timeZone: browserTimeZone })
-    console.log(browserTimeZone)
+    //convert specific timezone
+    const convertedTime = new Date('2023-12-28T16:23:45.959Z').toLocaleString('de-DE', { timeZone: browserTimeZone })
     console.log('Root Time Converted to Berlin Timezone', convertedTime)
+    
+    //get specific country time
+    const tr = new Date().toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' });
+    console.log('Turkey Timezone', tr)
+
+    //get specific country time with options
+    //options
+    // new Date().toLocaleString('tr-TR', {
+    //   timeZone: 'Europe/Istanbul',
+    //   year: 'numeric',
+    //   month: '2-digit',
+    //   day: '2-digit',
+    //   hour: '2-digit',
+    //   minute: '2-digit',
+    //   second: '2-digit',
+    //   timeZoneName: 'short',
+    // })
+    const trOptions = new Date().toLocaleString('tr-TR', {
+      timeZone: 'Europe/Istanbul',
+      dateStyle: 'short',
+      timeStyle: 'short'
+      // dateStyle: 'full',
+      // timeStyle: 'full'
+    });
+
+    console.log('Turkey Timezone', trOptions)
+
+
+    //get timezone wih browser
+    const browserTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone//get timezone
+    console.log(browserTimeZone)    
+
   </script>
 </body>
 
