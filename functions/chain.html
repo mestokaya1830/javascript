@@ -32,6 +32,47 @@
     }
 
     dog.bark().eat().walk()
+
+    //------------------------------------------------
+    function add(x) {
+      return x + 2;
+    }
+
+    function multiply(x) {
+      return x * x;
+    }
+
+    function subtract(x) {
+      return x - 3;
+    }
+
+    function stat(x, y) {
+      return (x + y / Math.PI) * Math.E;
+    }
+
+    let result = stat(subtract(multiply(add(5))), 4);
+    console.log(result);
+
+
+    //--------------------------------------------------
+    let obj = {
+      value: 1,
+      add: function (x) {
+        this.value += x;
+        return this;
+      },
+      multiply: function () {
+        this.value *= this.value;
+        return this;
+      },
+      subtract: function (x) {
+        this.value -= x;
+        return this;
+      },
+    };
+
+    let result2 = obj.add(5).multiply().subtract(3).value;
+    console.log(result2);
   </script>
 </body>
 
