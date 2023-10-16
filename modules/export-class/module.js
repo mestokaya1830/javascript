@@ -1,4 +1,4 @@
-export class User {
+class User {
   constructor(name, lastName) {
     this.name = name
     this.lastName = lastName
@@ -8,7 +8,7 @@ export class User {
   }
 }
 
-export class Admin {
+class Admin {
   constructor(name, lastName) {
     this.name = name
     this.lastName = lastName

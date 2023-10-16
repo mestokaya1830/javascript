@@ -1,7 +1,7 @@
 //export functions
-export const User = (firstname, lastName) => firstname +' '+ lastName
-export const Admin = (firstname, lastName) => firstname +' '+ lastName
-export const Person = {
+const User = (firstname, lastName) => firstname +' '+ lastName
+const Admin = (firstname, lastName) => firstname +' '+ lastName
+const Person = {
   name:'Mesto',
   lastname:'Kaya',
   language:['Html5','Css','Javascript'],
