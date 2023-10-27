@@ -11,61 +11,51 @@
   <h2 style="margin: 10px; text-align: center;">Custom Format</h2>
   <p style="margin: 10px; text-align: center;">Look at the Concole</p>
   <script>
-    let cd = new Date()
-    const y = cd.getFullYear()
-    let m = cd.getMonth() + 1
-    const dw = cd.getDay()
-    let d = cd.getDate()
-    const h = cd.getHours()
-    let min = cd.getMinutes()
-    const s = cd.getSeconds()
+    const dateFormat = (selected, day=0, month=0, year=0, hour=0, minute=0, sec=0) => {
+      let cd = new Date()
+      const y = cd.getFullYear() + year
+      let m = cd.getMonth() + 1 + month
+      const dw = cd.getDay()
+      let d = cd.getDate() + day
+      let h = cd.getHours() + hour
+      let min = cd.getMinutes() + minute
+      let s = cd.getSeconds() + sec
 
-    let daysOfMonth = 0
-    function monthDays() {
-      var d = new Date()
-      daysOfMonth = new Date(d.getMonth() + 1, d.getFullYear(), 0).getDate()
-    }
-    const day = (value) => {
-      monthDays()
-      let ad = parseInt(d + value)
-      ad > 9 ? ad : ad = '0' + ad
-      if(ad > daysOfMonth){
-        ad = daysOfMonth
-      }
-      return `${y}-${m}-${ad}`
-    }
-    console.log(day(3))
-
-    const format = (format) => {
+      h > 9 ? h : h = '0' + h
       m > 9 ? m : m = '0' + m
+      s > 9 ? s : s = '0' + s
       d > 9 ? d : d = '0' + d
+
       const times = {
         d: d,
         m: m,
         y: y,
-        dm: `${d}-${m}`,
-        md: `${m}-${d}`,
-        my: `${m}-${y}`,
-        ym: `${y}-${m}`,
-        ymd: `${y}-${m}-${d}`,
-        ydm: `${y}-${d}-${m}`,
-        dmy: `${d}-${m}-${y}`,
-        mdy: `${m}-${d}-${y}`,
+        dm: `${d}/${m}`,
+        md: `${m}/${d}`,
+        my: `${m}/${y}`,
+        ym: `${y}/${m}`,
+        ymd: `${y}/${m}/${d}`,
+        ydm: `${y}/${d}/${m}`,
+        dmy: `${d}/${m}/${y}`,
+        mdy: `${m}/${d}/${y}`,
         h: h,
         min: min,
+        hmins: `${h}:${min}:${s}`,
         hmin: `${h}:${min}`,
         mins: `${min}:${s}`,
         dw: dw,
-        ymdhmin: `${y}-${m}-${d} ${h}:${min}`,
+        ymdhmin: `${y}/${m}/${d} ${h}:${min}`,
         ld: cd.toLocaleDateString(),
         lt: cd.toLocaleTimeString(),
         ls: cd.toLocaleString(),
-        f1: `${y}-${m}-${d} ${h}:${min}:${s}`,
-        f2: `${d}-${m}-${y} ${h}:${min}:${s}`,
-        f3: `${m}-${d}-${y} ${h}:${min}:${s}`
+        f1: `${y}/${m}/${d} ${h}:${min}:${s}`,
+        f2: `${d}/${m}/${y} ${h}:${min}:${s}`,
+        f3: `${m}/${d}/${y} ${h}:${min}:${s}`
       }
-      return times[format]
-    }    
+      return times[selected]
+    }
+    console.log(dateFormat('dmy'))
+    console.log(dateFormat('ld'))
   </script>
 </body>
 
