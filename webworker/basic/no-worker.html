@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h2>JavaScript Web Workers API</h2>
-  <p>Count numbers: <output id="result"></output></p>
-  <button onclick="startWorker()">Start Worker</button>
-  <button onclick="runAlert()">Check Worker</button>
+  <h2>JavaScript Without Webworker</h2>
+  <p>Check Console </p>
+  <button onclick="test()">Start Test</button>
+  <button onclick="runAlert()">Check Performance</button>
   <script>
     const runAlert = () => {
-      window.alert('No Problem')
+      window.alert('To late!')
     }
-    function startWorker() {
+    function test() {
       let nums = 0
       console.log('Proccess is running...')
       for (let i = 0; i < 5000000000; i++) {
