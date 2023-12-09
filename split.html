@@ -5,18 +5,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manipluation String</title>
+  <title>Split</title>
 </head>
 
 <body>
-  <h2 style="margin-top:20px;text-align: center;">Manipluation String</h2>
-  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+  <h2 style="margin-top:20px;text-align: center;">Split</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console(Press f12)</h4>
 
   <script>
-    let lang = 'Html Css Javascript NodeJs MongoDb Mysql'
-    console.log(lang)
+    //basic literal
+    let lang = ['Html', 'Css', 'Javascript', 'Nodejs', 'Mongodb', 'Mysql']
+    let flat_array = [[1, 2, 3], ['a', 'b', 'c'], ['a1', 'b2', 'b3']]
+    let numbers = [1,2,3,4,5,6,7,8,9,10]
 
-    //sort----------------------------------------------------
+
+   //sort----------------------------------------------------
     // let sort_text = lang.split(' ').sort().join(' ')
     // console.log(sort_text)
 
@@ -32,22 +35,10 @@
     // const convert_first_word = lang.split('', 4)
     // console.log(convert_first_word)
 
-    //replace each start of word---------------------------------------
-    // const start_letter = (param) => param.replace(/[A-Z-0-9]/g, '$')
-    // console.log(start_letter(lang))
-
-    //replace each digit with '' (remove digit)----------------
-    // const each_digit = (param) => param.replace(/[0-9]/g, '')
-    // console.log(each_digit('Ht5ml Css Java6script Node8Js Mo8ngoDb My9sql'))
-
-    //add string start of word----------------------------------------------------
-    // const pad_start = lang.split(' ').map(item => item.padStart(item.length + 5,'-1'))
-    // console.log(pad_start)
-
+    
     //add string end of word----------------------------------------------------
     // const pad_end = lang.split(' ').map(item => item.padEnd(item.length + 5,'1'))
-    // console.log(pad_end)
-
+    // console.log(pad_end)   
   </script>
 </body>
 
