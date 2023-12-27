@@ -12,18 +12,8 @@
 
   <script>
     const regex = /[\/\.\-\:]/gm;
-    const str = `/`; //must be / or . or - or :
-    const final = []
-    while ((result = regex.exec(str)) !== null) {
-      if (result.index === regex.lastIndex) {
-        regex.lastIndex++;
-      }
-      result.forEach((match) => {
-        final.push(match)
-      });
-    }
-    console.log(final)
-    console.log(regex.exec(str))
+    const str = `/ kaya -`; //must be / or . or - or :
+    console.log(str.match(regex))
   </script>
 </body>
 

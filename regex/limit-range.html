@@ -13,17 +13,7 @@
   <script>
     const regex = /[0-9]{4,7}/gm;
     const str =  [123,1234,12345,123456,1234567,12345678,123456789]
-    const final = []
-    while ((result = regex.exec(str)) !== null) {
-      if (result.index === regex.lastIndex) {
-        regex.lastIndex++;
-      }
-      result.forEach((match) => {
-        final.push(match)
-      });
-    }
-    console.log(final)
-    console.log(regex.exec(str))
+    console.log(str.match(regex))
   </script>
 </body>
 

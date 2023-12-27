@@ -11,18 +11,9 @@
 <body>
 
   <script>
-    const regex = /^Mustafa/gm;
+    const regex = /a./gm;
     const str = `Mustafa Kaya 3000 mesto@outlook.com 52`;
-    const final = []
-    while ((result = regex.exec(str)) !== null) {
-      if (result.index === regex.lastIndex) {
-        regex.lastIndex++;
-      }
-      result.forEach((match) => {
-        final.push(match)
-      });
-    }
-    console.log(final)
+    console.log(str.match(regex))
     console.log(regex.exec(str))
   </script>
 </body>

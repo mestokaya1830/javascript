@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    const regex = /\d+/g; //check all group-digits in the whole sentence
+    // const regex = /\d+/; //check group-digit the first position in the sentence
+    // const regex = /\d+$/; //check group-digit the last position in the sentence
+
+    // const regex = /\d/g; //check single-digit in the whole sentence
+    // const regex = /\d/; //check single-digit the first position in the sentence
+    // const regex = /\d$/; //check single-digit the last position in the sentence
+
+    const str = `Mustafa Kaya 3000 mesto@outlook.com 52`;
+    
+    console.log('replaced numbers with number = ', str.replace(regex, 'number'))
+    console.log('retrived numbers = ', str.match(regex))
+    if(str.match(regex)){//check have numbers
+      console.log('There is numbers in str')
+    }
+  </script>
+</body>
+
+</html>

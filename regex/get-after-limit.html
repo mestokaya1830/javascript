@@ -11,11 +11,9 @@
 <body>
 
   <script>
-    const regex = /Kaya/;
-    const str = `Mustafa Kaya 3000 mesto@outlook.com 52 Kaya`;
-    
-    console.log(regex.exec(str))
-    console.log(regex.exec(str)[0])
+    const regex = /\w{6,}/gm;//get all that more than 6 chr
+    const str = `Mustafa Kaya 3000 mesto@outlook.com 52 Mustafa`;
+    console.log(str.match(regex))
   </script>
 </body>
 
