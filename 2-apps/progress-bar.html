@@ -37,7 +37,7 @@ h1,#finished{
 
   <script>
     let pw = 0
-    let timePeriod = 8
+    let timePeriod = 80//byte of file
     const checkTime = setInterval(() => {
       pw+=(100/timePeriod)
       document.getElementById('progress-bar').style.width = pw + '%'
