@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    //word  with +
+    // const regex = /[a-zA-Z]+/g; //check all the words in the whole sentence
+    // const regex = /^[a-zA-Z]+/g; //check started with word
+    // const regex = /[a-zA-Z]+$/g; //check ended with word
+
+    // const regex = /kaya+/gi; //check all the specific-word in the whole sentence
+    // const regex = /^mustafa+/gi; //check started with specific-word
+    // const regex = /yaka+$/gi; //check ended with specific-word
+
+    // const regex = /kaya+/i; //check specific-word at the athe first position in the sentence
+
+    //letter without +
+    // const regex = /[a-zA-Z]/g; //check letter in the whole sentence
+    // const regex = /^[a-zA-Z]/g; //check started is letter
+    // const regex = /[a-zA-Z]$/g; //check ended is letter
+
+    // const regex = /k+/gi; //check specific-letter in the whole sentence
+    // const regex = /^k/gi; //check check strted with specific-letter
+    // const regex = /k$/gi; //check check ended aith specific-letter
+
+    // const regex = /a/i; //check specific-letter the first position in the sentence
+
+    const str = 'Mustafa Kaya 3000 Kaya 52 Kaya Yaka';
+    
+    console.log('replaced letter with number = ', str.replace(regex, '0'))
+    console.log('retrived letter = ', str.match(regex))
+    if(str.match(regex)){//check have letter
+      console.log('There is letter in str')
+    }
+  </script>
+</body>
+
+</html>

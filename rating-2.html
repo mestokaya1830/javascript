@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{
+      margin: 30px 0;
+    }
+    .container{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 400px;
+      height: 100px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px 10px;
+    }
+    .stars{
+      font-size: 60px;
+      color: gray;
+    }
+    .stars:hover{
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Javascript Simple Rating</h1>
+  <div class="container">
+    <span class="stars">&#9733;</span>
+    <span class="stars">&#9733;</span>
+    <span class="stars">&#9733;</span>
+    <span class="stars">&#9733;</span>
+    <span class="stars">&#9733;</span>
+  </div>
+
+  <h1 id="rate"></h1>
+  <script>
+    const stars = document.querySelectorAll('.stars')
+    let rate = document.getElementById('rate')
+    stars.forEach((item, index) => {//for eventlistener
+      item.addEventListener('click', (e) => {
+        stars.forEach((item2, index2) => {//for to find rate index
+          if(index >= index2){
+            rate.innerHTML = 'Rate ' + parseInt(index2 + 1)
+            item2.style.color ='red'
+          } else {
+            item2.style.color ='gray'
+          }
+        })
+      })
+    })
+    console.log('Rate', rate)
+  </script>
+</body>
+</html>

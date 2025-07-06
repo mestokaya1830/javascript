@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        margin: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Javascript Check Battary</h1>
+
+    <script>
+      navigator.getBattery().then((battery) => {
+        function updateAllBatteryInfo() {
+          updateChargeInfo();
+          updateLevelInfo();
+          updateChargingInfo();
+          updateDischargingInfo();
+        }
+        updateAllBatteryInfo();
+
+        battery.addEventListener("chargingchange", () => {
+          updateChargeInfo();
+        });
+        function updateChargeInfo() {
+          console.log(`Battery charging? ${battery.charging ? "Yes" : "No"}`);
+        }
+
+        battery.addEventListener("levelchange", () => {
+          updateLevelInfo();
+        });
+        function updateLevelInfo() {
+          console.log(`Battery level: ${battery.level * 100}%`);
+        }
+
+        battery.addEventListener("chargingtimechange", () => {
+          updateChargingInfo();
+        });
+        function updateChargingInfo() {
+          console.log(`Battery charging time: ${battery.chargingTime} seconds`);
+        }
+
+        battery.addEventListener("dischargingtimechange", () => {
+          updateDischargingInfo();
+        });
+        function updateDischargingInfo() {
+          console.log(
+            `Battery discharging time: ${battery.dischargingTime} seconds`
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

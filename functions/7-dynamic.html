@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Function</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Dynamic Function</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+
+  <script>
+    //pass array as rest (dynamic params count)------------------
+    let test = (...args) => {
+      console.log(args)
+    };
+    test(...lang)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axios Get Json</title>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Axios Get Json</h2>
+  <p style="margin: 20px; text-align: center;">Look at the Console</p>
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const getJson = async () => {
+      try {
+        const result = await axios.get('./soccer.json')
+        const final = await result.data
+        console.log(final)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getJson()
+  </script>
+</body>
+
+</html>

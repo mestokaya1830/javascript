@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      height: 160vh;
+    }
+  </style>
+</head>
+<body>
+  <h1>Window</h1>
+  <h2>Location</h2>
+  <button id="location">Go Youtube</button>
+  <button id="path">Pathname</button>
+  <button id="protocol">Protocol</button>
+  <button id="port">Port</button>
+  <hr>
+  <h2>History</h2>
+  <button id="back">Back</button>
+  <button id="forward">Forward</button>
+  <hr>
+  <h2>Navigator</h2>
+  <button id="cookie">Cookie Status</button>
+  <button id="language">Language</button>
+  <button id="online">Online</button>
+  <button id="appname">App Name</button>
+  <button id="appcodename">App Code Name</button>
+  <button id="product">Product</button>
+  <button id="version">Version</button>
+  <button id="agent">User Agent</button>
+  <button id="platform">Platform</button>
+  <button id="java">Java Status</button>
+  <hr>
+  <h2>Confirm</h2>
+  <button id="confirm">Confirm</button>
+  <hr>
+  <h2>Propmt</h2>
+  <button id="propmt">Propmt</button>
+  <hr>
+  <h2>Time</h2>
+  <button id="timeout">Timeout</button>
+  <button id="interval">SetInterval</button>
+  <h1 id="counterResult"></h1>
+
+  <script>
+    //window
+    console.log('window-innerHeight',window.innerHeight)
+    console.log('window-outerHeight',window.outerHeight)
+    console.log('window-innerWidth',window.innerWidth)
+    console.log('window-outerWidth',window.outerWidth)
+
+
+    //screen
+    console.log('screen-height', screen.height)
+    console.log('screen-width', screen.width)
+
+    //location
+    document.getElementById('location').addEventListener('click', () => {
+      window.location.href = "https://www.youtube.com"
+    })
+    document.getElementById('path').addEventListener('click', () => {
+      alert(window.location.pathname)
+    })
+    document.getElementById('protocol').addEventListener('click', () => {
+      alert(window.location.protocol)
+    })
+    document.getElementById('port').addEventListener('click', () => {
+      alert(window.location.port)
+    })
+
+
+    //history
+    document.getElementById('back').addEventListener('click', () => {
+      window.history.back
+    })
+    document.getElementById('forward').addEventListener('click', () => {
+      window.history.forward
+    })
+    
+    
+    //navigator
+    document.getElementById('cookie').addEventListener('click', () => {
+      alert(navigator.cookieEnabled)
+    })
+    document.getElementById('language').addEventListener('click', () => {
+      alert(navigator.language)
+    })
+    document.getElementById('online').addEventListener('click', () => {
+      alert(navigator.onLine)
+    })
+    document.getElementById('appname').addEventListener('click', () => {
+      alert(navigator.appName)
+    })
+    document.getElementById('appcodename').addEventListener('click', () => {
+      alert(navigator.appCodeName)
+    })
+    document.getElementById('product').addEventListener('click', () => {
+      alert(navigator.product)
+    })
+    document.getElementById('version').addEventListener('click', () => {
+      alert(navigator.appVersion)
+    })
+    document.getElementById('agent').addEventListener('click', () => {
+      alert(navigator.userAgent)
+    })
+    document.getElementById('platform').addEventListener('click', () => {
+      alert(navigator.platform)
+    })
+    document.getElementById('java').addEventListener('click', () => {
+      alert(navigator.javaEnabled)
+    })
+    
+    //confirm
+    document.getElementById('confirm').addEventListener('click', () => {
+      if (confirm("Press a button!")) {
+        alert("You pressed OK!");
+      } else {
+        alert("You pressed Cancel!");
+      }
+    })
+    
+    //prompt
+    document.getElementById('propmt').addEventListener('click', () => {
+      let person = prompt("Please enter your name", "Harry Potter");
+      if (person == null || person == "") {
+        alert("User cancelled the prompt.")
+      } else {
+        alert("Hello " + person + "! How are you today?")
+      }
+    })
+
+    //time
+    document.getElementById('timeout').addEventListener('click', () => {
+      setTimeout(() => {
+        alert('One second passt!')
+      }, 1000);
+    })
+
+    let counter = 0
+    document.getElementById('interval').addEventListener('click', () => {
+     const counterTime  = setInterval(() => {
+        counter++
+        document.getElementById('counterResult').innerText = counter
+        if(counter == 10){
+          clearInterval(counterTime)
+          document.getElementById('counterResult').innerText = "Finished"
+        }
+      }, 1000);
+    })
+
+  </script>
+</body>
+</html>

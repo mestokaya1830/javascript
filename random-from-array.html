@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Color From Array</title>
+</head>
+
+<body>
+  <h2 style="margin:20px 0; text-align: center;">Random Color From Array</h2>
+  <p style="text-align: center;">Look at the Console</p>
+  <script>
+    let lang = ['Html','Css','Javascript','Nodejs','Mongodb','Mysql','Vuejs','Nuxtjs']
+    let random_values = []
+
+
+    //get random values
+    function getRandom(limit){
+      for (let i = 0; i < limit; i++) {
+        let indexes = Math.floor(Math.random() * lang.length)
+        random_values.push(lang[indexes])
+      }
+    }
+    getRandom(3)
+    console.log(random_values)
+
+    //get random unique values
+    // while (random_values.length < 5) {
+    //   let indexes = Math.floor(Math.random() * lang.length)
+    //   if (random_values.indexOf(lang[indexes]) === -1){
+    //     random_values.push(lang[indexes])
+    //   }
+    // }
+    // console.log(random_values)
+  </script>
+</body>
+
+</html>

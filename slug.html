@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slug</title>
+</head>
+
+<body>
+  <h2 style="margin:20px 0; text-align: center;">Slug</h2>
+  <p style="text-align: center;">Look at the Console</p>
+  <script>
+    const slug = (param) => {
+      return param
+        .trim()
+        .normalize('NFD')//for turkish charecters
+        .replace(/\s+/g, '-')
+        .replace(/[^\w]+/g, '-')
+        .toLowerCase()
+    }
+
+
+    console.log(slug('  Hey, whats\'up mate?  '))
+  </script>
+</body>
+
+</html>

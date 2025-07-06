@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  //sync-----------------------------------------------------------------------
+    console.log('-----------------------------------------------------------Sync')
+    let num = 0
+    function inc() {
+      console.log('above ' + num)//run 1
+      num += 2
+      console.log('Inside(sync) ' + num)//run 2
+    }
+
+    inc()
+    num += 1
+    console.log('Outside ' + num)//run 3
+
+  //async-----------------------------------------------------------------------
+    console.log('-----------------------------------------------------------Async')
+    let num1 = 0
+    async function incAsync() {
+      console.log('above ' + num1)//run 1
+      num1 += await 2
+      console.log('Inside(async) ' + num1)//run 3 because there is await above this
+    }
+
+    incAsync()
+    num1 += 1
+    console.log('Outside ' + num1)//run 2
+    
+    
+  //async json---------------------------------------------------
+    console.log('Async Json------------------------------------')
+    const person = [
+      { id: 1, name: "Mesto", age: 50 },
+      { id: 2, name: "Filiz", age: 40 },
+      { id: 3, name: "Eko", age: 19 },
+      { id: 4, name: "Helin", age: 16 },
+      { id: 5, name: "Ilayda", age: 13 }
+    ]
+    async function getPerson(param) {
+      const result = await param
+      console.log(result)
+    }
+
+    getPerson(person)
+  </script>
+</body>
+
+</html>

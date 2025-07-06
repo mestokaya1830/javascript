@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{
+      margin: 30px 0;
+    }
+    .container{
+      display: flex;
+      padding: 20px 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .sortList{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 300px;
+      height: 410px;
+      border: 1px dashed #666;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 0 10px;
+    }
+    .list{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 50px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding-left: 10px;
+      margin: 5px 0;
+      font-size: 18px;
+      cursor: grab;
+      background-color: #f1f1f1;
+    }
+   
+    .dragging{opacity: 0;}
+  </style>
+</head>
+<body>
+  <h1>Javascript Drag-Drop List Sortable</h1>
+  <div class="container">
+    <ul class="sortList">
+      <li class="list" draggable="true">Html5</li>
+      <li class="list" draggable="true">Css3</li>
+      <li class="list" draggable="true">Javascript</li>
+      <li class="list" draggable="true">Vue3</li>
+      <li class="list" draggable="true">NodeJS</li>
+      <li class="list" draggable="true">Mongodb</li>
+      <li class="list" draggable="true">Mysql</li>
+    </ul>
+  </div>
+
+  <script>
+    const sortList = document.querySelector('.sortList')
+    const list = sortList.querySelectorAll('.list')
+
+    list.forEach(item => {
+      item.addEventListener('dragstart', (e) => {
+        setTimeout(() => item.classList.add('dragging'), 0)
+      })
+      item.addEventListener('dragend', (e) => {
+        item.classList.remove('dragging')
+      })
+    });
+
+    const sortTable = (e) => {
+      const siblings = [...sortList.querySelectorAll(".list:not(.dragging)")]
+      const nextSibling = siblings.find(item => e.clientY <= item.offsetTop + item.offsetHeight / 2)
+      sortList.insertBefore(sortList.querySelector('.dragging'), nextSibling)
+    }
+    sortList.addEventListener('dragover', sortTable)
+    sortList.addEventListener('dragenter', (e) => e.preventDefault())
+  </script>
+</body>
+</html>

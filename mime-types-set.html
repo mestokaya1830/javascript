@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mime Types Map-Set</title>
+  <style>
+#container{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px auto;
+}
+#container input{
+  margin: 5px 0;
+  height: 20px;
+}
+  </style>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Mime Types</h2>
+  <div id="container">
+    <input type="text" id="extension" placeholder="Enter extension" />
+    <button id="btn">Get Mime Type Map-Set</button>
+  
+    <h1 id="result"></h1>
+  </div>
+  <script>
+    let mimes = new Map()
+
+    mimes.set('text/html', 'html')
+    mimes.set('text/htm', 'htm')
+    mimes.set('text/css', 'css')
+    mimes.set('text/javascript', 'js')
+    mimes.set('text/csv', 'csv')
+
+    function getKey(value) {
+      const result =  [...mimes].find(([key, val]) => val == value)
+      if(result !== undefined){
+        document.getElementById('result').innerText = result[0]
+      } else {
+        document.getElementById('result').innerText = 'No mime!'
+      }
+      
+    }
+
+    document.getElementById('btn').addEventListener('click', () => {
+      getKey(document.getElementById('extension').value)
+    })
+    document.getElementById('extension').addEventListener('keyup', (e) => {
+      if(e.keyCode === 13){
+        getKey(document.getElementById('extension').value)
+      }
+    })
+  </script>
+</body>
+
+</html>

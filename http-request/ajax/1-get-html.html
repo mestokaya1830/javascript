@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax Get Csv</title>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Ajax Get Html</h2>
+  <p style="margin: 20px; text-align: center;">Look at the Console</p>
+
+  <script>
+    const http = new XMLHttpRequest()
+    http.open('get', 'https://dev.to/search?q=nodejs', true)//true mean async active
+    http.onload = function () {
+      console.log(this.getAllResponseHeaders())
+      console.log(this.getResponseHeader("last-modified"))
+      if (this.status === 200) {
+        console.log(this.responseText)
+        const result = this.responseText
+        const parser = new DOMParser()
+        const htmlData = parser.parseFromString(result, 'text/html')
+        
+        const links = Array.from(htmlData.querySelectorAll('a'))
+        const output = links.map(item => item.href)
+        console.log(output)
+      }
+    }
+    http.send()
+  </script>
+</body>
+
+</html>

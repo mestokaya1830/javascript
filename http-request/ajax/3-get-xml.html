@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax Get Xml</title>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Ajax Get Xml</h2>
+  <p style="margin: 20px; text-align: center;">Look at the Console</p>
+
+  <script>
+    const http = new XMLHttpRequest()
+    http.open('get', '../book.xml', true)//true mean async active
+    http.onload = function () {
+      console.log(this.getAllResponseHeaders())
+      console.log(this.getResponseHeader("last-modified"))
+      if (this.status === 200) {
+        console.log(this.responseXML)
+        const result = this.responseXML
+        let book = []
+        const final = result.getElementsByTagName("book")
+        for (let i = 0; i < final.length; i++) {
+          book.push({
+            author: final[i].getElementsByTagName('author')[0].childNodes[0].nodeValue,
+            title: final[i].getElementsByTagName('title')[0].childNodes[0].nodeValue,
+            genre: final[i].getElementsByTagName('genre')[0].childNodes[0].nodeValue,
+            price: final[i].getElementsByTagName('price')[0].childNodes[0].nodeValue,
+            publish_date: final[i].getElementsByTagName('publish_date')[0].childNodes[0].nodeValue,
+            description: final[i].getElementsByTagName('description')[0].childNodes[0].nodeValue
+          }
+          )
+        }
+        book.forEach(item => {
+          console.log(item.title)
+        })
+      }
+    }
+    http.send()
+  </script>
+</body>
+
+</html>

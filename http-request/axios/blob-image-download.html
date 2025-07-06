@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios Download Blob Image</title>
+    <style>
+      #progress-con {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        margin: 0 40%;
+      }
+      progress {
+        width: 90%;
+        margin-right: 5px;
+      }
+      button {
+        display: flex;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2 style="margin: 20px; text-align: center">Axios Show Blob Image</h2>
+    <div id="progress-con">
+      <div style="display: flex">
+        <progress id="progress" value="0" max="100"></progress>
+        <label for="progress"></label>
+      </div>
+      <div>
+        <button onclick="downloadImg()">Download Image</button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const downloadImg = async () => {
+        const config = {
+          responseType: "blob",
+          onDownloadProgress: (e) => {
+            let progress = document.getElementById("progress");
+            let text = document.getElementById("text");
+            let state = Math.floor((e.loaded / e.total) * 100);
+            progress.setAttribute("value", state);
+            progress.nextSibling.textContent = state + "%";
+            if (state === 100) {
+              progress.nextSibling.textContent = `Complete!`;
+            }
+          },
+        };
+        axios
+          .get("https://source.unsplash.com/user/c_v_r/1900x800", config)
+          .then((result) => {
+            //download image
+            let link = document.createElement("a");
+            link.download = "image.png";
+            link.href = URL.createObjectURL(new Blob([result.data]));
+            link.click();
+            URL.revokeObjectURL(link.href);
+          })
+          .catch((err) => console.log(err));
+      };
+    </script>
+  </body>
+</html>

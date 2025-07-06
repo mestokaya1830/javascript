@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      thead,
+      tr {
+        width: 100%;
+      }
+      table thead {
+        background-color: #000;
+        color: #fff;
+      }
+      table thead tr th {
+        text-align: left;
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+        padding-left: 10px;
+      }
+      table tbody tr:hover {
+        background-color: #ddd;
+      }
+      table,
+      tbody,
+      tr {
+        width: 100%;
+      }
+      table tbody tr td {
+        border: 1px solid #ccc;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <th>ID</th>
+        <th onclick="sortList('home')">Home</th>
+        <th onclick="sortList('away')">Away</th>
+        <th onclick="sortList('league')">League</th>
+      </thead>
+      <tbody id="list"></tbody>
+    </table>
+
+    <script>
+      //get data
+      let sortData = {};
+      const getSoccer = async (data) => {
+        const result = await fetch("./soccer.json");
+        const final = await result.json();
+        sortData = final[0].results;
+        if (data == undefined) {
+          data = final[0].results;
+        }
+        document.getElementById("list").innerHTML = "";
+        for (const item of data) {
+          document.getElementById("list").innerHTML += `
+        <tr class="items-tr">
+          <td class="items-td">${item.id}</td>
+          <td class="items-td">${item.home.name}</td>
+          <td class="items-td">${item.away.name}</td>
+          <td class="items-td">${item.league.name}</td>
+        </tr>`;
+        }
+        setStyle(); //after table loaded
+      };
+      getSoccer();
+
+      //sort list
+      let isSort = false;
+      const sortList = (field) => {
+        isSort = !isSort;
+        const sorted = sortData.sort((a, b) => {
+          if (isSort) {
+            return a[field].name.localeCompare(b[field].name);
+          }
+          return b[field].name.localeCompare(a[field].name);
+        });
+        getSoccer(sorted);
+      };
+
+      //click style
+      const setStyle = () => {
+        document.querySelectorAll("tbody tr").forEach((item) => {
+          item.addEventListener("click", (e) => {
+            item.setAttribute("style", "background-color:#ccc;");
+          });
+        });
+      };
+    </script>
+  </body>
+</html>

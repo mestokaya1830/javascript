@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      display: flex;
+      flex-direction: column;
+    }
+    div button {
+      margin: 5px; 0;
+      height: 34px;
+    }
+  </style>
+</head>
+<body>
+  <div style="width: 400px;margin: 20px auto;">
+    <h3>Generate Random String</h3>
+    <button onclick="genRandonString(12)">Generate Random Wrod</button>
+  </div>
+  <script>
+    const genRandonString = (length) => {
+      var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
+      var charLength = chars.length;
+      var result = '';
+      for ( var i = 0; i < length; i++ ) {
+          result += chars.charAt(Math.floor(Math.random() * charLength));
+      }
+      console.log(result)
+    }
+    //or
+    const result = Math.random().toString(36).substring(2,7)
+    console.log(result)
+  </script>
+</body>
+</html>

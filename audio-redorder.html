@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Audio Recorder</h2>
+  <button onmousedown="start()" onmouseup="stop()">Start</button>
+  <!-- <button onclick="stop()">Stop</button> -->
+  <audio src="" controls id="audioInput"></audio>
+
+
+  <script>
+    let recorder = null
+    let chunks = []
+    let recording = false
+    function setupAudio() {
+      // var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+      // if (!getUserMedia) {
+      //   return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+      // }
+      if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+        navigator.mediaDevices.getUserMedia({audio: true})
+        .then(setupStream)
+        .catch((err) => console.log(err))
+      }
+    }
+    
+    function setupStream(stream) {
+      recorder = new MediaRecorder(stream)
+      recorder.ondataavailable = (e) => {
+        chunks.push(e.data)
+      }
+      recorder.onstop = (e) => {
+        const blob = new Blob(chunks, { type: 'audio/webm' })
+        chunks = []
+        document.getElementById('audioInput').src = window.URL.createObjectURL(blob)
+      }
+    }
+    
+    setupAudio()
+    function start () {
+      recorder.start()
+    }
+    function stop() {
+      recorder.stop()
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Get Html</title>
+  </head>
+
+  <body>
+    <h2 style="margin: 20px; text-align: center">Fetch Get Html</h2>
+    <p style="margin: 20px; text-align: center">Look at the Console</p>
+    <script>
+      const getHtml = async () => {
+        const result = await fetch("https://dev.to/search?q=nodejs");
+        // console.log(result);
+        // const contentType = result.headers.get("content-type");
+        // if (!contentType || !contentType.includes("application/json")) {
+        //   throw new TypeError("Oops, we haven't got JSON!");
+        // }
+        const final = await result.text();
+
+        const parser = new DOMParser();
+        const htmlData = parser.parseFromString(final, "text/html");
+
+        //or use this
+        // const htmlData = document.createRange().createContextualFragment(final)
+
+        //structer
+        console.log(htmlData);
+        console.log("----------------------------------------");
+        console.log(htmlData.head);
+        console.log("----------------------------------------");
+        console.log(htmlData.body);
+
+        //query
+        const links = Array.from(htmlData.querySelectorAll("a"));
+        const output = links.map((item) => item.href);
+        console.log(output);
+      };
+      getHtml();
+    </script>
+  </body>
+</html>

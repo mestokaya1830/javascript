@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{
+      margin: 30px 0;
+    }
+    .container{
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    .items{
+      display: flex;
+      font-size: 22px;
+      font-weight: 500;
+      margin: 10px 0;
+    }
+    .items span{
+      display: block;
+      min-width: 200px;
+      text-align: right;
+      margin-left: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Javascript Detect Internet Speed</h1>
+  <div class="container">
+    <div class="items">Speed Bits <span id="bts"></span></div>
+    <div class="items">Speed Kbs <span  id="kbs"></span></div>
+    <div class="items">Speed Mbs <span id="mbs"></span></div>
+  </div>
+
+  <script>
+    let start;
+    let end;
+    let imageSize = ''
+    let image = new Image()
+
+    let imageLink = 'https://picsum.photos/200/300'
+
+    image.onload = async() => {
+      end = new Date().getTime()
+      await fetch(imageLink).then(res => {
+        imageSize = res.headers.get("content-length")
+        console.log(imageSize)
+        calculateSpeed()
+      })
+    }
+
+    const calculateSpeed = () => {
+      let duration = (end - start) / 1000
+      let loadedBits = imageSize * 8
+      let speedInBps = (loadedBits / duration).toFixed(2)
+      let speedBps = (loadedBits / 1024).toFixed(2)
+      let speedKps = (speedBps / 1024).toFixed(2)
+      let speedMbs = (speedKps / 1024).toFixed(2)
+      document.getElementById('bts').innerText += speedBps
+      document.getElementById('kbs').innerText += speedKps
+      document.getElementById('mbs').innerText += speedMbs
+    }
+
+    window.onload = () => {
+      start = new Date().getTime()
+      image.src = imageLink
+    }
+  </script>
+</body>
+</html>

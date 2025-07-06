@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vowels</title>
+</head>
+
+<body>
+  <h2 style="margin:20px 0; text-align: center;">Vowels</h2>
+  <p style="text-align: center;">Look at the Console</p>
+  <script>
+    const letters = 'aeiouAEIOU'
+    // const  vowel = (param) => param.split('').filter(item => letters.match(item)).length
+    const vowel = (param) => param.split('').filter(item => letters.match(item))
+    console.log(vowel('hello'))
+  </script>
+</body>
+
+</html>

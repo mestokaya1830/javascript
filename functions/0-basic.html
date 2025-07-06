@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functions</title>
+  </head>
+  <body>
+    <h2 style="margin-top:20px;text-align: center;">Functions</h2>
+    <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+    <script>
+      //use anonymes (auto invoke)function to avoid create multiple global variable
+      (function () {
+        let t = "Anonymes function"
+        console.log(t)
+      })()
+
+      //function declaration-----------------------------------
+      // function test () {
+      //   console.log("Function declaration")
+      // }
+      // test()
+
+      //function expression-----------------------------------
+      // const test = function() {
+      //   console.log("Function expression")
+      // }
+      // test()
+
+      //function expression arrow-----------------------------------
+      // const test = () => {
+      //   console.log("Function arrow")
+      // }
+      // test()
+
+      //function shorthend-----------------------------------
+      // const test = () => console.log("Function shorthand")
+      // test()
+    </script>
+  </body>
+</html>

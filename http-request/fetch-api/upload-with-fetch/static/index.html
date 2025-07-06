@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+</head>
+<body>
+  <h2>File Upload</h2>
+  <form id="form" enctype="multipart/form-data">
+    <input type="file" id="file" name="file" multiple accept="images/*">
+    <input type="button"  id="upload" value="upload">
+  </form>
+  <h3 id="status"></h3>
+  <script>
+    document.getElementById('upload').onclick = async () => {
+      const files = document.getElementById('file').files
+      const form = document.getElementById('form')
+      const formData = new FormData(form)
+      if(file.length > 3){
+        console.log('Please select only 3 file')
+        return
+      }
+
+      //loop with files if you need custom stuff
+      // for (const item of files) {
+      //   formData.append('files', item)
+      // } 
+      // console.log(Array.from(formData))
+      // formData.append('name', file.files[0].name)
+      // formData.append('size',file.files[0].size)
+      // formData.append('file',file.files[0])
+      // console.log(Array.from(formData))
+      // console.log(JSON.stringify(Array.from(formData), '/t', 2))
+
+      //or send direct with form
+       document.getElementById('status').innerText = 'Please wait...'
+      const result = await fetch('http://localhost:3000/upload', {
+        method:'post',
+        body:formData
+      })
+      const final = await result.json()
+      document.getElementById('status').innerText = 'Upload completed'
+      console.log(final)
+    }
+    
+  </script>
+</body>
+</html>

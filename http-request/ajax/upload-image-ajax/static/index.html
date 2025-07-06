@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax Image Upload</title>
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css' ,
+    integrity='sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==' ,
+    crossorigin='anonymous' , referrerpolicy='no-referrer'">
+</head>
+
+<body>
+  <div class=" wrapper">
+  <h2 style="margin: 20px; text-align: center;">Ajax Image Upload</h2>
+  <header>File Uploader</header>
+  <form action="#" id="form" enctype='multipart/form-data'>
+    <input type="file" name="file" id="file">
+    <i class="fas fa-cloud-upload-alt"></i>
+    <p>Brows file to upload</p>
+  </form>
+  <h3 id="status"></h3>
+  </div>
+
+  <script>
+    const form = document.getElementById("form")
+    document.getElementById("file").addEventListener("change", (e) => {
+      if (e.target.files[0]) {
+        const http = new XMLHttpRequest()
+        http.open("POST", "/upload", true)//true mean async active
+        document.getElementById('status').innerText = 'Please wait...'
+        http.onload = function () {
+          document.getElementById('status').innerText = 'Upload completed'
+          console.log(this)//check here and handle response or error
+          // readyState
+          // 0: request not initialized
+          // 1: server connection established
+          // 2: request received
+          // 3: processing request
+          // 4: request finished and response is ready
+        }
+        http.send(new FormData(form))
+      }
+    })
+  </script>
+  </body>
+
+</html>

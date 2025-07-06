@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{
+      margin: 30px 0;
+    }
+    .container{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+      height: 400px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    .list{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: calc(50% - 16px);
+      height: calc(50% - 16px);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 8px;
+    }
+    .hovered{
+      border: 2px dashed #999;
+    }
+  </style>
+</head>
+<body>
+  <h1>Javascript Drag-Drop List</h1>
+  <div class="container">
+    <div class="list">
+      <img src="./html-5.png" alt="" id="image" draggable="true">
+    </div>
+    <div class="list"></div>
+    <div class="list"></div>
+    <div class="list"></div>
+  </div>
+
+  <script>
+    const $ = (par) => document.querySelector(par)
+    const list = document.querySelectorAll('.list')
+    const image = document.getElementById('image')
+    
+    list.forEach(item => {
+      item.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        item.classList.add('hovered')
+      })
+      item.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        item.classList.remove('hovered')
+      })
+      item.addEventListener('drop', (e) => {
+        e.preventDefault();
+        item.appendChild(image)
+        item.classList.remove('hovered')
+      })
+    })
+  </script>
+</body>
+</html>

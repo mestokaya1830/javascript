@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TensorFlow.js Basit Örnek</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.16.0/dist/tf.min.js"></script>
+  </head>
+  <body>
+    <script>
+      const v = [5, 6];
+      const m = [[1, 2], [3, 4]];
+
+      function matVecMultiply(matrix, vector) {
+        const result = [];
+        for (let i = 0; i < matrix.length; i++) {
+          let sum = 0;
+          for (let j = 0; j < vector.length; j++) {
+            sum += matrix[i][j] * vector[j];
+          }
+          result.push(sum);
+        }
+        return result;
+      }
+
+      console.log(matVecMultiply(v, m)); // [17, 39]
+
+
+      //with reduce
+        // function matVecMultiply(matrix, vector) {
+        //   return matrix.map(row =>
+        //     row.reduce((sum, val, idx) => sum + val * vector[idx], 0)
+        //   );
+        // }
+        // console.log(matVecMultiply(m, v)); // [17, 39]
+    </script>
+  </body>
+</html>

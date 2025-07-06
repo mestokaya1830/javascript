@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax Get Json</title>
+</head>
+<body>
+  <h2 style="margin: 20px; text-align: center;">Ajax Get Json</h2>
+  <p style="margin: 20px; text-align: center;">Look at the Console</p>
+
+  <script>
+    const http = new XMLHttpRequest()
+    http.open('get', './soccer.json', true)//true mean async active
+    http.onload =  function(){
+      console.log(JSON.parse(this.responseText))
+      console.log(this.getAllResponseHeaders())
+      console.log(this.getResponseHeader("expires"))
+    }
+    http.send()
+  </script>
+</body>
+</html>

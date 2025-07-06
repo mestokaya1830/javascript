@@ -1,0 +1,27 @@
+var req = new XMLHttpRequest();
+  req.open('POST', '/download', true); // Open an async AJAX request.
+  req.setRequestHeader('Content-Type', 'application/json'); // Send JSON due to the {test: "test"} in question
+  req.responseType = 'blob'; // Define the expected data as blob
+  req.onreadystatechange = function () {
+    if (req.readyState === 4) {
+      if (req.status === 200) { // When data is received successfully
+        var data = req.response;
+        var defaultFilename = 'default.mp4';
+        // Or, you can get filename sent from backend through req.getResponseHeader('Content-Disposition')
+        if (typeof window.navigator.msSaveBlob === 'function') {
+          // If it is IE that support download blob directly.
+          window.navigator.msSaveBlob(data, defaultFilename);
+        } else {
+          var blob = data;
+          var link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = defaultFilename;
+
+          document.body.appendChild(link);
+
+          link.click(); // create an <a> element and simulate the click operation.
+        }
+      }
+    }
+  };
+  req.send(JSON.stringify({test: 'test'}));

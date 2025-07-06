@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table-component id="users" data-headers="ID, Username, Country, City"></table-component>
+
+    <script type="module">
+      import Table from './table.js'
+
+      const newData = [
+        { id: 1, username: "Mesto", country: "Turkiye", city: "Gaziantep" },
+        { id: 2, username: "Herrman", country: "Switzerland", city: "Zurich" },
+        { id: 3, username: "Denish", country: "Deutschland", city: "Berlin" },
+      ];
+      
+      document.getElementById("users").data = newData.map((item) => Object.values(item))
+    </script>
+  </body>
+</html> 

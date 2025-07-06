@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 id="title">Localstorage</h2>
+    <p>
+      Local storage persisint data, that mean it is not removing when browser is
+      closed
+    </p>
+    <button id="set">Set LocalStorage</button>
+    <button id="get">Get LocalStorage</button>
+    <button id="del">Delete LocalStorage</button>
+    <button id="delAll">Delete All LocalStorage</button>
+
+    <button id="setJson">Set LocalStorage With Json Data</button>
+    <button id="getJson">Get LocalStorage With Json Data</button>
+    <!-- script side----------------------------- -->
+    <script>
+      const user = {
+        name: "mesto",
+        salary: 5000,
+      };
+      document.getElementById("set").addEventListener("click", () => {
+        localStorage.setItem("auth", JSON.stringify(user));
+        localStorage.setItem("auth2", JSON.stringify("test"));
+      });
+      document.getElementById("get").addEventListener("click", () => {
+        console.log(JSON.parse(localStorage.getItem("auth")));
+
+        //get localstorage info
+        console.log(localStorage.key(0)); //only the last one
+        console.log(localStorage); //see type of localstorage (return object not array)
+
+        //get localstorage's methods and properties
+        for (const item in localStorage) {
+          console.log(item);
+        }
+
+        //get localstorage-keys
+        for (let i = 0; i < localStorage.length; i++) {
+          console.log(localStorage.key(i));
+        }
+        //get localstorage-values
+        for (let i = 0; i < localStorage.length; i++) {
+          console.log(localStorage.getItem(localStorage.key(i)));
+        }
+      });
+      document.getElementById("del").addEventListener("click", () => {
+        localStorage.removeItem("auth");
+      });
+      document.getElementById("delAll").addEventListener("click", () => {
+        localStorage.clear();
+      });
+
+      //json data
+      let users = [
+        { name: "Mesto", salery: 3000 },
+        { name: "Deniz", salery: 4000 },
+        { name: "Faruk", salery: 5000 },
+      ];
+      document.getElementById("setJson").addEventListener("click", () => {
+        localStorage.setItem("users", JSON.stringify(users));
+      });
+      document.getElementById("getJson").addEventListener("click", () => {
+        alert("Look at the console");
+        console.log(JSON.parse(localStorage.getItem("users")));
+      });
+    </script>
+  </body>
+</html>

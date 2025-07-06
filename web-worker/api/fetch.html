@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>JavaScript Web Workers API</h2>
+  <p>Check Console </p>
+  <button onclick="startWorker()">Start Worker</button>
+  <button onclick="runAlert()">Check Worker</button>
+
+  <script>
+    const worker = new Worker('./worker.js')
+
+    const runAlert = () => {
+      window.alert('No Problem')
+    }
+    function startWorker(){
+      worker.postMessage({//send to worker.js
+        message:'Worker is running...'
+      })
+      
+      worker.onerror = e => console.log(e)
+      worker.onmessage = e => {//come from worker.js
+        console.log(e.data.result)
+        console.log(e.data.message)
+      }
+    }
+  </script>
+</body>
+</html>

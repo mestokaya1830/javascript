@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    } 
+    div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60vw;
+      height: 180vh;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin: 10vh auto;
+    }
+    </style>
+</head>
+<body>
+  <div id="el">
+    <h1>Click Here</h1>
+   </div>
+  <div id="el2">
+    <h1>Click Here</h1>
+   </div>
+
+   <script>
+      document.getElementById('el').addEventListener('click', (e) => {
+        console.log('ClientX', e.clientX)
+        console.log('pageX', e.pageX)
+        console.log('screenX', e.screenX)
+        console.log('offsetX', e.offsetX)
+        console.log('boundingClientLeft', document.getElementById('el').getBoundingClientRect().left )
+      })
+   </script>
+</body>
+</html>

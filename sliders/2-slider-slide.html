@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      justify-content: center;
+      padding: 100px;
+      background-image: url('../images/1.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .wrapper{
+      display: flex;
+      align-items: center;
+      width: 70vw;
+      height: 80vh;
+      padding: 60px;
+      border-radius: 10px;
+      background-color: #fff3;
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+    .container{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .slider{
+      display: flex;
+      width: auto;
+      height: 100%;
+      left: 0;
+      position: relative;
+      transition: left 0.3s linear;
+    }
+    img{
+      width: 100%;
+      height: 120%;
+      aspect-ratio: 4/1;
+      object-fit: cover;
+      /* if you want to see top of images set height 120% or heiger */
+    }
+    #prev, #next{
+      position: absolute;
+      border: none;
+      padding: 14px 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: #fff6;
+    }
+    #prev{
+      left: 0;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    #next{
+      right: 0;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    .hide{
+      background-color: gray;
+      cursor: not-allowed !important;
+    }
+    @media only screen and (max-width: 1200px) {
+      body {
+        padding: 0;
+        background-color: lightgreen;
+        height: 100vh;
+      }
+      .wrapper{width: 100vw;height: 100vh;}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="slider" id="slider">
+        <!-- image here in javascript -->
+      </div>
+    </div>
+    <button id="prev">Prev</button>
+    <button id="next">Next</button>
+  </div>
+
+  <script>
+    //images as array----------------
+    let images = [
+      "../images/mirza0.webp",
+      "../images/mirza1.webp",
+      "../images/mirza2.webp",
+      "../images/mirza3.webp",
+      "../images/mirza4.webp",
+    ];
+    let slider = document.getElementById('slider')
+    let imageWidht = document.querySelectorAll('.img')[0].width
+    let imageIndex = 0
+    let currentPosition = 0
+    let prev = document.getElementById('prev')
+    let next = document.getElementById('next')
+
+     //on loading----------------
+     //load images-------------------
+      images.forEach(item => {
+        document.getElementById('slider').innerHTML += `<img src="${item}" alt="" class="img" />` 
+      })
+
+      prev.setAttribute('disabled', 'disabled')
+      prev.classList.add('hide')
+    
+      //prev button for image loading according to imageIndex and navigation buttons style-----------------
+      prev.addEventListener('click', () => {
+        imageIndex--
+        currentPosition += imageWidht
+        slider.style.left =  currentPosition + 'px'
+        
+        next.removeAttribute('disabled', 'disabled')
+        next.classList.remove('hide')
+
+        if (imageIndex == 0) {
+          prev.setAttribute('disabled', 'disabled')
+          prev.classList.add('hide')
+        }
+      })
+      
+      //next button for image loading according to imageIndex and navigation buttons style-----------------
+      next.addEventListener('click', () => {
+        imageIndex++
+        currentPosition -= imageWidht
+        slider.style.left = currentPosition + 'px'
+    
+        prev.removeAttribute('disabled', 'disabled')
+        prev.classList.remove('hide')
+
+        if (imageIndex == images.length - 1) {
+          next.setAttribute('disabled', 'disabled')
+          next.classList.add('hide')
+        }
+      })
+
+  </script>
+</body>
+</html>

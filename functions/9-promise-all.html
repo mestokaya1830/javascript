@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Promise All</h2>
+  <script>
+    const test1 = new Promise((resolve, reject) => resolve('test 1'))
+    const test2 = new Promise((resolve, reject) => resolve('test 2'))
+    const test3 = new Promise((resolve, reject) => resolve('test 3'))
+    Promise.all([test1, test2, test3]).then(data => alert(data))
+  </script>
+</body>
+</html>

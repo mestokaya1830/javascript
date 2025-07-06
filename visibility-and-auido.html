@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <audio
+  controls
+  src="./images/1.mp3"></audio>
+
+  <script>
+   const audio = document.querySelector("audio");
+
+let playingOnHide = false;
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    playingOnHide = !audio.paused;
+    audio.pause();
+  } else {
+    // Page became visible! Resume playing if audio was "playing on hide"
+    if (playingOnHide) {
+      audio.play();
+    }
+  }
+});
+
+  </script>
+</body>
+</html>

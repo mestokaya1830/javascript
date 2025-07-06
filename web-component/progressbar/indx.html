@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    progress-bar{
+      --bar-color: red;
+    }
+  </style>
+</head>
+<body>
+  <progress-bar percent="60%"></progress-bar>
+  <br/>
+  <button onclick="setPercent()">Running Percent</button>
+
+  <script src="./app.js"></script>
+  <script>
+    //test with manually
+    let counter = 0
+    const setPercent = () => {
+      counter += 5
+      // import ProgressBar from './app.js'
+        const bar = document.querySelector('progress-bar')
+        bar.percent = counter
+    }
+  </script>
+</body>
+</html>

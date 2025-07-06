@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{
+      margin: 30px 0;
+    }
+    #container{
+      display: flex;
+      flex: 1;
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 10px;
+      position: relative;
+    }
+    #image{
+      width: 100%;
+      height: 100%;
+    }
+    #zoom{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <h1>Javascript Image Magnifier</h1>
+  <div id="container">
+    <img src="./images/1.jpg" id="image" alt="">
+    <div id="zoom"></div>
+  </div>
+
+  <script>
+    let image = document.getElementById('image')
+    let zoom = document.getElementById('zoom')
+    // Calculate the ratio by which we want to 
+    let x = zoom.offsetWidth / 50;
+		let y = zoom.offsetHeight / 50; 
+
+    image.addEventListener('mousemove', (e) => {
+      zoom.style.display = 'block';
+      zoom.style.border = '2px solid #333';
+      zoom.style.top = e.offsetY + "px";
+      zoom.style.left = e.offsetX + "px";
+       
+      zoom.style.backgroundImage = 'url(./images/1.jpg)'
+      zoom.style.backgroundSize = image.width * x + "px " + image.height * y + "px";
+      
+			let posX = e.offsetX; 
+      let posY = e.offsetY; 
+      zoom.style.backgroundPosition = "-" + (posX * x)-50 + "px -" + posY * y + "px"; 
+
+      image.style.cursor = 'none'
+    })
+    image.addEventListener('mouseout', (e) => {
+      zoom.style.display = 'none';
+    })
+  
+  </script>
+</body>
+</html>

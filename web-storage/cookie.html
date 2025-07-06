@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2 id="title">Cookie</h2>
+  <button id="set">Set Cookie</button>
+  <button id="get">Get Cookie</button>
+  <button id="del">Delete Cookie</button>
+<!-- script side----------------------------- -->
+  <script>
+    document.getElementById('set').addEventListener('click', () => {
+      document.cookie = "auth = Mesto; expires=Mon, 12 March 2024 18:10:00 UTC";
+      //or this format
+      // document.cookie = "auth = Mesto; expires=" + new Date(2024, 0, 1).toUTCString();
+    })
+    document.getElementById('get').addEventListener('click',() => {
+      console.log(document.cookie)
+      let result = document.cookie.split('=')
+      console.log(result[1])
+    })
+    document.getElementById('del').addEventListener('click',() => {
+      document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    })
+  </script>
+</body>
+</html>

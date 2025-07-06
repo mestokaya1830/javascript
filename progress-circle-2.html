@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{
+      margin: 30px 0;
+    }
+    .container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 420px;
+      height: 420px;
+      border-radius: 5px;
+      background-color: lightblue;
+    }
+    .circ{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+    }
+    .percent{
+      position: relative;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Javascript Circular Progress Bar-2</h1>
+  <!-- withput circle::before in css not with circ::before look  circular-rogress-bar.html-->
+  <div class="container">
+    <div class="circ">
+      <span class="percent">0%</span>
+    </div>
+  </div>
+
+  <script>
+    const $ = (par) => document.querySelector(par)
+    const circ = $('.circ')
+    const percent = $('.percent')
+
+    let percentStart = 0
+    let percentEnd = 100
+
+    const progress = setInterval(() => {
+      percentStart++
+      percent.textContent = percentStart + '%'
+      circ.style.background = `conic-gradient(cornflowerblue ${percentStart * 3.6}deg, #ededed 0deg)`
+      if(percentStart == percentEnd) {
+        clearInterval(progress)
+      }
+    }, 100);
+  </script>
+</body>
+</html>

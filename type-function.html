@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    //number function
+    const isNumber = value => typeof value === 'number' && !isNaN(value);
+    const num = 1
+    console.log(typeof num)
+    console.log(isNumber(num))
+
+    //boolen function
+    isBoolean = value => typeof value === 'boolean';
+    const state = false
+    console.log(isBoolean(state))
+
+    //string function
+    const isString = value => typeof value === 'string';
+    const name = 'mesto'
+    console.log(isString(name))
+
+    //object function
+    isObject = value => typeof value === 'object';
+    const user = {id:1, name:'Deniz'}
+    console.log(isObject(user))
+
+    //array function
+    isArray = value => Array.isArray(value);
+    const lang = ['Html','Css','Javascript']
+    console.log(isArray(lang))
+  </script>
+</body>
+</html>

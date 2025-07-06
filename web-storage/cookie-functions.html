@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <button onclick="setCookie('auth2','mesto', 2)">Set Cookie</button>
+    <button onclick="getAllCookie()">Get All Cookie</button>
+    <button onclick="getCookieKeys()">Get Cookie Keys</button>
+    <button onclick="getCookieValues()">Get Cookie Values</button>
+    <button onclick="filterCookie('auth')">Filter Cookie</button>
+    <button onclick="deleteAllCookies()">Delete All Cookies</button>
+  </head>
+  <body>
+    <script>
+      //set cookie function
+      const setCookie = (key, value, days) => {
+        const d = new Date();
+        d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = key + "=" + value + ";" + expires + ";path=/";
+      }
+
+      //get all cookies (first set many cookies)
+      const getAllCookie = () => {
+        console.log(document.cookie.split(";"))
+      }
+      const getCookieKeys = () => {
+        const allCookies = document.cookie.split(";")
+        //with map
+        const keys = allCookies.map(item => item.split('=')[0])
+        console.log(keys)
+
+        //or with for loop
+        // for (const item of allCookies) {
+        //   let keys = item.split('=')[0]
+        //   console.log(keys.trim())
+        // }
+      }
+      const getCookieValues = () => {
+        const allCookies = document.cookie.split(";")
+
+        //with map
+        const values = allCookies.map(item => item.split('=').pop())
+        console.log(values)
+
+        //or with for loop
+        // for (const item of allCookies) {
+        //   let values = item.split('=').pop()
+        //   console.log(values.trim())
+        // }
+      }
+      const filterCookie = (key) => {
+        const allCookies = document.cookie.split(";")
+
+        //with filter 
+        const result = allCookies.filter(item => item.split('=')[0] == 'auth')
+        result.length > 0 ? alert('Welcome ' + key) : alert('Please login!')
+
+        //or with loop
+        // for (const item of allCookies) {
+        //   let values = item.split('=')[0]
+        //   values == key ? alert('Welcome ' + name) : alert('Please login!')
+        // }
+      }
+      const deleteAllCookies = () => {
+        const allCookies = document.cookie.split(";")
+        for (const item of allCookies) {
+          let values = item.split('=')[0]
+          document.cookie = `${values}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        }
+      }
+    </script>
+  </body>
+</html>

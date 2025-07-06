@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //simple object
+      const user = {
+        name: "mesto",
+        salery: 300,
+      };
+      console.log(user);
+
+      //array object
+      const users = [
+        { id: 1, name: "mesto", salery: 300 },
+        { id: 2, name: "ali", salery: 300 },
+        { id: 3, name: "deniz", salery: 400 },
+      ];
+      console.log(users);
+
+      //object with method
+      const test = {
+        name: "Mustafa",
+        lastname: "Kaya",
+        fullname() {
+          return this.name + " " + this.lastname;
+        },
+      };
+      console.log(test.fullname());
+
+      //create object from arrays
+      const keys = ["name", "age", "country"];
+      const values = ["bobby", 30, "Chile"];
+
+      const obj = {};
+
+      keys.forEach((element, index) => {
+        obj[element] = values[index];
+      });
+
+      console.log(obj);
+
+      //create object from arrays with reduce
+      const obj2 = keys.reduce((accumulator, key, index) => {
+        return { ...accumulator, [key]: values[index] };
+      }, {});
+
+      console.log(obj2);
+
+      //create object from arrays with assign
+      function toObject(keys, values) {
+        const obj = Object.assign(
+          ...keys.map((key, index) => ({
+            [key]: values[index],
+          }))
+        );
+
+        return obj;
+      }
+      const arr1 = ["name", "age", "country"];
+      const arr2 = ["bobby", 30, "Chile"];
+      const obj3 = toObject(arr1, arr2);
+      console.log(obj3);
+
+      //create object from arrays with entries
+      function toObject(keys, values) {
+        const obj = Object.fromEntries(
+          keys.map((key, index) => [key, values[index]])
+        );
+
+        return obj;
+      }
+      const obj4 = toObject(arr1, arr2);
+      console.log(obj4)
+    </script>
+  </body>
+</html>

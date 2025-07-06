@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{margin: 30px 0;}
+    .container{
+      display: flex;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .pages, .btn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f1f1f1;
+      border-radius: 4px;
+      width: 44px;
+      height: 40px;
+      border: 1px solid #ddd;
+      margin: 0 3px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .pages.active{
+      background-color: cornflowerblue;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Javascript Pagination</h1>
+  <div class="container">
+    <span class="btn" id="start"><<</span>
+    <span class="btn" id="prev"><</span>
+    <span class="pages">1</span>
+    <span class="pages">2</span>
+    <span class="pages">3</span>
+    <span class="pages">4</span>
+    <span class="pages">5</span>
+    <span class="pages">6</span>
+    <span class="pages">7</span>
+    <span class="pages">8</span>
+    <span class="pages">9</span>
+    <span class="pages">10</span>
+    <span class="pages">11</span>
+    <span class="pages">12</span>
+    <span class="btn" id="next">></span>
+    <span class="btn" id="end">>></span>
+  </div>
+
+  <script>
+    const $ = (par) => document.querySelector(par)
+    const pages =  document.querySelectorAll('.pages')
+    const start = $('#start')
+    const prev = $('#prev')
+    const next = $('#next')
+    const end = $('#end')
+    let selected = 0
+    pages[0].classList.add('active')
+
+    const removeSelected = () => {
+      Array.from(pages).map(item => item.classList.remove('active'))
+      //or
+      // document.querySelector('.active').classList.remove('active')
+    }
+    pages.forEach((item, index) => {
+      item.addEventListener('click', (e) => {
+        removeSelected()
+        e.target.classList.add('active')
+        selected = index
+      })
+    })
+
+    start.addEventListener('click', (e) => {
+      removeSelected()
+      pages[0].classList.add('active')
+      selected = 0
+    })
+
+    end.addEventListener('click', (e) => {
+      removeSelected()
+      pages[pages.length-1].classList.add('active')
+      selected = pages.length-1
+    })
+
+    prev.addEventListener('click', (e) => {
+      removeSelected()
+      if(selected == 0){
+        selected = 0
+        pages[selected].classList.add('active')
+      } else {
+        pages[selected-1].classList.add('active')
+        selected--
+      }
+    })
+    
+    next.addEventListener('click', (e) => {
+      removeSelected()
+      if(selected == pages.length-1){
+        selected = pages.length-1
+        pages[selected].classList.add('active')
+      } else {
+        pages[selected+1].classList.add('active')
+        selected++
+      }
+    })
+  </script>
+</body>
+</html>

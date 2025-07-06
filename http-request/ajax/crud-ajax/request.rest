@@ -1,0 +1,28 @@
+###
+GET http://localhost:3000/langs
+
+###
+POST http://localhost:3000/addlang
+Content-Type: application/json
+
+{
+  "name":"ruby"
+}
+
+###
+PUT http://localhost:3000/updatelang
+Content-Type: application/json
+
+{
+  "id":"9",
+  "name":"ruby2"
+}
+
+###
+DELETE http://localhost:3000/deletelang
+Content-Type: application/json
+
+{
+  "id": 9,
+  "name":""
+}

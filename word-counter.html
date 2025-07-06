@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: darkcyan;
+    }
+    h1{margin: 30px 0;}
+    .container{
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+      height: 600px;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 30px;
+      background-color: #fff;
+    }
+    .panel{
+      background-color: #f1f1f1;
+      height: 84%;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    .panel:focus{
+      outline: 1px solid #ccc;
+      padding: 10px;
+      font-size: 18px;
+    }
+    footer{
+      display: flex;
+      height: 60px;
+      margin-top: 20px;
+      border-top: 1px;
+      background-color: #f1f1f1;
+      height: 14%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    footer > div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 50%;
+      background: #333;
+      font-size: 40px;
+      color: #f1f1f1;
+      margin: 0 5px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Javascript Word Counter</h1>
+  <div class="container">
+    <textarea class="panel" id="panel"></textarea>
+    <footer>
+      <div id="char"></div>
+      <div id="word"></div>
+    </footer>
+  </div>
+
+  <script>
+    const $ = (par) => document.querySelector(par)
+    const panel = $('#panel')
+    const char = $('#char')
+    const word = $('#word')
+
+    panel.addEventListener('input', (e) => {
+      char.innerText = e.target.value.length
+      word.innerText = e.target.value.split(/\W+/).filter(item => item != "").length
+    })
+  </script>
+</body>
+</html>

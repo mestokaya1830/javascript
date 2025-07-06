@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        margin: 30px 0;
+      }
+      #watch {
+        text-align: center;
+        margin: 30px 0;
+      }
+      #container {
+        display: flex;
+        justify-content: space-around;
+        max-width: 300px;
+        margin: 30px auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        padding: 5px 20px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        cursor: pointer;
+        margin: 0 5px;
+      }
+      button:hover {
+        background-color: cadetblue;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Javascript Stopwatch</h1>
+
+    <h1 id="watch"></h1>
+    <div id="container">
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+      <button id="reset">Reset</button>
+    </div>
+
+    <script>
+      let watch = document.getElementById("watch");
+      let startBtn = document.getElementById("start");
+      let stopBtn = document.getElementById("stop");
+      let resetBtn = document.getElementById("reset");
+
+      let startTime = 0;
+      let elapsedTime = 0;
+      let currentTime = 0;
+
+      let poused = true;
+      let inervalId;
+
+      let hours = 0;
+      let min = 0;
+      let sec = 0;
+
+      startBtn.addEventListener("click", () => {
+        if (poused) {
+          poused = false;
+          startTime = Date.now() - elapsedTime;
+          inervalId = setInterval(updateTime, 75);
+        }
+      });
+
+      function updateTime() {
+        elapsedTime = Date.now() - startTime;
+        sec = Math.floor((elapsedTime / 1000) % 60);
+        min = Math.floor((elapsedTime / (1000 * 60)) % 60);
+        hours = Math.floor((elapsedTime / (1000 * 60 * 60)) % 60);
+
+        sec = addZero(sec);
+        min = addZero(min);
+        hours = addZero(hours);
+
+        watch.innerText = `${hours} : ${min} : ${sec}`;
+      }
+
+      function addZero(unit) {
+        return ("0" + unit).length > 2 ? unit : "0" + unit;
+      }
+
+      stopBtn.addEventListener("click", () => {
+        if (!poused) {
+          poused = true;
+          clearInterval(inervalId);
+        }
+      });
+
+      resetBtn.addEventListener("click", () => {
+        poused = true;
+        startTime = 0;
+        elapsedTime = 0;
+        currentTime = 0;
+        hours = 0;
+        min = 0;
+        sec = 0;
+        clearInterval(inervalId);
+        watch.innerText = "00 : 00 : 00";
+      });
+    </script>
+  </body>
+</html>

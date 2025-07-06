@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    let users = [
+      { id: 1, name: 'Mesto' },
+      { id: 2, name: 'Sami' },
+      { id: 3, name: 'Hamit' }
+    ]
+    
+    const userlist = () => {
+      return users
+    }
+
+    const addUser =  async (id, name) => {
+      try {
+        console.log('First')//it shouldn't wait for anything
+        await users.push({ id: id, name: name })
+        const result = await userlist() //this function must wait for await users function
+        console.log(result)
+        console.log('Second')//it should wait for result await line
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    addUser(4, 'Selim')
+    console.log('Third')//it shouldn't wait for anything
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        margin: 30px 0;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 300px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .inputs {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #ddd;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 30px;
+      }
+      .inputs:focus {
+        background-color: #fff;
+        border: 1px solid darkcyan;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      button {
+        width: 300px;
+        margin-top: 30px;
+        padding: 7px 15px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        transform: scale(0.9);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Javascript OTP-Designe</h1>
+    <div class="container">
+      <input type="number" maxlength="1" class="inputs" />
+      <input type="number" maxlength="1" class="inputs" disabled />
+      <input type="number" maxlength="1" class="inputs" disabled />
+      <input type="number" maxlength="1" class="inputs" disabled />
+    </div>
+    <h2 id="result"></h2>
+    <button id="btn">Check</button>
+
+    <script>
+      const inputs = document.querySelectorAll(".inputs")
+      const key = 1234
+      let result = ''
+      window.addEventListener("load", () => {
+        inputs[0].focus();
+      });
+
+      inputs.forEach((item, index) => {
+        item.addEventListener("keyup", (e) => {
+          if (index <= 2 && item.value !== '' && item.nextElementSibling.value == '') {//check last input
+            item.nextElementSibling.removeAttribute("disabled")
+            item.nextElementSibling.focus();
+          }
+          if(item.value.length > 1){
+            inputs[index].value = ''
+            item.focus();
+            return
+          }
+        })
+      })
+      document.getElementById('btn').addEventListener('click', () => {
+        result = ''
+        document.querySelectorAll('.inputs').forEach(item => {
+          result += item.value
+        })
+        key == result ? alert(result) : alert('Wrong!')
+      })
+    </script>
+  </body>
+</html>

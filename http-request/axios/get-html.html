@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axios Get Csv</title>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Axios Get Html</h2>
+  <p style="margin: 20px; text-align: center;">Look at the Console</p>
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const getHtml = async () => {
+      try {
+        const result = await axios.get('https://dev.to/search?q=nodejs')
+        const final  = await result.data
+        console.log(final)
+        const parser = new DOMParser()
+        const htmlData = parser.parseFromString(final, 'text/html')
+        
+        const links = Array.from(htmlData.querySelectorAll('a'))
+        const output = links.map(item => item.href)
+        console.log(output)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getHtml()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    const users = [
+      {name:'mesto', age: 50, salary: 3000},
+      {name:'ali', age: 30, salary: 4000},
+      {name:'deniz', age: 20, salary: 5000}
+    ]
+
+    //serialize
+    const result = JSON.stringify(users)
+    console.log(result)
+
+    //serialize filter
+    const result2 = JSON.stringify(users, ['name','salary'])
+    console.log(result2)
+
+    //serialize null
+    const result3 = JSON.stringify(users, null, 2)
+    console.log(result3)
+  </script>
+</body>
+</html>

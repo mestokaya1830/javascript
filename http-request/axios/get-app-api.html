@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axios Get All Api</title>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Axios Get All Api</h2>
+  <p style="margin: 20px; text-align: center;">Look at the Console</p>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const getApi = async () => {
+      axios.all([
+        axios.get('https://jsonplaceholder.typicode.com/posts'),
+        axios.get('https://jsonplaceholder.typicode.com/todos')
+      ])
+      .then(result => {
+        console.log(result[0].data)
+        console.log(result[1].data)
+      })
+      .catch(err => console.log(err))
+    }
+    getApi()
+    
+    //or with spread
+    // const getApi = async () => {
+    //   axios.all([
+    //     axios.get('https://jsonplaceholder.typicode.com/posts'),
+    //     axios.get('https://jsonplaceholder.typicode.com/todos')
+    //   ])
+    //   .then(axios.spread((posts, todos) => console.log(posts)))
+    //   .catch(err => console.log(err))
+    // }
+    // getApi()
+
+  </script>
+</body>
+
+</html>

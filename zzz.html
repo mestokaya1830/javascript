@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function smartClickSystem() {
+  let lastClick = 0;
+  let clickCount = 0;
+
+  return function onClick() {
+    const now = Date.now();
+    const delta = now - lastClick;
+
+    // İlk tıklamada delta hesaplanamaz
+    if (lastClick === 0) {
+      console.log("🧠 İlk tıklama: Gözlem başlatıldı");
+    } else if (delta < 300) {
+      console.log("⚡ Hızlı tıklama: Duygusal tepki (renk değiştir)");
+    } else if (clickCount >= 4) {
+      console.log("🔁 Alışkanlık tıklaması: Otomatik seçenek sun");
+    } else {
+      console.log("🔍 Düşünülmüş tıklama: Bilgi göster");
+    }
+
+    clickCount++;
+    lastClick = now;
+  };
+}
+
+// Kullanım örneği
+const handleClick = smartClickSystem();
+
+// Simülasyon: Arka arkaya tıklamalar
+handleClick(); // ilk
+setTimeout(handleClick, 100);  // hızlı
+setTimeout(handleClick, 200);  // hızlı
+setTimeout(handleClick, 800);  // düşünülmüş
+setTimeout(handleClick, 1500); // alışkanlık
+setTimeout(handleClick, 2000); // alışkanlık
+const click = smartClickSystem();
+click();
+click(); // hızlı
+setTimeout(click, 500); // düşünülmüş
+setTimeout(click, 1000); // alışkanlık
+
+  </script>
+</body>
+</html>

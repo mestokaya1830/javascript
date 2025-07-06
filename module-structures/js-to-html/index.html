@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script src="./module.js"></script>
+  <script>
+    //dynamic load after page loading
+    // import('./module.js').then(model => {
+    //   console.log(model)
+    // })
+    //with async await
+    // const getImport = async() => {
+    //   const {default: User} = await import('./module.js')
+    //   console.log(User('mesto'))
+    // }
+    // getImport()
+    
+    //with promise
+    // import('./module.js').then(({default: function2, User, Admin}) => {
+    //   console.log(function2())
+    // })
+    console.log(User('Mesto','Kaya'))
+
+    //with class
+    const newUser = new UserClass('Mustafa','Kaya')
+    console.log(newUser.fullName())
+  </script>
+</body>
+</html>

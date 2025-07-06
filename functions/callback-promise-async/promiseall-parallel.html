@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Look on the console</h2>
+
+  <script>
+    //promise 1
+    const p1 = () => Promise.resolve('1,2,3')
+
+    //promise 2
+    const p2 = new Promise((resolve, reject) => {
+      resolve('Second promise')
+    })
+
+    //promise 3
+    const p3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(fetch('https://jsonplaceholder.typicode.com/users').then(result => result.json()))
+      }, 3000)
+    })
+
+    Promise.all([p1(),p2,p3]).then(result =>{
+      console.log(result)
+      console.log(result[2])//index of third promise
+    }).catch(err => {
+      console.log(err)
+    })
+  </script>
+</body>
+</html>

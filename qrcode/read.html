@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{margin: 30px 0;}
+    .container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 400px;
+      height: auto;
+      border: 15px solid cadetblue;
+      border-radius: 10px;
+      margin-top: 50px;
+    }
+    .qr-code{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: 300px;
+      border-top: 1px solid #ddd;
+      margin-top: 50px;
+      padding: 20px;
+      display: none;
+    }
+    .upload{cursor: pointer;}
+    .qr-image{
+      width: 100%;
+      height: 100%;
+    }
+    .qr-text{
+      padding: 10px;
+      display: none;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Javascript Qrcode Reader</h1>
+  <div class="container">
+    <input type="file" id="fileInput" hidden>
+    <img src="./upload.png" alt="" class="upload" id="uploadBtn">
+    <div class="qr-code" id="qrcode">
+      <img src="" alt="" class="qr-image" id="qrcodeImg">
+   </div>
+   <p class="qr-text" id="qrText"></p>
+  </div>
+
+  <script>
+    const $ = (par) => document.querySelector(par)
+    const fileInput =  $('#fileInput')
+    const uploadBtn = $('#uploadBtn')
+    const qrcode = $('#qrcode')
+    const qrcodeImg = $('#qrcodeImg')
+    const qrText = $('#qrText')
+
+    const getApi = async(formData) => {
+      const result = await fetch('http://api.qrserver.com/v1/read-qr-code/', {
+        method: 'POST',
+        body: formData
+      })
+      const final = await result.json()
+      console.log(final)
+      $('#qrText').style.display = 'block'
+      $('#qrText').innerText = final[0].symbol[0].data
+    }
+    uploadBtn.addEventListener('click', () => fileInput.click())
+    fileInput.addEventListener('change', (e) => {
+      let formData = new FormData()
+      formData.append('file', e.target.files[0])
+      qrcode.style.display = 'block'
+      qrcodeImg.src = URL.createObjectURL(e.target.files[0])
+      getApi(formData)
+    })
+  </script>
+</body>
+</html>

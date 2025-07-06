@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+  body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+  } 
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    height: 80vh;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10vh auto;
+  }
+  </style>
+</head>
+<body>
+  <div id="el">
+   <h1> Div Element</h1>
+  </div>
+  <script>
+    //window
+    console.log('window-innerWidth',window.innerWidth)
+    console.log('window-outerWidth',window.outerWidth)
+    console.log('window-innerHeight',window.innerHeight)
+    console.log('window-outerHeight',window.outerHeight)
+    console.log('--------------------------------------')
+
+    //screen
+    console.log('screen-width', screen.width)
+    console.log('screen-height', screen.height)
+    console.log('--------------------------------------')
+
+    //element
+    console.log('div offsetwidth',document.getElementById('el').offsetWidth)
+    console.log('div offsetheight',document.getElementById('el').offsetHeight)
+    console.log('div offsetleft',document.getElementById('el').offsetLeft)
+    console.log('div offsettop',document.getElementById('el').offsetTop)
+    console.log('--------------------------------------')
+
+  </script>
+</body>
+</html>

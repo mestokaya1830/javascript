@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursion Function</title>
+</head>
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Recursion Function</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+  <script>
+
+    const test = (num=1) => {
+      if(num > 10) return
+      console.log(num)
+      num++
+      return test(num)
+    }
+    test()
+    
+  </script>
+</body>
+</html>

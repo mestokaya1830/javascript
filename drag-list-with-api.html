@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{
+      margin: 30px 0;
+    }
+    .container{
+      display: flex;
+      padding: 20px 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .left, .right{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 300px;
+      height: 410px;
+      border: 1px dashed #666;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 0 10px;
+    }
+    .list{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 50px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding-left: 10px;
+      margin: 5px 0;
+      font-size: 18px;
+      cursor: grab;
+      background-color: #f1f1f1;
+    }
+    </style>
+</head>
+<body>
+  <h1>Javascript Drag-Drop List</h1>
+  <div class="container">
+    <div class="left" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div class="list" id="item1" draggable="true" ondragstart="drag(event)">Html5</div>
+      <div class="list" id="item2" draggable="true" ondragstart="drag(event)">Css3</div>
+      <div class="list" id="item3" draggable="true" ondragstart="drag(event)">Javascript</div>
+      <div class="list" id="item4" draggable="true" ondragstart="drag(event)">Vue3</div>
+      <div class="list" id="item5" draggable="true" ondragstart="drag(event)">NodeJS</div>
+      <div class="list" id="item6" draggable="true" ondragstart="drag(event)">Mongodb</div>
+      <div class="list" id="item7" draggable="true" ondragstart="drag(event)">Mysql</div>
+    </div>
+    <div class="right" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  </div>
+  
+  <script>
+    const allowDrop = (e) => {
+      e.preventDefault()
+    }
+    
+    const drag = (e) => {
+      e.dataTransfer.setData("img", e.target.id)
+    }
+    
+    const drop = (e) => {
+      e.preventDefault()
+      var data = e.dataTransfer.getData("img")
+      console.log(document.getElementById(data))
+      e.target.appendChild(document.getElementById(data))
+    }
+    </script>
+</body>
+</html>

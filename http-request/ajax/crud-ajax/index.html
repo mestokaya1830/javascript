@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      margin: 50px auto;
+      width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    #list {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .list {
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      margin: 3px 0;
+      padding: 5px;
+    }
+
+    .list-id {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 24px;
+      background-color: cornflowerblue;
+      color: #fff;
+      border-radius: 2px;
+    }
+
+    .list-name {
+      display: flex;
+      align-items: center;
+      width: 140px;
+      padding-left: 5px;
+    }
+
+    button {
+      margin: 0 5px;
+    }
+    h2{
+      text-align: center;
+    }
+    .search, .input-text{
+      height: 34px;
+      padding-left: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 100%;
+      margin: 5px 0;
+      font-size: 17px;
+    }
+    .add-btn{
+      height: 34px;
+      width: 100%;
+      margin: 20px 0;
+      font-size: 20px;
+    }
+    .id-name{
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Node.JS Fetch Ajax</h2>
+  <div class="container">
+    <input type="text" id="search" class="search" onkeyup="searchLangs()" placeholder="search...">
+    <div>
+      <input type="text" name="" class="input-text" id="add-new">
+      <button onclick="addLangs()" class="add-btn">Add Langs</button>
+    </div>
+    <hr>
+    <h2 id="title">Lang List</h2>
+    <ul id="list">
+      <!-- dynamic side -->
+    </ul>
+    <!-- script side -->
+  </div>
+  <script>
+    let result;
+    let getLangs = async () => {
+      const xhttp = new XMLHttpRequest()
+      xhttp.open('get', 'http://localhost:3000/langs', true)
+      xhttp.send()
+      xhttp.onload = function () {
+        if (this.status === 200) {
+          result = JSON.parse(this.responseText)
+          addDom(result)
+        }
+      }
+    }
+    getLangs()
+
+    let addLangs = async () => {
+      document.getElementById('list').innerHTML = ''
+      const xhttp = new XMLHttpRequest()
+      xhttp.open('POST', 'http://localhost:3000/addlang')
+      xhttp.setRequestHeader('Content-type', 'application/json')
+      xhttp.send(JSON.stringify({
+        name: document.getElementById('add-new').value.split(' ').map(item => item[0].toUpperCase() + item.slice(1)).join(' ')
+      }))
+      xhttp.onload = function () {
+        if (this.status === 200) {
+          result = JSON.parse(this.responseText)
+          addDom(result)
+        }
+      }
+    }
+
+    let updateLangs = async (id) => {
+      document.getElementById('list').innerHTML = ''
+      const xhttp = new XMLHttpRequest()
+      xhttp.open('PUT', 'http://localhost:3000/updatelang')
+      xhttp.setRequestHeader('Content-type', 'application/json')
+      xhttp.send(JSON.stringify({
+        id: id,
+        name: document.getElementById('add-new').value
+      }))
+      xhttp.onload = function () {
+        if (this.status === 200) {
+          result = JSON.parse(this.responseText)
+          addDom(result)
+        }
+      }
+    }
+
+    let deleteLangs = async (id) => {
+      document.getElementById('list').innerHTML = ''
+      const xhttp = new XMLHttpRequest()
+      xhttp.open('DELETE', 'http://localhost:3000/deletelang')
+      xhttp.setRequestHeader('Content-type', 'application/json')
+      xhttp.send(JSON.stringify({
+        id: id
+      }))
+      xhttp.onload = function () {
+        if (this.status === 200) {
+          result = JSON.parse(this.responseText)
+          addDom(result)
+        }
+      }
+    }
+
+    let searchLangs = () => {
+      document.getElementById('list').innerHTML = ''
+      let searchValue = document.getElementById('search').value
+      if (searchValue !== '') {
+        let search = searchValue
+          .split(' ').map(item => item[0].toUpperCase() + item.slice(1)).join(' ')
+        addDom(result.filter(item => item.name.includes(search)))
+      } else {
+        addDom(result)
+      }
+    }
+
+    const addDom = (param) => {
+      param.forEach((item, index) => {
+        document.getElementById('list').innerHTML += `
+        <li class="list">
+          <div class="id-name">
+            <span class="list-id">${item.id}</span>
+            <span class="list-name">${item.name}</span>
+          </div>
+          <div>
+            <button onclick="updateLangs(${item.id})">Update</button>
+            <button onclick="deleteLangs(${item.id})">Delete</button>
+          </div>
+        </li>`
+      })
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Get Json</title>
+  </head>
+
+  <body>
+    <h2 style="margin: 20px; text-align: center">Fetch Get Json</h2>
+    <p style="margin: 20px; text-align: center">Look at the Console</p>
+
+    <script>
+      const getJson = async () => {
+        let result = await fetch("./soccer.json");
+        // console.log(result);
+        // const contentType = result.headers.get("content-type");
+        // if (!contentType || !contentType.includes("application/json")) {
+        //   throw new TypeError("Oops, we haven't got JSON!");
+        // }
+        let final = await result.json();
+        final[0].results.forEach((item) => {
+          console.log(item.home.name);
+        });
+      };
+      getJson();
+    </script>
+  </body>
+</html>

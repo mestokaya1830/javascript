@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM Memory Leak</title>
+  </head>
+  <body>
+    <button id="create">Create Div</button>
+    <button id="cleanup">Clean Up The Cache</button>
+    <script>
+      const leakArray = [];
+
+      document.getElementById("create").addEventListener("click", () => {
+        const div = document.createElement("div");
+        div.textContent = "Leaky div!";
+
+        // ❗ Sızıntı: Bu fonksiyon dışarıda tutuluyor
+        function onClick() {
+          console.log("Still alive!");
+        }
+
+        div.addEventListener("click", onClick);
+        document.body.appendChild(div);
+
+        // ❌ DOM’dan silsek bile:
+        document.body.removeChild(div);
+
+        // ❌ Referans hâlâ tutuluyor!
+        leakArray.push({ div, onClick });
+        console.log(leakArray)
+      });
+
+      document.getElementById("cleanup").addEventListener("click", () => {
+        leakArray.forEach(({ div, onClick }) => {
+          div.removeEventListener("click", onClick);
+        });
+        leakArray.length = 0;
+      });
+
+      //go to console create snapshot after created element 
+      //click on the active snapshot and type in filter "Detached" then see divs
+    </script>
+  </body>
+</html>

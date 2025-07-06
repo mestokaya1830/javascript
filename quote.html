@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        color: blueviolet;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+      h1 {
+        margin: 30px 0;
+      }
+      .quote-symbol {
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+        color: #000;
+      }
+      .top {
+        display: flex;
+        width: 100%;
+        font-size: 16px;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 400px;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        padding: 20px;
+      }
+      h2 {
+        margin: 20px 0;
+      }
+      .author {
+        margin: 10px;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+      }
+      footer {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+        border-top: 1px solid #ccc;
+        padding: 10px 0;
+      }
+      button {
+        padding: 8px 20px;
+        border-radius: 30px;
+        border: 1px solid #ccc;
+        background-color: blueviolet;
+        color: #fff;
+        font-size: 18px;
+        transform: translateX(100%);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Javascript Quote</h1>
+    <div class="container">
+      <h2>Daily Quote</h2>
+      <div class="top">
+        <p>
+          <img src="./images/quote.png" alt="" class="quote-symbol" />
+          <span id="quote"></span>
+          <img src="./images/quote.png" alt="" class="quote-symbol" />
+        </p>
+      </div>
+      <div class="author" id="author">--Mesto Kaya</div>
+      <footer>
+        <span class="material-symbols-outlined" id="sound">volume_up</span>
+        <span class="material-symbols-outlined" id="copy">content_copy</span>
+        <button id="newQuote">New Quote</button>
+      </footer>
+    </div>
+
+    <script>
+      const quotes = [
+        {
+          _id: "hPQPQgK_iNXQ",
+          content:
+            "Follow effective action with quiet reflection. From the quiet reflection will come even more effective action.",
+          author: "Peter Drucker",
+          tags: ["Famous Quotes"],
+          authorSlug: "peter-drucker",
+          length: 110,
+          dateAdded: "2019-07-23",
+          dateModified: "2023-04-14",
+        },
+        {
+          _id: "wTqLeEaOhRhC",
+          content:
+            "Permanence, perseverance and persistence in spite of all obstacles, discouragements, and impossibilities: It is this, that in all things distinguishes the strong soul from the weak.",
+          author: "Thomas Carlyle",
+          tags: ["Famous Quotes"],
+          authorSlug: "thomas-carlyle",
+          length: 181,
+          dateAdded: "2020-12-08",
+          dateModified: "2023-04-14",
+        },
+        {
+          _id: "WLeZo2pcwiPB",
+          content:
+            "We must not allow ourselves to become like the system we oppose.",
+          author: "Desmond Tutu",
+          tags: ["Character"],
+          authorSlug: "desmond-tutu",
+          length: 64,
+          dateAdded: "2019-02-11",
+          dateModified: "2023-04-14",
+        },
+      ];
+
+      const $ = (par) => document.querySelector(par);
+      const quote = $("#quote");
+      const newQuote = $("#newQuote");
+      const author = $("#author");
+      const sound = $("#sound");
+      const copy = $("#copy");
+
+      newQuote.addEventListener("click", () => {
+        let index = Math.floor(Math.random() * 3);
+        quote.innerText = quotes[index].content;
+        author.innerText = quotes[index].author;
+      });
+
+      sound.addEventListener("click", () => {
+        let speech = new SpeechSynthesisUtterance();
+        voices = window.speechSynthesis.getVoices();
+        speech.voice = voices[0];
+        speech.text = quote.innerText;
+        window.speechSynthesis.speak(speech);
+      });
+
+      copy.addEventListener("click", () => {
+        navigator.clipboard.writeText(quote.innerText)
+        alert("Password copied to clipboard!");
+      });
+    </script>
+  </body>
+</html>

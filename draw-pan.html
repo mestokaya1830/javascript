@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 
+        "FILL" 0, 
+        "wght" 400, 
+        "GRAD" 0, 
+        "opsz" 24;
+        margin-right: 5px;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        padding: 30px 50px;
+        background-color: cadetblue;
+      }
+      .container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        margin-top: 30px;
+      }
+      h1 {
+        color: #ddd;
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        width: 14%;
+        background-color: #fff;
+        border-radius: 5px;
+        margin-right: 1%;
+        padding: 20px;
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        background-color: #fff;
+        border-radius: 5px;
+      }
+      .left-titles {
+        font-size: 20px;
+        font-weight: 500;
+        color: #333;
+      }
+      .shapes-con {
+        list-style: none;
+        margin-top: 10px;
+      }
+      .shapes-con li {
+        display: flex;
+        align-items: center;
+        height: 34px;
+        color: #666;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 0 10px;
+      }
+      .range-con{
+        display: flex;
+        align-items: center;
+        & .brush-range {
+          margin: 20px 0;
+          width: 90%;
+        }
+        & span{
+          font-size: 18px;
+          margin-left: 10px;
+        }
+      }
+      .radio-con {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 40px;
+        margin-top: 20px;
+      }
+      .radio-con input {
+        visibility: hidden;
+      }
+      .radio-con label {
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        cursor: pointer;
+      }
+      .radio-con label:hover {
+        transform: scale(1.07);
+      }
+      .radio-con #white {
+        background-color: white;
+      }
+      .radio-con #black {
+        background-color: black;
+      }
+      .radio-con #blue {
+        background-color: blue;
+      }
+      .radio-con #green {
+        background-color: green;
+      }
+      .radio-con #red {
+        background-color: red;
+      }
+      .color-picker{
+        width: 100%;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+      .clear-btn,
+      .save-btn {
+        padding: 10px 0;
+        width: 100%;
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 18px;
+        color: #444;
+        cursor: pointer;
+      }
+      .save-btn {
+        background-color: darkcyan;
+        color: #fff;
+      }
+      .clear-btn:hover,
+      .save-btn:hover {
+        transform: scale(1.05);
+      }
+      .shapes-con li:hover{
+        background-color: #f1f1f1;
+        border: 1px solid #ddd;
+      }
+      .fill-color{
+        border: 1px solid #ddd;
+      }
+      canvas{
+        width: 100%;
+        height: 100%;
+      }
+      #fill{
+        width: 20px;
+        height: 18px;
+        margin-right: 10px;
+      }
+      .active{outline: 1px solid #444;}
+      .fill-color{width: 100%; border: none; cursor: pointer;}
+    </style>
+  </head>
+  <body>
+    <h1>Javascript Draw Pan</h1>
+    <div class="container">
+      <div class="left">
+        <label class="left-titles">Shapes</label>
+        <ul class="shapes-con">
+          <li class="tools" id="rectangle"><span class="material-symbols-outlined">check_box_outline_blank</span>Rectangle</li>
+          <li class="tools" id="circle"><span class="material-symbols-outlined">circle</span>Circle</li>
+          <li class="tools" id="triangle"><span class="material-symbols-outlined">change_history</span>Triangle</li>
+          <li><input type="checkbox" id="fill"><label for="fill" class="fill-color">Fill Color</label></li>
+        </ul>
+        <label class="left-titles">Options</label>
+        <ul class="shapes-con">
+          <li class="tools" id="brush"><span class="material-symbols-outlined">brush</span>Brush</li>
+          <li class="tools" id="eraser"><span class="material-symbols-outlined">ink_eraser</span>Eraser</li>
+        </ul>
+        <div class="range-con">
+          <input type="range" value="2" step="2" class="brush-range" id="brushRange" />
+          <span id="rangeValue"></span>
+        </div>
+        <label class="left-titles">Colors</label>
+        <div class="radio-con">
+          <label for="white" id="white"
+            class="colors"><input type="radio" name="colors" id="white"
+          /></label>
+          <label for="white" id="black"
+          class="colors"><input type="radio" name="colors" id="black"
+          /></label>
+          <label for="white" id="blue"
+          class="colors"><input type="radio" name="colors" id="blue"
+          /></label>
+          <label for="white" id="green"
+          class="colors"><input type="radio" name="colors" id="green"
+          /></label>
+          <label for="white" id="red"
+          class="colors" ><input type="radio" name="colors" id="red"
+          /></label>
+        </div>
+        <input type="color" class="color-picker colors" id="colorPicker">
+        <button class="clear-btn" id='clearBtn'>Clear Canvas</button>
+        <button class="save-btn" id="saveBtn">Save</button>
+      </div>
+      <div class="right">
+        <canvas></canvas>
+      </div>
+    </div>
+
+    <script>
+      const $ = (par) => document.querySelector(par)
+      const canvas = document.querySelector('canvas')
+      const ctx = canvas.getContext('2d', { willReadFrequently: true })
+      const tools = document.querySelectorAll('.tools')
+      const colors = document.querySelectorAll('.colors')
+      let isDrawing = false
+      let selectedTool = 'brush'
+      let selectedColor = 'black'
+      let prevX, prevY, snapShot
+
+      const canvasBackground = () => {
+        ctx.fillStyle = '#fff'
+        ctx.fillRect(0,0,canvas.width, canvas.height)
+        ctx.fillStyle = selectedColor
+      }
+      //set canvas dimention
+      window.addEventListener('load', () => {
+        canvas.width = canvas.offsetWidth
+        canvas.height = canvas.offsetHeight
+        canvasBackground()
+      })
+
+
+      //get all tools
+      tools.forEach(item => {
+        item.addEventListener('click', () => {
+          Array.from(tools).map(item => item.classList.remove('active'))
+          selectedTool = item.id
+          item.classList.add('active')
+        })
+      })
+
+      //get all colors
+      colors.forEach(item => {
+        item.addEventListener('click', () => {
+          Array.from(colors).map(item => item.classList.remove('active'))
+          selectedColor = item.id
+          item.classList.add('active')
+        })
+      })
+
+      $('#colorPicker').addEventListener('change', (e) => {
+        selectedColor = e.target.value
+      })
+      //brush
+      const drawBrush = (e) => {
+        ctx.lineTo(e.offsetX, e.offsetY)
+        if(selectedTool == 'brush' || selectedTool == 'eraser'){
+          ctx.strokeStyle = selectedTool == 'eraser' ? "#fff" : selectedColor
+          ctx.stroke()
+        }
+      }
+
+      //rect
+      const drawRect = (e) => {
+        if(!$('#fill').checked){
+          return ctx.strokeRect(e.offsetX, e.offsetY, prevX - e.offsetX, prevY - e.offsetY)
+        }
+        ctx.fillRect(e.offsetX, e.offsetY, prevX - e.offsetX, prevY - e.offsetY)
+      }
+
+      //draw circle
+      const drawCircle = (e) => {
+        ctx.beginPath()
+        let radius = Math.sqrt(Math.pow((prevX - e.offsetX), 2) + Math.pow((prevY - e.offsetY), 2))
+        ctx.arc(prevX, prevY, radius, 0, 2 * Math.PI)
+        $('#fill').checked ? ctx.fill() : ctx.stroke()
+      }
+
+      //draw triangle
+      const drawTriangle = (e) => {
+        ctx.beginPath()
+        ctx.moveTo(prevX, prevY)
+        ctx.lineTo(e.offsetX, e.offsetY)
+        ctx.lineTo(prevX * 2 - e.offsetX, e.offsetY)
+        ctx.closePath()
+        $('#fill').checked ? ctx.fill() : ctx.stroke()
+      }
+      //start draw
+      const startDraw = (e) => {
+        isDrawing = true
+        prevX = e.offsetX
+        prevY = e.offsetY
+        ctx.beginPath()
+        ctx.strokeStyle = selectedColor
+        ctx.fillStyle = selectedColor
+        ctx.lineWidth = $('#brushRange').value
+        $('#rangeValue').innerText = $('#brushRange').value
+        snapShot = ctx.getImageData(0,0,canvas.width, canvas.height)
+      }
+      
+      //draw
+      const drawing = (e) => {
+        if(!isDrawing) return
+        ctx.putImageData(snapShot, 0, 0)
+        if(selectedTool == 'rectangle'){
+          drawRect(e)
+        } else if(selectedTool === 'circle'){
+          drawCircle(e)
+        } else if (selectedTool === 'triangle'){
+          drawTriangle(e)
+        } else  {
+          drawBrush(e)
+        }
+      }
+
+      $('#clearBtn').addEventListener('click', () => {
+        ctx.clearRect(0,0, canvas.width, canvas.height)
+        canvasBackground()//reload background
+      })
+
+      $('#saveBtn').addEventListener('click', () => {
+        const link = document.createElement('a')
+        link.download = Date.now() + '.jpg'
+        link.href = canvas.toDataURL()
+        link.click()
+      })
+
+      canvas.addEventListener('mousedown', startDraw)
+      canvas.addEventListener('mousemove', drawing)
+      canvas.addEventListener('mouseup', () => isDrawing = false)
+    </script>
+  </body>
+</html>

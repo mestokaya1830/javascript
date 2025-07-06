@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Memory Leak Demo</title>
+  </head>
+  <body>
+    <button id="leak">Leak</button>
+    <button id="clear">Clear</button>
+
+    <script>
+      // 🔥 Leak yaratacak global array
+      let leakArray = [];
+
+      document.getElementById("leak").addEventListener("click", () => {
+        // const obj = { data: new Array(1e6).fill("🔥") }; //big data
+        const obj = { data: 'username' }; //normal data
+        leakArray.push(obj);
+      });
+      document.getElementById('clear').addEventListener('click',() => {
+        leakArray = [];
+      })
+
+      //or with timeout
+      // setTimeout(() => {
+      //   window.leakArray = [];
+      //   console.log("Memory cleaned!");
+      // }, 5000);
+
+      //console sunu yazin
+      //leakArray.length eger cevap 1 den fazla ise memeory-leak vardir
+      //memeory-leak neden olan verileri bulmak icin console.log(window.leakArray) yazin
+    </script>
+  </body>
+</html>

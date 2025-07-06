@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root{
+      --primary-color:#f6f7fb;
+      --white-color: #fff;
+      --black-color: #18191a;
+      --red-color: #e74c3c;
+    }
+    .dark{
+      --white-color: #000;
+      --black-color: #fff;
+      --red-color: #e74c3c;
+    }
+    .thema{
+      background-color: var(--black-color);
+      color: var(--white-color);
+      font-size: 20px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 2px #ccc;
+      cursor: pointer;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{
+      margin: 30px 0;
+    }
+    .container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+    }
+    .clock{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 400px;
+      width: 400px;
+      border-radius: 50%;
+      background-color: var(--white-color);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1), 0 15px 45px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+    label{
+      position: absolute;
+      inset: 20px;
+      transform: rotate(calc(var(--i) * (360deg / 12)));
+      text-align: center;
+    }
+    label span{
+      display: inline-block;
+      font-size: 20px;
+      color: var(--black-color);
+      transform: rotate(calc(var(--i) * (-360deg / 12)));
+    }
+    .indicator{
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: var(--red-color);
+    }
+    .indicator::before{
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 4px solid var(--red-color);
+      border-radius: 50%;
+      background-color: var(--black-color);
+      z-index: 100;
+    }
+    .hand{
+      position: absolute;
+      height: 130px;
+      width: 4px;
+      bottom: 0;
+      border-radius: 25px;
+      transform-origin: bottom;
+      background-color: var(--red-color);
+    }
+    .minute{
+      height: 120px;
+      width: 5px;
+      background-color: var(--black-color);
+    }
+    .hour{
+      height: 100px;
+      width: 8px;
+      background-color: var(--black-color);
+    }
+    
+  </style>
+</head>
+<body>
+  <h1>Javascript Analog-Clock</h1>
+  <div class="container">
+    <div class="clock">
+      <label style="--i: 1"><span>1</span></label>
+      <label style="--i: 2"><span>2</span></label>
+      <label style="--i: 3"><span>3</span></label>
+      <label style="--i: 4"><span>4</span></label>
+      <label style="--i: 5"><span>5</span></label>
+      <label style="--i: 6"><span>6</span></label>
+      <label style="--i: 7"><span>7</span></label>
+      <label style="--i: 8"><span>8</span></label>
+      <label style="--i: 9"><span>9</span></label>
+      <label style="--i: 10"><span>10</span></label>
+      <label style="--i: 11"><span>11</span></label>
+      <label style="--i: 12"><span>12</span></label>
+      <div class="indicator">
+        <span class="hand hour"></span>
+        <span class="hand minute"></span>
+        <span class="hand second"></span>
+      </div>
+    </div>
+    <div class="thema">
+      Dark Mode
+    </div>
+  </div>
+
+  <script>
+    let second = document.querySelector('.second')
+    let minute = document.querySelector('.minute')
+    let hour = document.querySelector('.hour')
+    let thema = document.querySelector('.thema')
+    
+    const updateTime = () => {
+      const d = new Date()
+      let sdeg = (d.getSeconds() / 60) * 360
+      let mdeg = (d.getMinutes() / 60) * 360
+      let hdeg = (d.getHours() / 12) * 360
+
+      second.style.transform = `rotate(${sdeg}deg)`
+      minute.style.transform = `rotate(${mdeg}deg)`
+      hour.style.transform = `rotate(${hdeg}deg)`
+    }
+    setInterval(() => {
+      updateTime()
+    }, 1000);
+
+    document.querySelector('.thema').addEventListener('click', () => {
+      document.querySelector('.container').classList.toggle('dark')
+    })
+  </script>
+</body>
+</html>

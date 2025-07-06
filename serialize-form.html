@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    form{
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 40px auto;
+    }
+    form input{
+      height: 34px;
+      border-radius: 5px;
+      padding-left: 5px;
+      border: 1px solid #ddd;
+      margin: 5px 0;
+      font-size: 17px;
+    }
+    h2{text-align: center;margin: 50px 0;}
+  </style>
+</head>
+<body>
+  <h2>Form serialize</h2>
+  <form action="" id="form">
+    <input type="text" name="name" id="" placeholder="name">
+    <input type="text" name="pass" id="" placeholder="pass">
+    <input type="button" name="" id="send" value="Send">
+  </form>
+  <script>
+    document.getElementById('send').addEventListener('click', (e) => {
+      e.preventDefault()
+      const form = document.getElementById('form')
+
+      //form serialize
+      const formData = new FormData(form)
+      console.log(Array.from(formData))
+    })
+  </script>
+</body>
+</html>

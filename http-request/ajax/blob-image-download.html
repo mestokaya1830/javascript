@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Download Blob Image</title>
+    <style>
+      #progress-con {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        margin: 0 40%;
+      }
+      progress {
+        width: 90%;
+        margin-right: 5px;
+      }
+      button {
+        display: flex;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2 style="margin: 20px; text-align: center">Ajax Download Blob Image</h2>
+    <div id="progress-con">
+      <div style="display: flex">
+        <progress id="progress" value="0" max="100"></progress>
+        <label for="progress"></label>
+      </div>
+      <div>
+        <button onclick="downloadImg()">Download Image</button>
+      </div>
+    </div>
+    <script>
+      const downloadImg = () => {
+      const http = new XMLHttpRequest()
+      http.open('get', 'https://fastly.picsum.photos/id/75/200/300.jpg?hmac=sjSIzdmDj0dZefwBIN61pwl3azxymhEGh9owb8ZEgxg', true)
+      http.responseType = 'blob'; 
+      http.onload = function () {
+        console.log(this.getAllResponseHeaders())
+        console.log(this.getResponseHeader("last-modified"))
+        if (this.status === 200) {
+          let link = document.createElement('a')
+          link.href = URL.createObjectURL(new Blob([this.response]))
+          link.download = 'image.png'
+          link.click()
+          URL.revokeObjectURL(link.href)
+        }
+      }
+      http.addEventListener("progress", (e) => {
+        if(e.lengthComputable){
+          let text = document.getElementById("text")
+          let state = Math.floor((e.loaded / e.total) * 100)
+          progress.setAttribute("value", state)
+          progress.nextSibling.textContent = state + "%"
+        }
+      })
+      http.send()
+    }
+    </script>
+  </body>
+</html>

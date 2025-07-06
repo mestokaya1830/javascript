@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Pdf Json</title>
+</head>
+
+<body>
+  <h2 style="margin: 20px;text-align: center;">Create Pdf Json</h2>
+  <h2 style="margin: 20px;text-align: center;">
+    <button id="createPdf">Create Pdf From Json</button>
+  </h2>
+  
+  <script src="./pdfJS.js"></script>
+  <script>
+    var users = [
+      { name: "Mesto", age: 50 },
+      { name: "Filiz", age: 40 },
+      { name: "Bidik", age: 20 },
+      { name: "Helin", age: 16 },
+      { name: "Ilos", age: 13 }
+    ];
+
+    var doc = new jsPDF();
+    document.getElementById('createPdf').addEventListener('click', () => {
+      users.forEach(function (item, i) {
+        doc.text(20, 10 + (i * 10),
+          `Name: ${item.name} Age: ${item.age}`
+          );
+      });
+      doc.save('users.pdf');
+    })
+  </script>
+</body>
+
+</html>

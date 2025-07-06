@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alarm</title>
+</head>
+
+<body>
+  <h2 style="margin:20px 0; text-align: center;">Alarm</h2>
+  <p style="text-align: center;">Look at the Console</p>
+  <script>
+    let alarmLoop;
+    const setAlarm = (wakeTime) => {
+      if (Date.now() >= wakeTime) {
+        clearInterval(alarmLoop)
+        console.log('Wakeup please!') 
+      }
+    }
+    alarmLoop = setInterval(() => {
+      setAlarm(new Date('06/20/2025 19:38:00'))
+    })
+
+  </script>
+</body>
+
+</html>

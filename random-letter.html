@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      display: flex;
+      flex-direction: column;
+    }
+    div button {
+      margin: 5px; 0;
+      height: 34px;
+    }
+  </style>
+</head>
+<body>
+  <div style="width: 400px;margin: 20px auto;">
+    <h3>Generate Random String</h3>
+    <button onclick="getRandomLower()">Generate Random Lowecase</button>
+    <button onclick="getRandomUpper()">Generate Random Uppercase</button>
+    <button onclick="getRandomNumber()">Generate Random Number</button>
+  </div>
+  <script>
+    function getRandomLower() {
+      console.log( String.fromCharCode(Math.floor(Math.random() * 26) + 97))
+    }
+
+    function getRandomUpper() {
+        console.log(String.fromCharCode(Math.floor(Math.random() * 26) + 65))
+    }
+
+    function getRandomNumber() {
+        console.log(String.fromCharCode(Math.floor(Math.random() * 10) + 48))
+    }
+  </script>
+</body>
+</html>

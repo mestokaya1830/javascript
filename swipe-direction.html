@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: darkcyan;
+    }
+    h1{
+      margin: 30px 0;
+      color: #ddd;
+    }
+    .container{
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      height: 600px;
+      padding: 16px;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+    }
+    .panel{
+      height: 88%;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .result{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: bold;
+      height: 10%;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Javascript Detect Swipe Direction</h1>
+  <div class="container">
+    <div class="panel"></div>
+    <div class="result"></div>
+  </div>
+
+  <script>
+    const $ = (par) => document.querySelector(par)
+    const panel = $('.panel')
+    const result = $('.result')
+
+    let mouseX, initialX = 0
+    let mouseY, initialY = 0
+    let isSwipe;
+
+    let events = {
+      mouse: {
+        down: "mousedown",
+        move: "mousemove",
+        up: "mouseup"
+      },
+      touch: {
+        down: "touchstart",
+        move: "touchmove",
+        up: "touchend"
+      }
+    }
+
+    let deviceType = ''
+    const isTouchDevice = () => {
+      try {
+        document.createEvent('TouchEvent')
+        deviceType = 'touch'
+        return true
+      } catch (error) {
+        deviceType = 'mouse'
+        return false
+      }
+    }
+    console.log(isTouchDevice())
+    
+    let getLeft = panel.getBoundingClientRect().left
+    let getTop = panel.getBoundingClientRect().top
+    console.log(getLeft, getTop)
+
+    const getXY = (e) => {
+      mouseX = (!isTouchDevice() ? e.pageX : e.touches[0].pageX) - getLeft
+      mouseY = (!isTouchDevice() ? e.pageY : e.touches[0].pageY) - getTop
+    }
+    isTouchDevice()
+
+    panel.addEventListener(events[deviceType].down, (event) => {
+      isSwipe = true
+      getXY(event)
+      initialX = mouseX
+      initialY = mouseY
+    })
+    panel.addEventListener(events[deviceType].move, (event) => {
+      if(!isTouchDevice){
+        event.preventDefault();
+      }
+      if(isSwipe){
+        getXY(event)
+        let diffX = mouseX - initialX
+        let diffY = mouseY - initialY
+        if(Math.abs(diffY) > Math.abs(diffX)){
+          result.innerText = diffY > 0 ? "Down" : "Up"
+        } else {
+          result.innerText = diffX > 0 ? "Right" : "Left"
+        }
+      }
+    })
+
+    panel.addEventListener(events[deviceType].up, (event) => {
+      isSwipe = false
+    })
+    panel.addEventListener('mouseleave', () => {
+      isSwipe = false
+    })
+    window.onload = () => {
+      isSwipe = false
+    }
+  </script>
+</body>
+</html>

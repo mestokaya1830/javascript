@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h3{
+  margin: 30px;
+  text-align: center;
+}
+#container {
+  margin: 80px auto;
+  width: 500px;
+  height: 200px;
+  padding: 5px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  overflow: hidden;
+  background-image: url('./icons/bg.jpeg');
+}
+#character {
+  position: relative;
+  top: 133px;
+  left: 40px;
+}
+#monster {
+  transform: rotateY(180deg);
+  position: relative;
+  left: 520px;
+  top: 133px;
+  animation: monster 1s infinite;
+}
+@keyframes jump{
+  0%{top: 100px;}
+  30%{top: 80px;}
+  70%{top: 80px;}
+  100%{top: 160px;}
+}
+@keyframes monster{
+  0%{left: 480px;}
+  100%{left: -100px;}
+}
+.animate{
+  animation: jump 0.5s;
+}

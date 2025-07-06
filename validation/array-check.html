@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array-Check</title>
+</head>
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Array-Check</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+  <script>
+
+    //basic literal
+    let users = []
+
+    //check users is exist or not
+    console.log(users ? true : false)
+
+    //check users is a array or not
+    console.log(users != [] ? true : false)
+    console.log(typeof users == 'object' ? true : false)
+
+    //check users is empty or not
+    console.log(users.length? true : false)
+    console.log(users?.length? true : false)//chain method exisit and length
+
+  </script>
+</body>
+</html>
