@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Format</title>
+    <style>
+      .container {
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2 style="margin: 10px; text-align: center">Custom Format</h2>
+    <div class="container">
+      <label for="">Select Format</label>
+      <select name="" id="format">
+        <option value="d">d</option>
+        <option value="m">m</option>
+        <option value="y">y</option>
+        <option value="dm">dm</option>
+        <option value="md">md</option>
+        <option value="my">my</option>
+        <option value="ym">ym</option>
+        <option value="ymd">ymd</option>
+        <option value="ydm">ydm</option>
+        <option value="dmy">dmy</option>
+        <option value="mdy">mdy</option>
+        <option value="h">h</option>
+        <option value="min">min</option>
+        <option value="hmins">hmins</option>
+        <option value="hmin">hmin</option>
+        <option value="mins">mins</option>
+        <option value="dw">dw</option>
+        <option value="ymdhmin">ymdhmin</option>
+        <option value="ld">ld</option>
+        <option value="lt">lt</option>
+        <option value="ls">ls</option>
+        <option value="f1">f1</option>
+        <option value="f2">f2</option>
+        <option value="f3">f3</option>
+      </select>
+      <h3 id="result"></h3>
+    </div>
+    <script>
+      const dateFormat = (
+        selected,
+        day = 0,
+        month = 0,
+        year = 0,
+        hour = 0,
+        minute = 0,
+        sec = 0
+      ) => {
+        let cd = new Date();
+        const y = cd.getFullYear() + year;
+        let m = cd.getMonth() + 1 + month;
+        const dw = cd.getDay();
+        let d = cd.getDate() + day;
+        let h = cd.getHours() + hour;
+        let min = cd.getMinutes() + minute;
+        let s = cd.getSeconds() + sec;
+
+        h > 9 ? h : (h = "0" + h);
+        m > 9 ? m : (m = "0" + m);
+        s > 9 ? s : (s = "0" + s);
+        d > 9 ? d : (d = "0" + d);
+
+        const times = {
+          d: d,
+          m: m,
+          y: y,
+          dm: `${d}/${m}`,
+          md: `${m}/${d}`,
+          my: `${m}/${y}`,
+          ym: `${y}/${m}`,
+          ymd: `${y}/${m}/${d}`,
+          ydm: `${y}/${d}/${m}`,
+          dmy: `${d}/${m}/${y}`,
+          mdy: `${m}/${d}/${y}`,
+          h: h,
+          min: min,
+          hmins: `${h}:${min}:${s}`,
+          hmin: `${h}:${min}`,
+          mins: `${min}:${s}`,
+          dw: dw,
+          ymdhmin: `${y}/${m}/${d} ${h}:${min}`,
+          ld: cd.toLocaleDateString(),
+          lt: cd.toLocaleTimeString(),
+          ls: cd.toLocaleString(),
+          f1: `${y}/${m}/${d} ${h}:${min}:${s}`,
+          f2: `${d}/${m}/${y} ${h}:${min}:${s}`,
+          f3: `${m}/${d}/${y} ${h}:${min}:${s}`,
+        };
+        return times[selected];
+      };
+
+      document.getElementById("format").addEventListener("change", () => {
+        document.getElementById("result").innerText = dateFormat(
+          document.getElementById("format").value
+        );
+      });
+    </script>
+  </body>
+</html>

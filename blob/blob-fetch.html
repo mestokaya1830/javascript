@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img class="img" alt="" width="200">
+    <script>
+      async function setImage() {
+        try {
+          const result = await fetch("./1.jpg");
+          console.log(result)
+          if (!result.ok) {
+            throw new Error(`result status: ${result.status}`);
+          }
+          const blob = await result.blob();
+          const objectURL = URL.createObjectURL(blob);
+          document.querySelector(".img").src = objectURL;
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      setImage()
+    </script>
+  </body>
+</html>

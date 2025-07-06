@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duration</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #container{
+      display: flex;
+      flex-direction: column;
+      width: 220px;
+      margin: 0 auto;
+    }
+    #list{
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+    }
+    #list li{
+      margin: 8px;
+    }
+    label{margin: 5px 0;}
+  </style>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Duration</h2>
+  <div id="container">
+    <label>Select Date Look at the Console</label>
+    <!-- use this to format = required pattern="\d{4}-\d{2}-\d{2}" -->
+    <input type="date" id="user-date">
+    <ul id="list">
+      <li id="years"></li>
+      <li id="months"></li>
+      <li id="days"></li>
+      <li id="hours"></li>
+      <li id="minutes"></li>
+      <li id="seconds"></li>
+    </ul>
+  </div>
+
+
+
+  <script>
+
+    document.getElementById('user-date').addEventListener('change', (event) => {
+      const birthDay = new Date(event.target.value)
+      let current = new Date()
+      document.getElementById('years').innerText = current.getFullYear() - birthDay.getFullYear() +' '+ 'Years'
+      document.getElementById('months').innerText = Math.abs((current - birthDay.getTime()) / 60000 / 60 / 24 / 30).toFixed(0) + ' Months'
+      document.getElementById('days').innerText = Math.abs((current - birthDay.getTime()) / 60000 / 60 / 24).toFixed(0) + ' Days'
+      document.getElementById('hours').innerText = Math.abs((current - birthDay.getTime()) / 60000 / 60).toFixed(0) + ' Hours'
+      document.getElementById('minutes').innerText = Math.abs((current - birthDay.getTime()) / 60000).toFixed(0) + ' Minutes'
+      document.getElementById('seconds').innerText = Math.abs((current - birthDay.getTime()) / 1000).toFixed(0) + ' Seconds'
+
+      
+      // after year and months
+      const y = current.getFullYear() - birthDay.getFullYear()
+      const m = current.getMonth() - birthDay.getMonth()
+      const d = current.getDate() - birthDay.getDate()
+      console.log(`${y} years ${m} months ${d} days`)
+    })
+  </script>
+</body>
+
+</html>

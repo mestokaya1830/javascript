@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date Format</title>
+  </head>
+  <body>
+    <h2 style="margin: 10px; text-align: center;">Date Format</h2>
+  <p style="margin: 10px; text-align: center;">Look at the Concole</p>
+    <script>
+      let d = new Date();
+      console.log(d);
+      console.log(`String------------- ${d.toString()}`);
+      console.log(`DateString--------- ${d.toDateString()}`);
+      console.log(`LocalString-------- ${d.toLocaleString()}`);
+      console.log(`LocalDateString---- ${d.toLocaleDateString()}`);
+      console.log(`LocalTimeString---- ${d.toLocaleTimeString()}`);
+      console.log(`Now---------------- ${Date.now()}`);
+      console.log(`Year--------------- ${d.getFullYear()}`);
+      console.log(`Month-------------- ${d.getMonth() + 1}`);
+      console.log(`Month As String-------------- ${d.toLocaleDateString('en-EN',{month:'long'})}`);
+      console.log(`Day As String---------------- ${d.toLocaleDateString('en-EN', {weekday:'long'})}`);
+      console.log(`Day-Of-Week----------- ${d.getDay()}`);
+      console.log(`Day-Of-Month----------- ${d.getDate()}`);
+      console.log(`Days-In-Month----------- ${new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()}`);
+
+      //country format
+      const fr = Intl.DateTimeFormat("tr-TR");
+      console.log('Country Format-----', fr.format(new Date()));
+
+
+      //country format with options
+      const withOption = new Date().toLocaleString('tr-TR', {
+      timeZone: 'Europe/Istanbul',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      timeZoneName: 'short',
+    })
+    console.log('Country Format With Options--- ', withOption)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        min-width: 500px;
+        margin-top: 30px;
+      }
+      form input {
+        width: 100%;
+        height: 34px;
+        padding: 0 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 5px 0;
+        font-size: 16px;
+      }
+      form textarea {
+        min-width: 100%;
+        width: 100%;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 16px;
+      }
+      form input[type="submit"] {
+        font-size: 18px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Email.JS</h1>
+    <form>
+      <input type="text" name="email" id="email" placeholder="Email" />
+      <input type="text" name="subject" id="subject" placeholder="Subject" />
+      <textarea name="" id="message" rows="10"></textarea>
+      <input type="submit" value="Send" id="send" />
+    </form>
+
+     <script src="./email.js"></script>
+    <script>
+
+      //create an account on the https://dashboard.emailjs.com
+      //see https://www.youtube.com/watch?v=BgVjild0C9A&ab_channel=CodeEasy
+      (function () {
+        emailjs.init({
+          publicKey: "dfViWTkCiA7tGvXSm",
+        });
+      })();
+
+      document.getElementById("send").addEventListener("click", (e) => {
+        // e.preventDefault();
+        const data = {
+          email: document.getElementById("email").value,
+          subject: document.getElementById("subject").value,
+          message: document.getElementById("message").value,
+        };
+        emailjs
+          .send("service_18hr2f9", "template_nr7p6b2", data)
+          .then(
+            (response) => {
+              console.log("SUCCESS!", response.status, response.text);
+            },
+            (error) => {
+              console.log("FAILED...", error);
+            }
+          );
+      });
+    </script>
+  </body>
+</html>

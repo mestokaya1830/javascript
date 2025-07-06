@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elipsed Time</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #container{
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin: 0 auto;
+    }
+    #list{
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+    }
+    input{
+      margin: 8px;
+      height: 30px;
+    }
+    #container div{
+      margin: 20px;
+      font-size: 20px;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Elipsed Time</h2>
+  <div id="container">
+    <input type="button" name="" id="start" value="Start Time">
+    <div id="milisecond"></div>
+    <div id="second"></div>
+  </div>
+
+
+
+  <script>
+    document.getElementById('start').addEventListener('click', () => {
+      let startTime = Date.now()
+      let elipsedTime = 0
+      document.getElementById('milisecond').innerText = 'Please wait...'
+      setTimeout(() => {
+        let elipsedTime = Date.now() - startTime
+        document.getElementById('milisecond').innerText = `Elipsed Miliseconds: ${elipsedTime}` 
+        document.getElementById('second').innerText = `Elipsed Seconds: ${Math.abs(elipsedTime / 1000).toFixed(0)}` 
+      }, 5000)
+    })
+  </script>
+</body>
+
+</html>

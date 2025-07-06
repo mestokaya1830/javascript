@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Date</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1{margin: 30px 0;}
+      .container{
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+      }
+      .inside{
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+      select{
+        height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 50%;
+        margin: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        padding: 5px;
+      }
+      label{
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Custom Country</h1>
+    <div class="container">
+      <div class="inside">
+        <select name="" id="months"></select>
+        <select name="" id="days"></select>
+      </div>
+      <div class="inside">
+        <label>Current Date</label>
+        <label style="color: green;" id="currentDate"></label>
+      </div>
+    </div>
+    <script>
+      const $ = (par) => document.querySelector(par)
+      //local date
+      let d = new Date();
+      let selectedMonth = ''
+      let selectedDay = ''
+      let months = [
+        "Ocak",
+        "Şubat",
+        "Mart",
+        "Nisan",
+        "Mayıs",
+        "Haziran",
+        "Temmuz",
+        "Agustos",
+        "Eylül",
+        "Ekim",
+        "Kasım",
+        "Aralık",
+      ];
+      let days = ["Paz", "Pazs", "Salı", "Çar", "Per", "Cum", "Cums"];
+      
+      //fill months
+      for (const item of months) {
+        $("#months").innerHTML += `<option>${item}</option>`;
+      }
+
+      //fill days from month
+      $("#months").addEventListener("change", () => {
+        $("#days").innerHTML = ''
+        for (const item of days) {
+          $("#days").innerHTML += `<option>${item}</option>`;
+        }
+      });
+
+
+      //curretn date
+      $('#currentDate').innerHTML = `
+        ${months[d.getMonth() + 1]}-${days[d.getDay()]}-${d.getFullYear()}
+      `
+
+      //selected month
+      $('#months').addEventListener('change', (e) => {
+        selectedMonth = e.target.value
+      })
+      //selected day
+      $('#days').addEventListener('change', (e) => {
+        selectedDay = e.target.value
+        $('#currentDate').innerHTML = `
+          ${selectedMonth}-${selectedDay}-${d.getFullYear()}
+        `
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2 style="margin: 10px; text-align: center;">Custom Parse</h2>
+  <p style="margin: 10px; text-align: center;">Look at the Concole</p>
+
+
+  <script>
+    const d = new Date()
+    console.log('Year-------------------- ', d.getFullYear())
+    console.log('Month------------------- ', d.getMonth() + 1)
+    console.log('Days-------------------- ', d.getDate())
+    console.log('DayOfWeek--------------- ', d.getDay());
+    console.log('firstDayOfMonth--------- ', new Date(d.getFullYear(), d.getMonth(), 1)) 
+    console.log('lastDayOfMonth--------- ', new Date(d.getFullYear(), d.getMonth() + 1, 0)) 
+    console.log('lastDateOfLastMonth--------- ', new Date(d.getFullYear(), d.getMonth(), 0)) 
+    console.log('daysInMonth------------- ', new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate())
+    console.log('Current Week of Year----- ', Math.abs(new Date(d.getFullYear(), 0, 0) - d.getTime()) / 60000 / 
+    60 / 24 / 7)
+
+
+    //weekend
+    const days = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()
+    for (let i = 1; i < days + 1; i++) {
+      const dayString = `${d.getMonth() + 1}/${i}/${d.getFullYear()}`;
+      const weekend = new Date(dayString)
+      if(weekend.getDay() == 0 || weekend.getDay() == 6){
+        console.log(weekend.getDate(), weekend.toLocaleDateString())
+      }
+    }
+    
+  </script>
+</body>
+</html>

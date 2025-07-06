@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax Create Text File</title>
+  <style>
+    #progress-con{
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      margin: 0 40%;
+    }
+    progress{
+      width: 90%;
+      margin-right: 5px;
+      margin-top: 20px;
+    }
+    button{
+      display: flex;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h2 style="margin: 20px; text-align: center;">Ajax Create Text File</h2>
+  <div id="progress-con">
+    <textarea name="" id="data" cols="30" rows="10">
+      What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </textarea>
+    <div>
+      <button onclick="createTextFile()">Create Text-File</button>
+    </div>
+  </div>
+
+  <script>
+    const createTextFile = () => {
+      let data = document.getElementById('data').value
+
+      let link = document.createElement('a')
+      link.href = URL.createObjectURL(new Blob([data], {type: 'text/plain'}))
+      link.download = 'text1.txt'
+      link.click()
+      URL.revokeObjectURL(link.href)
+    }
+  </script>
+</body>
+
+</html>

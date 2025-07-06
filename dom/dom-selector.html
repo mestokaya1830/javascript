@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 50px;
+    }
+    ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul > p{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <ul class="list">
+   <li>Html</li>
+   <li>Css</li>
+   <li>Javascript</li>
+  </ul>
+
+  <div class="list2">
+    <p>First P Element</p>
+    <p>Second P Element</p>
+    <span>First Span Element</span>
+    <span>Second Span Element</span>
+  </div>
+
+  <h2 class="header">Header</h2>
+
+  <div style="margin-top: 50px;">
+    <button id="btn">First Child Element</button>
+    <button id="btn2">Last Child Element</button>
+    <button id="btn3">Specific Child Element</button>
+    <button id="btn4">Specific Child Element By Tag Name</button>
+    <button id="btn5">PrevSibling</button>
+    <button id="btn6">NextSibling</button>
+    <button id="btn7">NextSibling Child</button>
+  </div>
+
+  <script>
+    document.getElementById('btn').addEventListener('click', () => {
+      let item = document.querySelector('.list')
+      item.firstElementChild.style.color = 'red'
+    })
+    document.getElementById('btn2').addEventListener('click', () => {
+      let item = document.querySelector('.list')
+      item.lastElementChild.style.color = 'red'
+    })
+    document.getElementById('btn3').addEventListener('click', () => {
+      let item = document.querySelector('.list')
+      item.children[1].style.color = 'red'
+    })
+    document.getElementById('btn4').addEventListener('click', () => {
+      let item = document.querySelector('.list2')
+      item.getElementsByTagName('span')[1].style.color = 'red'
+    })
+    document.getElementById('btn5').addEventListener('click', () => {
+      let item = document.querySelector('.list2')
+      item.previousElementSibling.style.color = 'red'
+    })
+    document.getElementById('btn6').addEventListener('click', () => {
+      let item = document.querySelector('.list2')
+      item.nextElementSibling.style.color = 'red'
+    })
+    document.getElementById('btn7').addEventListener('click', () => {
+      let item = document.querySelector('.header')
+      item.nextElementSibling.children[1].style.color = 'red'
+    })
+  </script>
+</body>
+</html>
