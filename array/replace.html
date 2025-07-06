@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manipulation Array</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Manipulation Array</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console(Press f12)</h4>
+
+  <script>
+    //basic literal
+    let lang = ['Html', 'Css', 'Javascript', 'Nodejs', 'Mongodb', 'Mysql']
+    let flat_array = [[1, 2, 3], ['a', 'b', 'c'], ['a1', 'b2', 'b3']]
+    let mix = [1,2,3,'a','b','c']
+
+
+    //replace with array index----------------------------------------------------
+    // lang[0] = 'Sass'
+    // console.log(lang)
+
+    //replace with splice----------------------------------------------------
+    // lang.splice(0,1, 'Sass')
+    // console.log(lang)
+
+    //replace with replace----------------------------------------------------
+    // mix.forEach((item, index) => {
+    //   if(!isNaN(item)){
+    //     mix[index] = 'A'
+    //   }
+    // })
+    // console.log(mix)
+
+  
+    //replace first letter with charAt
+    // const firstLetter = (param) => param.map(item => item.replace(item.charAt(0), '$'))
+    // console.log(firstLetter(lang))
+
+    // //replace first letter with regex
+    const firstLetter = (param) => param.map(item => item.replace(/[a-z]/, '$'))
+    console.log(firstLetter(lang))
+
+    //replace with foreach----------------------------------------------------
+    // lang.forEach((item, index) => {
+    //   if(item.charAt() === 'M'){
+    //     lang[index] = '---'
+    //   }
+    // })
+    // console.log(lang)
+    
+    //replace with map----------------------------------------------------
+    // const newLang = lang.map(item => {
+    //   if (item.charAt() === 'M') {
+    //     return '---';
+    //   }
+    //   return item;
+    // });
+    // console.log(newLang)    
+  </script>
+</body>
+
+</html>

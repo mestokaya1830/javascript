@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Array</title>
+  </head>
+  <body>
+    <h2 style="margin-top: 20px; text-align: center">Create Array</h2>
+    <h4 style="margin: 5px; text-align: center">Check Console (Press f12)</h4>
+
+    <script>
+      //basic-array
+      let lang = ["Html", "Css", "Javascript", "Nodejs", "Mongodb", "Mysql"];
+      let flat_array = [
+        [1, 2, 3],
+        ["a", "b", "c"],
+        ["a1", "b2", "b3"],
+      ];
+      let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+      //add to specific index with splice
+      lang.splice(1, 0, "C++");
+      lang.splice(1, 0, "C++", "Php"); //multi
+      console.log(lang);
+
+      //add to specific index as array with splice
+      let lang1 = ["Dotnet", "Sass", "Vb Script"];
+      lang.splice(1, 0, ...lang1); //multi
+      console.log(lang);
+
+      const fillNumber = Array.from({ length: 1000 }, (_, i) => i + 1);
+      console.log(fillNumber);
+
+      //add with fill method--------------------------------
+      const emoji = (param) => {
+        const result = Array(param).fill("😋");
+        console.log(result);
+      };
+      emoji(5);
+
+      const num = (param) => {
+        const result = Array(param)
+          .fill()
+          .map((item, index) => index + 5);
+        console.log(result);
+      };
+      num(10);
+
+      const letter = (param) => {
+        // const result = Array(param).fill().map((item, index) => String.fromCharCode('D'.charCodeAt(0) + index))  //start from D
+        const result = Array(param)
+          .fill()
+          .map((item, index) => String.fromCharCode("A".charCodeAt(0) + index)); //start from A
+        console.log(result);
+      };
+      letter(26);
+
+      //create flat array from one array
+      function sliceArray(arr, limit) {
+        const result = [];
+        for (let i = 0; i < arr.length; i += limit) {
+          const chunk = arr.slice(i, i + limit);
+          result.push(chunk);
+        }
+        return result;
+      }
+      console.log(sliceArray([1, 2, 3, 4, 5, 6, 7, 8, 9], 3));
+
+      const multi = Array.from(lang.entries());
+      console.log(multi);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slice</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Slice</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console(Press f12)</h4>
+
+  <script>
+    //basic literal
+    let lang = ['Html', 'Css', 'Javascript', 'Nodejs', 'Mongodb', 'Mysql']
+    let flat_array = [[1, 2, 3], ['a', 'b', 'c'], ['a1', 'b2', 'b3']]
+    let numbers = [1,2,3,4,5,6,7,8,9,10]
+
+
+    //replace with array index----------------------------------------------------
+    // lang[0] = 'Sass'
+    // console.log(lang)
+
+    //replace with splice----------------------------------------------------
+    // lang.splice(0,1, 'Sass')
+    // console.log(lang)
+
+    //replace with replace----------------------------------------------------
+    // const firstDigit = (param) => param.replace(/[0-9]/, '$')
+    // console.log(firstDigit(lang))
+
+    // const firstLetter = (param) => param.replace(/[a-z]/, '$')
+    // console.log(firstLetter(lang))
+
+    // const firstLetter2 = (param) => param.replace(param.charAt(0), '$')
+    // console.log(firstLetter2(lang))
+
+    //replace with foreach----------------------------------------------------
+    // lang.forEach((item, index) => {
+    //   if(item.charAt() === 'M'){
+    //     lang[index] = '---'
+    //   }
+    // })
+    // console.log(lang)
+    
+    //replace with map----------------------------------------------------
+    // const newLang = lang.map(item => {
+    //   if (item.charAt() === 'M') {
+    //     return '---';
+    //   }
+    //   return item;
+    // });
+    // console.log(newLang)    
+  </script>
+</body>
+
+</html>

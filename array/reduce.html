@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reduce Array</title>
+</head>
+
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Reduce Array</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+  <script>
+
+    //sum number array
+    let numbers = [1, 2, 3, 4, 5]
+
+    const users = [
+      { id: 1, name: 'mesto', salary: 3000, age: 50 },
+      { id: 2, name: 'hans', salary: 1000, age: 20 },
+      { id: 3, name: 'denis', salary: 4000, age: 30 },
+      { id: 4, name: 'alex', salary: 5000, age: 35 }
+    ]
+
+    let sum = numbers.reduce((prev, next) => prev + next, 0)//0 is initial value
+    console.log('Total salary: ', sum)
+
+
+    //find max
+    // let maxNumber = numbers.reduce((prev, next) => {
+    //   if (next > prev) return next
+    //   return prev
+    // }, 0)
+    // console.log('Max number: ', maxNumber)
+
+
+    //find min
+    // let minNumber = numbers.reduce((prev, next) => {
+    //   if (next < prev) return next
+    //   return prev
+    // }, 0)
+    // console.log('Min number: ', minNumber)
+
+    //convert array
+    // const names = users.reduce((prev, next) => [...prev, next.name], [])
+    // console.log(names)
+
+    //convert dict
+    // const dict = users.reduce((prev, next) => {
+    //   return {...prev, [next.id]:next}
+    // })
+    // console.log(dict)
+    // console.log(dict['2'])//get 2. user like dict
+
+
+    //grouped users
+    // const groupAsSalary = users.reduce((prev, next) => {
+    //   const salary = next.salary
+    //   if(prev[salary] == null) prev[salary] = []
+    //   prev[salary].push(next)
+    //   return prev
+    // }, {})
+    // console.log(groupAsSalary)
+
+  </script>
+</body>
+
+</html>

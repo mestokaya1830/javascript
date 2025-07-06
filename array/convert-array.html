@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert Array</title>
+</head>
+<body>
+  <h2 style="margin-top:20px;text-align: center;">Convert Array</h2>
+  <h4 style="margin:5px;text-align: center;">Check Console (Press f12)</h4>
+  <script>
+    //basic-array
+    let lang = ['Html','Css','Javascript']
+    let numbers = ['1','2','3','4','5']
+    console.log(lang)
+
+    //convert to string
+    console.log(lang.toString())
+
+    //or 
+    const str = Array.from('Mesto')
+    console.log(str)
+    
+    //convert to string with new line
+    console.log(lang.join('\r\n'))
+
+    //convert to string without comma and with space
+    console.log(lang.join(' '))
+
+    //or
+    console.log(lang.join('-'))
+
+    //conver string numbers to int numbers
+    const convertedNumbers = numbers.map(Number)
+    console.log(convertedNumbers)
+  </script>
+</body>
+</html>
